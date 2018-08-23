@@ -19,9 +19,9 @@ Application to be awesome
 
 ### Client Details
 
-| Name               | Email             | Role |
-| ------------------ | ----------------- | ---- |
-| Nombre del cliente | prueba@prueba.com | CEO  |
+| Name                              | Email               | Role |
+| --------------------------------- | ------------------- | ---- |
+| Ana Maria Loreto Zúñiga Lombardo  | ana.zuniga@itesm.mx | CEO  |
 
 
 ### Environment URLS
@@ -33,7 +33,7 @@ Application to be awesome
 
 | Name           | Email             | Role        |
 | -------------- | ----------------- | ----------- |
-| Nombre miembro | prueba@prueba.com | Development |
+| Eduardo Andrade Martínez | eduardo.mtz9@gmail.com| Development |
 | Nombre miembro | prueba@prueba.com | Development |
 | Nombre miembro | prueba@prueba.com | Development |
 
@@ -41,10 +41,10 @@ Application to be awesome
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/)
+* [Github repo](https://github.com/ProyectoIntegrador2018/prepanet)
 * [Backlog]()
 * [Heroku](https://crowdfront-staging.herokuapp.com/)
-* [Documentation](https://drive.com)
+* [Documentation](https://drive.google.com/open?id=1wCrqXb4MnM93rEnGpT0BnV-e1RoRj2gs)
 
 ## Development
 
