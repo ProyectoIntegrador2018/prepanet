@@ -34,8 +34,9 @@ Application to be awesome
 | Name           | Email             | Role        |
 | -------------- | ----------------- | ----------- |
 | Eduardo Andrade Martínez | eduardo.mtz9@gmail.com| Development |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
+| Juan Pestana | juancho.pestana@gmail.com | Development |
+| Pedro Iván Martínez | Ivan_0423@hotmail.com | Development |
+| André Jiménez | andre.jimenez@outlook.com | Development |
 
 ### Management tools
 
