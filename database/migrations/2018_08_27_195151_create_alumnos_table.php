@@ -16,6 +16,26 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->char('gender', 1);
+            $table->date('birth_date');
+            $table->string('work_email');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
+            $table->integer('tutor_type');
+            $table->string('carreer');
+
+            $table->string('business')->nullable();
+
+            $table->integer('gerente_id')->unsigned();
+            $table->foreign('gerente_id')
+                ->references('id')
+                ->on('gerentes');
+
             $table->integer('campus_id')->unsigned();
             $table->foreign('campus_id')
                 ->references('id')

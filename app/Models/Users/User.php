@@ -37,16 +37,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Returns the user type of the user.
-     *
-     * @return string
-     */
-    public function userType()
-    {
-        return $this->userable->userType();
-    }
-
-    /**
      * Get the owning userable model.
      *
      * @return MorphTo
