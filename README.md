@@ -34,15 +34,16 @@ Application to be awesome
 | Name           | Email             | Role        |
 | -------------- | ----------------- | ----------- |
 | Eduardo Andrade Martínez | eduardo.mtz9@gmail.com| Development |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
+| Juan Pestana | juancho.pestana@gmail.com | Development |
+| Pedro Iván Martínez | Ivan_0423@hotmail.com | Development |
+| André Jiménez | andre.jimenez@outlook.com | Development |
 
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/prepanet)
-* [Backlog]()
+* [Backlog](https://docs.google.com/document/d/1xR3z3jrJMNzV8r_-KZoIXvX1wAFBvZXfRhCHGmvhZ7s/edit)
 * [Heroku](https://crowdfront-staging.herokuapp.com/)
 * [Documentation](https://drive.google.com/open?id=1wCrqXb4MnM93rEnGpT0BnV-e1RoRj2gs)
 
