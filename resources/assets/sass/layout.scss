@@ -1,0 +1,274 @@
+html,body {
+    background: #f2f2f2;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+nav{
+    .brand-logo{
+        padding-left: 3rem;
+        position: inherit;
+        font-size: 1.5rem;
+    }
+}
+
+.color_float_button {
+    background-color: $secondary-color;
+}
+
+.header{
+    margin: 0;
+}
+
+#logout-form{
+    display: none;
+}
+
+.big-icon{
+    font-size: 4rem;
+}
+
+.hidden{
+    display: none;
+}
+.register-form{
+    padding-top: 5vh;
+}
+
+#login, #login-message, #register{
+    
+    .login-form{
+        padding-top: 20vh;
+    }
+    .login-logo{
+        padding: 5vh 2vh 0vh 0vh;
+    }
+    .password-label{
+        color: $primary-color;
+        i{
+            vertical-align: middle;
+        }
+    }
+    .forgot-password-label {
+        color: $primary-color;
+        i {
+            vertical-align: middle;
+        }
+    }
+    .register-form {
+        padding-top: 2.7vh;
+    }
+}
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    @media only screen and (min-width: 601px){
+        height: 64px;
+        line-height: 64px;
+    }
+}
+
+.side-nav .user-view, .side-nav .userView {
+    @media only screen and (max-width: 992px){
+        padding: 32px 32px 0;
+    }
+    
+}
+
+#sidenav-img{
+    width: 100%;
+}
+
+.bold{
+    font-family: 'Quicksand-Bold';
+}
+
+.primary-color{
+    background-color: $primary-color !important;
+}
+.primary-color-text{
+    color: $primary-color !important;
+}
+
+.secondary-color{
+    background-color: $secondary-color !important;
+}
+.secondary-color-text{
+    color: $secondary-color !important;
+}
+
+.input-field .prefix.active{
+    color: $primary-color;
+}
+
+[type="checkbox"].filled-in:checked+label:after {
+    border: 2px solid $primary-color;
+    background-color: $primary-color;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: $primary-color;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
+    border-bottom: 1px solid $primary-color;
+    -webkit-box-shadow: 0 1px 0 0 $primary-color;
+    box-shadow: 0 1px 0 0 $primary-color;
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label{
+    color: $primary-color;
+}
+
+.primary-button, .primary-button:hover, .primary-button:focus{
+    background-color: $primary-color;
+}
+
+.hover-blue:hover{
+    background-color: #dae8ef;
+}
+
+.secondary-button, .secondary-button:hover, .secondary-button:focus{
+    background-color: $secondary-color;
+}
+
+.pagination li.active {
+    background-color: $primary-color;
+}
+
+.bordered-card{
+    border-left: solid .3rem;
+}
+
+.border-primary-color{
+    border-color: $primary-color;
+}
+
+.border-secondary-color{
+    border-color: $secondary-color;
+}
+
+.border-red{
+    border-color: #f44336;
+}
+
+.border-yellow{
+    border-color: #ffeb3b;
+}
+
+.border-green{
+    border-color: #4caf50;
+}
+
+.border-blue{
+    border-color: #2196f3;
+}
+
+.border-orange{
+    border-color: #ff9800;
+}
+
+.tag{
+    padding: .2rem;
+}
+
+.btn-floating:hover {
+    background-color: $secondary-color;
+}
+
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+    background-color: $secondary-color;
+}
+
+.no-side-padding{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.border-profile-pic{
+    max-width: 20vh;
+    border: solid .2rem $primary-color;
+}
+
+.gold-border{
+    border-color: #ffb300;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.middle-align{
+    vertical-align: middle;
+}
+
+.no-border{
+    &:hover, &:focus {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    border: none !important;
+}
+
+.no-margin{
+    margin: 0 !important;
+}
+
+#search-wrapper{
+    background: white;
+    border: none !important;
+}
+
+.inherit-color{
+    color: inherit;
+}
+
+.small-margin{
+    margin: .5rem !important;
+}
+
+::-moz-selection {
+    color: white;
+    background: #53b8e4;
+}
+
+::selection {
+    color: white;
+    background: #53b8e4;
+}
+
+.underlined{
+    text-decoration: underline;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+#reports{
+    table.striped>tbody>tr:nth-child(odd) {
+        background-color: #e1eff5;
+    }
+}
+
+.right-align{
+    text-align: right;
+}
+
+.chip{
+    overflow: hidden;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.justify{
+    text-align: justify;
+}
+.map-responsive iframe{
+    height:50vh;
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+  .datepicker-date-display,{
+    background-color: $primary-color;
+  }
+  .is-selected .datepicker-day-button {
+    background-color: $secondary-color;
+  }
+  .is-today .datepicker-day-button {
+    color: $primary-color;
+  }
+  .is-today.is-selected .datepicker-day-button {
+    color: #ffffff;
+  }
+  .datepicker-done,
+  .datepicker-cancel {
+    color: $primary-color;
+  }
+  .is-today {
+    color: $primary-color;
+  }

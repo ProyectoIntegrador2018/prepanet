@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,72 +7,81 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/material-icons.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('/css/materialize.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/app.css?v=1') }}" rel="stylesheet" type="text/css">
+    @yield('styles')
+    <!-- Favicon -->
+    @include('partials.favicon')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="navbar-fixed">
+            <nav class="primary-color">
+                <div class="nav-wrapper">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+                    <a href="/" class="brand-logo left hide-on-small-only">{{ config('app.name') }}</a>
+                </div>
+            </nav>
+        </div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+        <ul id="slide-out" class="sidenav">
+            <li><div class="user-view">
+                    <div class="background">
+                        <img id="sidenav-img" src="{{asset('/images/sidenav-background.png')}}">
+                    </div>
+                    <a class="black-text" href="/account-settings"><img class="circle border-profile-pic" src="{{ \Auth::user()->displayphoto()}}"></a>
+                    <a class="black-text" href="/account-settings"><span class="name">{{\Auth::user()->name()}}</span></a>
+                    <a class="black-text" href="/account-settings"><span class="email">{{\Auth::user()->email}}</span></a>
+                    @if(isCustomer(\Auth::user()->userable))
+                    <div style="display:block; margin-top: -16px;">
+                        <p class="secondary-color-text inline no-margin" > {{ \Auth::user()->userable->creditCount() }} {{__('common.credits')}}</p>
+                        <p class="secondary-color-text inline no-margin" > {{ \Auth::user()->userable->passesCount() }} {{__('common.passes')}}</p>
+                        <p class="primary-color-text inline no-margin" > {{ \Auth::user()->userable->tryOutCount() }} {{__('common.try_outs')}}</p>
+                    </div>
+                    @endif
+                    @if(isCustomer(\Auth::user()->userable))
+                        <p class="grey-text no-margin">Your referral code is: {{\Auth::user()->userable->referral_code}}</p>
+                    @endif
+            </div></li>
+            <li><div class="divider"></div></li>
+            <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
+        </ul>
+        <form id="logout-form" action="{{ url('logout') }}" method="POST">
+            @csrf
+        </form>
 
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+        <main class="main">
+            @if(!isset($headerOff))
+            <div class="section primary-color" id="index-banner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            @yield('header')
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <main class="py-4">
+            @endif
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{asset('/js/jquery.min.js')}}"></script>
+    <script src="{{asset('/js/materialize.min.js')}}"></script>
+    <script src="{{asset('/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('/js/layout.js?v=1.1')}}"></script>
+    @yield('scripts')
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 </body>
 </html>

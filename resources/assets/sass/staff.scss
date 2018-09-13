@@ -1,0 +1,31 @@
+#staff{
+    .alphabet{
+        border: solid 1px transparent;
+        border-radius: 2rem;
+        max-width: 2.3rem;
+        background: white;
+        padding: 0;
+        cursor: pointer;
+        a{
+            color: black;
+        }
+        ul{
+            width: 2rem;
+        }
+    }
+    #users-list{
+        li{
+            margin-bottom: .5rem;
+        }
+    }
+    
+    .apply-button{
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .blue-list li:hover {
+        background-color: #90caf9;
+    }
+
+}
