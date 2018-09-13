@@ -30,24 +30,6 @@
         </div>
 
         <ul id="slide-out" class="sidenav">
-            <li><div class="user-view">
-                    <div class="background">
-                        <img id="sidenav-img" src="{{asset('/images/sidenav-background.png')}}">
-                    </div>
-                    <a class="black-text" href="/account-settings"><img class="circle border-profile-pic" src="{{ \Auth::user()->displayphoto()}}"></a>
-                    <a class="black-text" href="/account-settings"><span class="name">{{\Auth::user()->name()}}</span></a>
-                    <a class="black-text" href="/account-settings"><span class="email">{{\Auth::user()->email}}</span></a>
-                    @if(isCustomer(\Auth::user()->userable))
-                    <div style="display:block; margin-top: -16px;">
-                        <p class="secondary-color-text inline no-margin" > {{ \Auth::user()->userable->creditCount() }} {{__('common.credits')}}</p>
-                        <p class="secondary-color-text inline no-margin" > {{ \Auth::user()->userable->passesCount() }} {{__('common.passes')}}</p>
-                        <p class="primary-color-text inline no-margin" > {{ \Auth::user()->userable->tryOutCount() }} {{__('common.try_outs')}}</p>
-                    </div>
-                    @endif
-                    @if(isCustomer(\Auth::user()->userable))
-                        <p class="grey-text no-margin">Your referral code is: {{\Auth::user()->userable->referral_code}}</p>
-                    @endif
-            </div></li>
             <li><div class="divider"></div></li>
             <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>

@@ -23,6 +23,6 @@ class SuperAdministrator extends Model
      */
     public function userType()
     {
-        return 'Administrador';
+        return 'Super Administrador';
     }
 }
