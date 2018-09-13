@@ -30,6 +30,19 @@
         </div>
 
         <ul id="slide-out" class="sidenav">
+            <li><div class="user-view">
+                <div class="background">
+                    <img id="sidenav-img" src="">
+                </div>
+                <a class="black-text" href=""><span class="name">{{\Auth::user()->getName()}}</span></a>
+            </div></li>
+            <li><div class="divider"></div></li>
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">accessibility</i>Personal</a></li>@endif
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">business</i>Campus</a></li>@endif
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">today</i>Reportes</a></li>@endif
+            <li><div class="divider"></div></li>
+            <li><a href=""><i class="material-icons">accessibility</i>Tutores</a></li>
+            <li><a href=""><i class="material-icons">accessibility</i>Alumnos</a></li>
             <li><div class="divider"></div></li>
             <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>

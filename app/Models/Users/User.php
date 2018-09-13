@@ -45,4 +45,15 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    /**
+     * Return name
+     *
+     * @return MorphTo
+     */
+    public function getName()
+    {
+        return $this->first_name . " " . $this->last_name . " !";
+    }
+
 }
