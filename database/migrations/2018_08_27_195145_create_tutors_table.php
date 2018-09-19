@@ -34,10 +34,10 @@ class CreateTutorsTable extends Migration
             $table->string('user_name');
             $table->string('user_password');
 
-            $table->integer('campus_id')->unsigned();
-            $table->foreign('campus_id')
+            $table->integer('tetra_id')->unsigned();
+            $table->foreign('tetra_id')
                 ->references('id')
-                ->on('campuses');
+                ->on('tetras');
 
             $table->integer('gerente_id')->unsigned();
             $table->foreign('gerente_id')

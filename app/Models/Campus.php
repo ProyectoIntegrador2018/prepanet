@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tetra;
 use App\Models\Users\Tutor;
 use App\Models\Users\Alumno;
 use App\Models\Users\Gerente;
@@ -19,33 +20,13 @@ class Campus extends Model
     ];
 
     /**
-     * Get the trainingSession that is on the room.
-     *
-     * @return hasMany
-     */
-    public function trainingSessions()
-    {
-        return $this->hasMany(TrainingSession::class);
-    }
-
-    /**
-     * Get all of the tutors of the campus.
+     * Get all of the tetras of the campus.
      *
      * @return HasMany
      */
-    public function tutors()
+    public function tetras()
     {
-        return $this->hasMany(Tutor::class);
-    }
-
-    /**
-     * Get all of the students of the campus.
-     *
-     * @return HasMany
-     */
-    public function alumnos()
-    {
-        return $this->hasMany(Alumno::class);
+        return $this->hasMany(Tetra::class);
     }
 
     /**
@@ -59,22 +40,22 @@ class Campus extends Model
     }
 
     /**
-     * Get all of the applications of the tutors for the campus.
+     * Get all of the alumnos for the campus
      *
      * @return HasMany
      */
-    public function aplicacionesTutor()
+    public function alumnos()
     {
-        return $this->hasManyThrough(AplicacionTutor::class, Tutor::class);
+        return $this->hasManyThrough(Alumno::class, Tetra::class);
     }
 
     /**
-     * Get all of the applications of the student for the campus.
+     * Get all of the tutores for the campus.
      *
      * @return HasMany
      */
-    public function aplicacionesAlumno()
+    public function tutores()
     {
-        return $this->hasManyThrough(AplicacionAlumno::class, Alumno::class);
+        return $this->hasManyThrough(Tutor::class, Tetra::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models\Aplicaciones;
 
 use App\Models\Campus;
+use App\Models\Tetra;
 use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
@@ -17,7 +18,7 @@ class Alumno extends Model
         'work_email', 'email', 'phone',
         'city', 'state', 'country',
         'tutor_type', 'carreer', 'business',
-        'gerente_id', 'campus_id'
+        'gerente_id', 'tetra_id'
     ];
 
     /**
@@ -37,12 +38,12 @@ class Alumno extends Model
     ];
 
     /**
-     * Get the tutor to which the application belongs.
+     * Get the tetra to which the tutor belongs.
      *
      * @return BelongsTo
      */
-    public function campus()
+    public function tetra()
     {
-        return $this->belongsTo(Campus::class);
+        return $this->belongsTo(Tetra::class);
     }
 }
