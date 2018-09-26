@@ -48,4 +48,6 @@ Después de eso se corren las migraciones con los seeders.
 
 $ heroku run php artisan migrate --seed
 
+Se abre la aplicación.
+
 $ heroku open
