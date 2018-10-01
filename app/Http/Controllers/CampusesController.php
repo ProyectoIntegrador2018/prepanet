@@ -29,9 +29,6 @@ class CampusesController extends Controller
     public function createRules(){
         return [
             'name' => 'required|string|between:3,100',
-            'phone' => 'required|string|between:8,20',
-            'city' => 'required|string|between:3,20',
-            'state' => 'required|string|between:3,20',
             'address' => 'required|string|between:5,50',
         ];
     }
@@ -44,9 +41,6 @@ class CampusesController extends Controller
     public function editRules(){
         return [
             'name' => 'required|string|between:3,100',
-            'phone' => 'required|string|between:8,20',
-            'city' => 'required|string|between:3,20',
-            'state' => 'required|string|between:3,20',
             'address' => 'required|string|between:5,50',
         ];
     }
