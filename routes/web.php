@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
+    Route::get('/', 'CampusesController@index')->name('campuses');
+    Route::get('/create', 'CampusesController@getCreateCarrier')->name('create-campus');
+    Route::post('/create', 'CampusesController@postCreateCarrier')->name('store-campus');
+});
+
