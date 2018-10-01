@@ -62,7 +62,7 @@ class CampusesController extends Controller
             default:
                 break;
         }
-        return view('campuses.campus', $data);
+        return view('campuses.campuses', $data);
     }
 
     /**
@@ -71,7 +71,7 @@ class CampusesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function getCreateCarrier()
+    public function getCreateCampus()
     {
         // $this->authorize('create', Carrier::class);
 
@@ -84,7 +84,7 @@ class CampusesController extends Controller
             default:
                 break;
         }
-        return view('carriers.carrier-create');
+        return view('campuses.campus-create');
     }
 
     /**
@@ -93,7 +93,7 @@ class CampusesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreateCarrier(Request $request)
+    public function postCreateCampus(Request $request)
     {
         // $this->authorize('create', Carrier:class);
 
@@ -106,13 +106,10 @@ class CampusesController extends Controller
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            flash()->error(__('common.oops!'), __("campuses.error_add"));
-            return back();
+            return back()->withErrors(__('campuses.error_edit_room'));
         }
-        flash()->success(__('common.success!'), __("campuses.successful_add", ["campus" => $campus->name]));
-
-        $createMore = $request->get('create_more') ? true : false;
-        return $createMore? redirect()->route('create-campus') : redirect()->route('campuses');
+        Session::flash('flash_message', __('campuses.success_edit_room'));
+        return redirect()->route('campuses');
     }
 
     /**
@@ -121,7 +118,7 @@ class CampusesController extends Controller
      * @param  Carrier  $company
      * @return \Illuminate\Http\Response
      */
-    public function getCarrier(Campus $campus)
+    public function getCampus(Campus $campus)
     {
         $this->authorize('view', $campus);
 
@@ -137,7 +134,7 @@ class CampusesController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postEditCarrier(Request $request, Campus $campus)
+    public function postEditCampus(Request $request, Campus $campus)
     {
         // $this->authorize('update', $carrier);
 
@@ -148,10 +145,9 @@ class CampusesController extends Controller
             $campus->save();
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            flash()->error(__('common.oops!'), __("campuses.error_edit"));
-            return back();
+            return back()->withErrors(__('campuses.error_edit_room'));
         }
-        flash()->success(__('common.success!'), __("campuses.successful_edit", ["campus" => $campus->name]));
+        Session::flash('flash_message', __('campuses.success_edit_room'));
         return back();
     }
 
@@ -162,7 +158,7 @@ class CampusesController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteCarrier(Request $request, Campus $campus)
+    public function postDeleteCampus(Request $request, Campus $campus)
     {
         // $this->authorize('delete', $campus);
 
@@ -171,14 +167,13 @@ class CampusesController extends Controller
                 $campus->delete();
             } catch (\Exception $e) {
                 app()->make("lern")->record($e);
-                flash()->error(__('common.oops!'), __("campuses.error_delete"));
-                return back();
+                return back()->withErrors(__('campuses.error_edit_room'));
             }
-            flash()->success(__('common.success!'), __("campuses.successful_delete", ["campus" => $campus->name]));
+            Session::flash('flash_message', __('campuses.success_edit_room'));
             return redirect()->route('campuses');
         } else {
-            flash()->error(__('common.oops!'), __("campuses.error_users"));
-            return back();
+            app()->make("lern")->record($e);
+            return back()->withErrors(__('campuses.error_edit_room'));
         }
     }
 }
