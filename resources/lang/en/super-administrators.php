@@ -36,5 +36,6 @@ return [
     'success_edit_super_administrator' => '¡Super Administrator editado satisfactoriamente!',
     'error_delete_super_administrator' => 'Error al eliminar el Super Administrator. Prueba nuevamente más tarde',
     'success_delete_super_administrator' => '¡Super Administrator eliminado satisfactoriamente!',
-    'error_not_same_password' => 'La contraseña y su confirmación tienen que ser iguales. Porfavor trate otra vez.'
+    'error_not_same_password' => 'La contraseña y su confirmación tienen que ser iguales. Porfavor trate otra vez.',
+
 ];

@@ -105,16 +105,16 @@ class SuperAdministratorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Carrier  $company
+     * @param  SuperAdministrator  $superAdministrator
      * @return \Illuminate\Http\Response
      */
-    public function getCampus(Campus $campus)
+    public function getSuperAdministrator(SuperAdministrator $superAdministrator)
     {
         // $this->authorize('view', $campus);
 
         $data = [];
-        $data["campus"] = $campus;
-        return view('campuses.campus', $data);
+        $data["superAdmin"] = $superAdministrator;
+        return view('super-administrators.super-administrator', $data);
     }
 
     /**
