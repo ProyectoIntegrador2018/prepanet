@@ -58,4 +58,14 @@ class Campus extends Model
     {
         return $this->hasManyThrough(Tutor::class, Tetra::class);
     }
+
+    /**
+     * Return if the campus is deletable
+     *
+     * @return true
+     */
+    public function isDeletable()
+    {
+        return true;
+    }
 }

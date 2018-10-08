@@ -1,0 +1,312 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url(/fonts/Quicksand-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Quicksand-Bold';
+  src: url(/fonts/Quicksand-Bold.ttf) format("truetype");
+}
+
+html,
+body {
+  background: #f2f2f2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+nav .brand-logo {
+  padding-left: 3rem;
+  position: inherit;
+  font-size: 1.5rem;
+}
+
+#logout-form {
+  display: none;
+}
+
+.side-nav .divider {
+  margin: 0 0 0 0;
+}
+
+.big-icon {
+  font-size: 4rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.register-form {
+  padding-top: 5vh;
+}
+
+#login .login-form,
+#login-message .login-form,
+#register .login-form {
+  padding-top: 20vh;
+}
+
+#login .login-logo,
+#login-message .login-logo,
+#register .login-logo {
+  padding: 5vh 2vh 0vh 0vh;
+}
+
+#login .password-label,
+#login-message .password-label,
+#register .password-label {
+  color: #009bdf;
+}
+
+#login .password-label i,
+#login-message .password-label i,
+#register .password-label i {
+  vertical-align: middle;
+}
+
+#login .forgot-password-label,
+#login-message .forgot-password-label,
+#register .forgot-password-label {
+  color: #009bdf;
+}
+
+#login .forgot-password-label i,
+#login-message .forgot-password-label i,
+#register .forgot-password-label i {
+  vertical-align: middle;
+}
+
+#login .register-form,
+#login-message .register-form,
+#register .register-form {
+  padding-top: 2.7vh;
+}
+
+@media only screen and (min-width: 601px) {
+  nav,
+  nav .nav-wrapper i,
+  nav a.button-collapse,
+  nav a.button-collapse i {
+    height: 64px;
+    line-height: 64px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .side-nav .user-view,
+  .side-nav .userView {
+    padding: 32px 32px 0;
+  }
+}
+
+#sidenav-overlay {
+  z-index: 1;
+}
+
+#sidenav-img {
+  width: 100%;
+}
+
+.bold {
+  font-family: 'Quicksand-Bold';
+}
+
+.primary-color {
+  background-color: #009bdf !important;
+}
+
+.primary-color-text {
+  color: #009bdf !important;
+}
+
+.secondary-color {
+  background-color: #6a1f75 !important;
+}
+
+.secondary-color-text {
+  color: #6a1f75 !important;
+}
+
+.input-field .prefix.active {
+  color: #009bdf;
+}
+
+[type="checkbox"].filled-in:checked + label:after {
+  border: 2px solid #009bdf;
+  background-color: #009bdf;
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: #009bdf;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #009bdf;
+  -webkit-box-shadow: 0 1px 0 0 #009bdf;
+  box-shadow: 0 1px 0 0 #009bdf;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #009bdf;
+}
+
+.primary-button,
+.primary-button:hover,
+.primary-button:focus {
+  background-color: #009bdf;
+}
+
+.secondary-button,
+.secondary-button:hover,
+.secondary-button:focus {
+  background-color: #6a1f75;
+}
+
+.pagination li.active {
+  background-color: #009bdf;
+}
+
+.bordered-card {
+  border-left: solid .3rem;
+}
+
+.border-primary-color {
+  border-color: #009bdf;
+}
+
+.border-secondary-color {
+  border-color: #6a1f75;
+}
+
+.border-red {
+  border-color: #f44336;
+}
+
+.border-yellow {
+  border-color: #ffeb3b;
+}
+
+.border-green {
+  border-color: #4caf50;
+}
+
+.border-blue {
+  border-color: #2196f3;
+}
+
+.border-teal {
+  border-color: #009688;
+}
+
+
+.border-orange {
+  border-color: #ff9800;
+}
+
+.tag {
+  padding: .2rem;
+}
+
+.btn-floating:hover {
+  background-color: #6a1f75;
+}
+
+.btn:focus,
+.btn-large:focus,
+.btn-floating:focus {
+  background-color: #6a1f75;
+}
+
+.no-side-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.border-profile-pic {
+  max-width: 20vh;
+  border: solid 0.2rem #009bdf;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.middle-align {
+  vertical-align: middle;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.collection a.collection-item:not(.active):hover {
+  background-color: #90caf9;
+}
+
+.picker_date .picker__date-display {
+  background-color: #009bdf;
+}
+
+.picker_date .picker__close,
+.picker_date .picker__today,
+.picker_date .picker__clear {
+  color: #009bdf;
+}
+
+.picker_date .picker__day--selected,
+.picker_date .picker__day--selected:hover,
+.picker_date .picker--focused .picker__day--selected {
+  background-color: #6a1f75;
+  color: #ffffff default;
+}
+
+.picker_date .picker__day--today {
+  color: #6a1f75;
+}
+
+#account-settings #showImage {
+  max-width: 20vh;
+}
+
+#staff .alphabet {
+  border: solid 1px;
+  border-radius: 2rem;
+  max-width: 2.3rem;
+  background: white;
+  padding: 0;
+}
+
+#staff li:hover {
+  background-color: #009bdf;
+  color: white;
+}
+

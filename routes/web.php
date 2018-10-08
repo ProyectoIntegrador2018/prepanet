@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::get('/', 'CampusesController@index')->name('campuses');
+    Route::post('/', 'CampusesController@postCampus');
     Route::get('/{campus}', 'CampusesController@getCampus')->name('campus');
     Route::get('/create', 'CampusesController@getCreateCarrier')->name('create-campus');
     Route::post('/create', 'CampusesController@postCreateCarrier')->name('store-campus');

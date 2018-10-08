@@ -14,9 +14,13 @@ return [
     */
 
     'campuses' => 'Campus',
+    'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
     'no_campuses' => 'No existen campus ahorita ',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'name' => 'Nombre',
+    'address' => 'Dirección',
+    'delete_campus' => 'Borrar campus',
+    'save' => 'Guardar',
+
 
 ];

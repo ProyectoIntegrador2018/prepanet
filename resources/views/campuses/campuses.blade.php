@@ -44,6 +44,13 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="address">{{__('campuses.address')}}</label>
+                            <input id="address" type="text" name="address" required class="validate">
+                        </div>
+                    </div>
+
                     <div class="modal-footer">
                         <a href="#!" class="red white-text modal-action modal-close waves-effect waves-red btn-flat">{{__('common.close')}}</a>
                         <button type="submit" class="green white-text waves-effect waves-green btn-flat" style="margin-right:1rem;">{{__('common.save')}}</button>

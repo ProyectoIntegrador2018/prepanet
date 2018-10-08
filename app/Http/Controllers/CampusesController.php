@@ -87,17 +87,13 @@ class CampusesController extends Controller
         return view('campuses.campus-create');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreateCampus(Request $request)
+    public function postCampus(Request $request)
     {
-        // $this->authorize('create', Carrier:class);
-
-        validateData($request->all(), $this->createRules(), $this->createErrorMessages());
+        // $this->authorize('create', Company::class);
+        $this->validate($request, [
+            'name' => 'required|string|unique:campuses|max:250',
+            'address' => 'required|string|max:50'
+        ]);
 
         try {
             $campus = Campus::create([
@@ -106,9 +102,9 @@ class CampusesController extends Controller
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('campuses.error_edit_room'));
+            return back()->withErrors(__('configurations.error_add_campus'));
         }
-        Session::flash('flash_message', __('campuses.success_edit_room'));
+        Session::flash('flash_message', __("companies.new_campus_created", ["campus" => $campus->name]));
         return redirect()->route('campuses');
     }
 
@@ -120,11 +116,11 @@ class CampusesController extends Controller
      */
     public function getCampus(Campus $campus)
     {
-        $this->authorize('view', $campus);
+        // $this->authorize('view', $campus);
 
         $data = [];
         $data["campus"] = $campus;
-        return view('', $data);
+        return view('campuses.campus', $data);
     }
 
     /**
