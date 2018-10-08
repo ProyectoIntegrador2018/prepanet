@@ -31,9 +31,10 @@ return [
     'last_name' => 'Apellidos',
 
     'error_add_super_administrator' => 'Error creando el super Administrator. Prueba nuevamente más tarde.',
-    'new_super_administrator_created' => '¡Suuper Administrator :superAdmin creado exitosamente!',
+    'new_super_administrator_created' => '¡Super Administrator :superAdmin creado exitosamente!',
     'error_edit_super_administrator' => 'Error al editar el Super Administrator. Prueba nuevamente más tarde.',
     'success_edit_super_administrator' => '¡Super Administrator editado satisfactoriamente!',
     'error_delete_super_administrator' => 'Error al eliminar el Super Administrator. Prueba nuevamente más tarde',
     'success_delete_super_administrator' => '¡Super Administrator eliminado satisfactoriamente!',
+    'error_not_same_password' => 'La contraseña y su confirmación tienen que ser iguales. Porfavor trate otra vez.'
 ];

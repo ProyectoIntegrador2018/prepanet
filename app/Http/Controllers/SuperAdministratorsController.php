@@ -31,8 +31,10 @@ class SuperAdministratorsController extends Controller
     public function createRules(){
         return [
             'email' => 'email|max:255|unique:users|filled|required|',
-            'password' => 'required|password',
-            'confirm-password' => 'required|string'
+            'password' => 'required|string',
+            'confirm-password' => 'required|string',
+            'first_name' => 'required|string|between:3,50',
+            'last_name' => 'required|string|between:3,50',
         ];
     }
 
@@ -43,8 +45,11 @@ class SuperAdministratorsController extends Controller
      */
     public function editRules(){
         return [
-            'email' => 'email|max:255|unique:users|filled|required',
-            'password' => 'required|string'
+            'email' => 'email|max:255|unique:users|filled|required|',
+            'password' => 'required|string',
+            'confirm-password' => 'required|string',
+            'first_name' => 'required|string|between:3,50',
+            'last_name' => 'required|string|between:3,50',
         ];
     }
 
@@ -73,16 +78,27 @@ class SuperAdministratorsController extends Controller
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
 
+        if($request->get('password') != $request->get('confirm-password'))
+        {
+            return back()->withErrors(__('super-administrators.error_not_same_password'));
+        }
+
         try {
-            $superAdmin = superAdmin::create([
-                'name' => $request->get('name'),
-                'address' => $request->get('address'),
-            ]);
+            $superAdmin = SuperAdministrator::create();
+            $mainUser = new User(
+                [
+                    "first_name" => $request->get('first_name'),
+                    "last_name" => $request->get('last_name'),
+                    "password" => bcrypt($request->get('password')),
+                    "email" => $request->get('email'),
+                ]
+            );
+            $mainUser = $superAdmin->user()->save($mainUser);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
             return back()->withErrors(__('super-administrators.error_add_super_administrator'));
         }
-        Session::flash('flash_message', __("super-administrators.new_super_administrator_created", ["superAdmin" => $superAdmin->user->email]));
+        Session::flash('flash_message', __("super-administrators.new_super_administrator_created", ["superAdmin" => $superAdmin->user->first_name]));
         return redirect()->route('super-administrators');
     }
 
