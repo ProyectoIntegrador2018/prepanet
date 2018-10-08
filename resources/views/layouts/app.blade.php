@@ -37,8 +37,9 @@
                 <a class="black-text" href=""><span class="name">{{\Auth::user()->getName()}}</span></a>
             </div></li>
             <li><div class="divider"></div></li>
-            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">accessibility</i>Personal</a></li>@endif
-        @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('campuses')}}"><i class="material-icons">business</i>Campus</a></li>@endif
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('super-administrators')}}"><i class="material-icons">accessibility</i>Super Administradores</a></li>@endif
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">accessibility</i>Gerentes</a></li>@endif
+            @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('campuses')}}"><i class="material-icons">business</i>Campus</a></li>@endif
             @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">today</i>Reportes</a></li>@endif
             <li><div class="divider"></div></li>
             <li><a href=""><i class="material-icons">accessibility</i>Tutores</a></li>
