@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
 use Session;
 use App\Models\Campus;
@@ -28,7 +29,7 @@ class CampusesController extends Controller
      */
     public function createRules(){
         return [
-            'name' => 'required|string|between:3,100',
+            'name' => 'required|string|unique:companies|between:3,100',
             'address' => 'required|string|between:5,50',
         ];
     }
@@ -65,35 +66,10 @@ class CampusesController extends Controller
         return view('campuses.campuses', $data);
     }
 
-    /**
-     * Show the form for creating a new carrier.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function getCreateCampus()
-    {
-        // $this->authorize('create', Carrier::class);
-
-        $userable = Auth::user()->userable;
-
-        switch (true) {
-            case $userable instanceof SuperAdministrator:
-                break;
-            case $userable instanceof Employee:
-            default:
-                break;
-        }
-        return view('campuses.campus-create');
-    }
-
     public function postCampus(Request $request)
     {
         // $this->authorize('create', Company::class);
-        $this->validate($request, [
-            'name' => 'required|string|unique:campuses|max:250',
-            'address' => 'required|string|max:50'
-        ]);
+        validateData($request->all(), $this->createRules());
 
         try {
             $campus = Campus::create([
@@ -127,23 +103,25 @@ class CampusesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  Request  $request
-     * @param  Carrier  $carrier
+     * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
     public function postEditCampus(Request $request, Campus $campus)
     {
-        // $this->authorize('update', $carrier);
+        validateData($request->all(), $this->editRules());
 
-        validateData($request->all(), $this->createRules());
-        try {
-            $campus->name = $request->get('name');
-            $campus->address = $request->get('address');
-            $campus->save();
-        } catch (\Exception $e) {
-            app()->make("lern")->record($e);
-            return back()->withErrors(__('campuses.error_edit_room'));
-        }
-        Session::flash('flash_message', __('campuses.success_edit_room'));
+        $campus->name = $request->get('name');
+        $campus->address = $request->get('address');
+
+        DB::transaction(function () use ($request, $campus) {
+            try {
+                $campus->save();
+            } catch (\Exception $e) {
+                app()->make("lern")->record($e);
+                return back()->withErrors(__('campuses.error_edit_campus'));
+            }
+        });
+        Session::flash('flash_message', __('campuses.success_edit_campus'));
         return back();
     }
 
@@ -156,20 +134,19 @@ class CampusesController extends Controller
      */
     public function postDeleteCampus(Request $request, Campus $campus)
     {
-        // $this->authorize('delete', $campus);
-
         if ($campus->isDeletable()) {
-            try {
-                $campus->delete();
-            } catch (\Exception $e) {
-                app()->make("lern")->record($e);
-                return back()->withErrors(__('campuses.error_edit_room'));
-            }
-            Session::flash('flash_message', __('campuses.success_edit_room'));
+            DB::transaction(function () use ($request, $campus) {
+                try {
+                    $campus->delete();
+                } catch (\Exception $e) {
+                    app()->make("lern")->record($e);
+                    return back()->withErrors(__('campuses.error_delete_campus'));
+                }
+            });
+            Session::flash('flash_message', __('campuses.success_delete_campus'));
             return redirect()->route('campuses');
         } else {
-            app()->make("lern")->record($e);
-            return back()->withErrors(__('campuses.error_edit_room'));
+            return back()->withErrors(__('campuses.error_delete_campus'));
         }
     }
 }
