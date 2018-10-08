@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<h2 class="header white-text">{{__('campuses.campus')}} {{$campus->name}} {{$campus->symbol}}</h2>
+<h2 class="header white-text">{{__('campuses.campus')}} {{$campus->name}} </h2>
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="row grid">
                 {{--  Staff  --}}
                 <div class="col l12 m12 s12">
-                    <form role="form" method="POST">
+                    <form action="{{route('update-campus', ['campus' => $campus])}}" method="POST">
                         @csrf
                         <br>
                         <div class="row">
@@ -19,8 +19,8 @@
                                 <label for="name">{{ __('campuses.name') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="symbol" name="symbol" type="text" class="validate" value="{{$campus->address}}" required>
-                                <label for="symbol">{{ __('campuses.address') }}</label>
+                                <input id="address" name="address" type="text" class="validate" value="{{$campus->address}}" required>
+                                <label for="address">{{ __('campuses.address') }}</label>
                             </div>
                         </div>
                         <div class="row center">

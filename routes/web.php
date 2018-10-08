@@ -23,7 +23,7 @@ Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::get('/', 'CampusesController@index')->name('campuses');
     Route::post('/', 'CampusesController@postCampus');
     Route::get('/{campus}', 'CampusesController@getCampus')->name('campus');
-    Route::post('/{campus}', 'CampusesController@postEditCampus');
+    Route::post('/{campus}', 'CampusesController@postEditCampus')->name('update-campus');
     Route::post('/delete/{campus}', 'CampusesController@postDeleteCampus');
 });
 

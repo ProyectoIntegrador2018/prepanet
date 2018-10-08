@@ -29,7 +29,7 @@ class CampusesController extends Controller
      */
     public function createRules(){
         return [
-            'name' => 'required|string|unique:companies|between:3,100',
+            'name' => 'required|string|unique:campuses|between:3,100',
             'address' => 'required|string|between:5,50',
         ];
     }
@@ -109,10 +109,8 @@ class CampusesController extends Controller
     public function postEditCampus(Request $request, Campus $campus)
     {
         validateData($request->all(), $this->editRules());
-
         $campus->name = $request->get('name');
         $campus->address = $request->get('address');
-
         DB::transaction(function () use ($request, $campus) {
             try {
                 $campus->save();
