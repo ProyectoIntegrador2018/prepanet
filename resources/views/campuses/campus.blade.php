@@ -24,11 +24,14 @@
                             </div>
                         </div>
                         <div class="row center">
-                            <div class="col s4 l6 center">
-                                <button id="saveCampus" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('campuses.save') }}</button>
+                            <div class="col s4 l4 center">
+                                <button id="save-campus" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('campuses.save') }}</button>
                             </div>
-                            <div class="col s8 l6 center">
+                            <div class="col s4 l4 center">
                                 <a href="#delete-campus-modal" class="delete-campus waves-effect waves-light btn-large modal-trigger red" data-campus-id="{{$campus->id}}">{{ __('common.delete') }}</a>
+                            </div>
+                            <div class="col s4 l4 center">
+                                <a href="{{route('campuses')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
                             </div>
                         </div>
                     </form>

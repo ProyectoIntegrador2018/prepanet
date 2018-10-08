@@ -56,5 +56,6 @@ return [
     'pay_online' => 'Pay securely online',
     'payed_in_store' => 'Customer paid in store',
     'try_outs' => 'Try outs',
-    'no' => 'No'
+    'no' => 'No',
+    'back' => 'Atrás'
 ];
