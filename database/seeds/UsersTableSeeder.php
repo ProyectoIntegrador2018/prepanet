@@ -32,6 +32,7 @@ class UsersTableSeeder extends Seeder
 
         $gerente = Gerente::create([
             'campus_id' => 1,
+            'username' => 'UserExample'
         ]);
 
         $mainUser = new User(

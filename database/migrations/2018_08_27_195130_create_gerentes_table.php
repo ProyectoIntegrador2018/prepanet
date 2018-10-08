@@ -15,6 +15,7 @@ class CreateGerentesTable extends Migration
     {
         Schema::create('gerentes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('username');
 
             $table->integer('campus_id')->unsigned();
             $table->foreign('campus_id')

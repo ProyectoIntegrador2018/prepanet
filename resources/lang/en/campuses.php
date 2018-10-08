@@ -21,6 +21,13 @@ return [
     'address' => 'Dirección',
     'delete_campus' => 'Borrar campus',
     'save' => 'Guardar',
+    'no_campuses' => 'No hay campus',
+    'try_adding' => '¡Prueba agregando uno!',
 
-
+    'error_add_campus' => 'Error creando el campus. Prueba nuevamente más tarde.',
+    'new_campus_created' => '¡Campus :campus creado exitosamente!',
+    'error_edit_campus' => 'Error al editar el campus. Prueba nuevamente más tarde.',
+    'success_edit_campus' => '¡Campus editado satisfactoriamente!',
+    'error_delete_campus' => 'Error al eliminar el campus. Prueba nuevamente más tarde',
+    'success_delete_campus' => '¡Campus eliminado satisfactoriamente!',
 ];

@@ -78,9 +78,9 @@ class CampusesController extends Controller
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('configurations.error_add_campus'));
+            return back()->withErrors(__('campuses.error_add_campus'));
         }
-        Session::flash('flash_message', __("companies.new_campus_created", ["campus" => $campus->name]));
+        Session::flash('flash_message', __("campuses.new_campus_created", ["campus" => $campus->name]));
         return redirect()->route('campuses');
     }
 

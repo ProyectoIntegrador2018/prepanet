@@ -27,3 +27,19 @@ Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::post('/delete/{campus}', 'CampusesController@postDeleteCampus');
 });
 
+Route::group(['prefix' => 'super-administrators',  'middleware' => 'auth'], function () {
+    Route::get('/', 'SuperAdministratorsController@index')->name('super-administrators');
+    Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
+    Route::get('/{super-administrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
+    Route::post('/{super-administrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
+    Route::post('/delete/{super-administrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
+});
+
+Route::group(['prefix' => 'gerentes',  'middleware' => 'auth'], function () {
+    Route::get('/', 'GerentesController@index')->name('gerentes');
+    Route::post('/', 'GerentesController@postGerente');
+    Route::get('/{gerente}', 'GerentesController@getGerente')->name('gerente');
+    Route::post('/{gerente}', 'GerentesController@postEditGerente')->name('update-gerente');
+    Route::post('/delete/{gerente}', 'GerentesController@postDeleteGerente');
+});
+
