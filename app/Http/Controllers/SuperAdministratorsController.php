@@ -70,7 +70,7 @@ class SuperAdministratorsController extends Controller
             default:
                 break;
         }
-        return view('super-administrators.super-administrators', $data);
+        return view('admins.admins', $data);
     }
 
     public function postSuperAdministrator(Request $request)
@@ -110,11 +110,10 @@ class SuperAdministratorsController extends Controller
      */
     public function getSuperAdministrator(SuperAdministrator $superAdministrator)
     {
-        // $this->authorize('view', $campus);
-        dd('aqui');
         $data = [];
         $data["superAdmin"] = $superAdministrator;
-        return view('super-administrators.super-administrator', $data);
+        dd('aqui');
+        return view('admins.admin', $data);
     }
 
     /**

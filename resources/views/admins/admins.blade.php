@@ -11,7 +11,7 @@
                     @if($superAdmins->count())
                         @foreach ($superAdmins as $superAdmin)
                             <div class="col s12 m6 l4 grid-item">
-                                <a href="{{route('super-administrator', ["super-administrator" => $superAdmin->user])}}">
+                                <a href="{{route('superAdmin', ["superAdministrator" => $superAdmin->user])}}">
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
@@ -26,12 +26,12 @@
                     @else
                         <h3 class="center"><i class="material-icons big-icon">sentiment_dissatisfied</i></h3>
                         <h3 class="center">{{__('super-administrators.no_super_administrators')}}</h3>
-                        <p class="center"><a href="#new-campus-modal" class="modal-trigger">{{__('super-administrators.try_adding')}}</a></p>
+                        <p class="center"><a href="#new-super-admin-modal" class="modal-trigger">{{__('super-administrators.try_adding')}}</a></p>
                     @endif
                 </div>
             </div>
         </div>
-        <div id="new-campus-modal" class="modal">
+        <div id="new-super-admin-modal" class="modal">
             <div class="modal-content">
                 <form class="col s12" role="form" method="POST">
                     @csrf
@@ -80,7 +80,7 @@
         </div>
 
         <div class="fixed-action-btn">
-            <a href="#new-campus-modal" class="btn-floating btn-large primary-color modal-trigger @if(!$superAdmins->count()) pulse @endif tooltipped" data-position="top" data-tooltip="{{__('common.add')}}">
+            <a href="#new-super-admin-modal" class="btn-floating btn-large primary-color modal-trigger @if(!$superAdmins->count()) pulse @endif tooltipped" data-position="top" data-tooltip="{{__('common.add')}}">
                 <i class="large material-icons">add</i>
             </a>
         </div>

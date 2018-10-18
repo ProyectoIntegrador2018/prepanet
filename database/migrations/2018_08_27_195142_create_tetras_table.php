@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateYearsTable extends Migration
+class CreateTetrasTable extends Migration
 {
 
     /**
@@ -14,10 +14,11 @@ class CreateYearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('years', function (Blueprint $table) {
+        Schema::create('tetras', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('year')->default(2018);
-            $table->tinyInteger('tetra')->default(1);
+            $table->tinyInteger('type');
+            $table->integer('goal');
 
             $table->integer('campus_id')->unsigned();
             $table->foreign('campus_id')

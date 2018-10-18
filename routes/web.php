@@ -27,18 +27,18 @@ Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::post('/delete/{campus}', 'CampusesController@postDeleteCampus');
 });
 
-Route::group(['prefix' => 'tutores',  'middleware' => 'auth'], function () {
-    Route::get('/', 'SuperAdministratorsController@index')->name('tutores');
-    Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
-    Route::get('/{super-administrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
-    Route::post('/{super-administrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
-    Route::post('/delete/{super-administrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
-});
+// Route::group(['prefix' => 'tutores',  'middleware' => 'auth'], function () {
+//     Route::get('/', 'SuperAdministratorsController@index')->name('tutores');
+//     Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
+//     Route::get('/{superAdministrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
+//     Route::post('/{superAdministrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
+//     Route::post('/delete/{superAdministrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
+// });
 
 Route::group(['prefix' => 'super-administrators',  'middleware' => 'auth'], function () {
     Route::get('/', 'SuperAdministratorsController@index')->name('super-administrators');
     Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
-    Route::get('/{super-administrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
+    Route::get('/{super-administrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('superAdmin');
     Route::post('/{super-administrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
     Route::post('/delete/{super-administrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
 });

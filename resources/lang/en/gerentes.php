@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'super_admins' => 'Super Administradores',
+    'gerentes' => 'Gerentes',
     'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
     'no_campuses' => 'No existen campus ahorita ',
@@ -21,14 +21,16 @@ return [
     'address' => 'Dirección',
     'delete_campus' => 'Borrar campus',
     'save' => 'Guardar',
-    'no_super_administrators' => 'No hay super administradores',
+    'no_gerentes' => 'No hay gerentes',
     'try_adding' => '¡Prueba agregando uno!',
     'email' => 'Correo',
     'password' => 'Contraseña',
-    'new_super_administrator' => 'Nuevo Super Administrador',
+    'new_gerente' => 'Nuevo Gerente',
     'confirm_password' => 'Confirmar Contraseña',
     'first_name' => 'Nombre',
     'last_name' => 'Apellidos',
+    'campus' => 'Campus',
+    'select_campus' => 'Seleccione un campus',
 
     'error_add_super_administrator' => 'Error creando el super Administrador. Prueba nuevamente más tarde.',
     'new_super_administrator_created' => '¡Super Administrador :superAdmin creado exitosamente!',
