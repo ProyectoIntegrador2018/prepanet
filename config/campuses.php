@@ -6,7 +6,7 @@
  * @var array
  */
 return [
-    '0' => 'MTY',
-    '1' => 'GDL',
+    'MTY' => 'Monterrey',
+    'GDL' => 'Guadalajara',
 
 ];
