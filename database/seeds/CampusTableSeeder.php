@@ -13,9 +13,12 @@ class CampusTableSeeder extends Seeder
      */
     public function run()
     {
-        Campus::create([
-            'name' => 'Campus1',
-            'address' => 'Address 1',
-        ]);
+        $campuses = config('campuses');
+        foreach ($campuses as $code => $name) {
+            Campus::create([
+                'name' => $name,
+                'code' => $code,
+            ]);
+        }
     }
 }

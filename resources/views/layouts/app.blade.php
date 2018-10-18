@@ -73,6 +73,22 @@
     <script src="{{asset('/js/materialize.min.js')}}"></script>
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/layout.js?v=1.1')}}"></script>
+    <script>
+        $(document).ready(function(){
+            @php
+                $time = 5000;
+            @endphp
+            @foreach ($errors->all() as $error)
+                M.toast({html: '{{$error}}', displayLength: {{$time}}});
+                @php
+                    $time += 1000;
+                @endphp
+            @endforeach
+            @if(Session::has('flash_message'))                
+                M.toast({html: '{{Session::get('flash_message')}}', displayLength: {{$time}}});
+            @endif
+        });
+    </script>
     @yield('scripts')
     <script>
         window.Laravel = <?php echo json_encode([

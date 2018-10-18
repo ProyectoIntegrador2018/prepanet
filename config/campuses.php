@@ -8,5 +8,4 @@
 return [
     'MTY' => 'Monterrey',
     'GDL' => 'Guadalajara',
-
 ];
