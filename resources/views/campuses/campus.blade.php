@@ -19,8 +19,8 @@
                                 <label for="name">{{ __('campuses.name') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="address" name="address" type="text" class="validate" value="{{$campus->address}}" required>
-                                <label for="address">{{ __('campuses.address') }}</label>
+                                <input id="code" name="code" type="text" class="validate" value="{{$campus->code}}" required>
+                                <label for="code">{{ __('campuses.code') }}</label>
                             </div>
                         </div>
                         <div class="row center">

@@ -8,6 +8,7 @@ use Session;
 use App\Models\Campus;
 use Illuminate\Http\Request;
 use App\Models\Users\Gerente;
+use Illuminate\Validation\Rule;
 use App\Models\Users\SuperAdministrator;
 
 class CampusesController extends Controller
@@ -29,8 +30,8 @@ class CampusesController extends Controller
      */
     public function createRules(){
         return [
-            'name' => 'required|string|unique:campuses|between:3,100',
-            'address' => 'required|string|between:5,50',
+            'name' => 'required|string|unique:campuses,name|between:3,100',
+            'code' => 'required|string|unique:campuses,code|size:3',
         ];
     }
 
@@ -39,10 +40,20 @@ class CampusesController extends Controller
      *
      * @var array
      */
-    public function editRules(){
+    public function editRules($campusName, $campusCode){
         return [
-            'name' => 'required|string|between:3,100',
-            'address' => 'required|string|between:5,50',
+            'name' => [
+                'required',
+                'string',
+                'between:3,100',
+                Rule::unique('campuses')->ignore($campusName, 'name'),
+            ],
+            'code' => [
+                'required',
+                'string',
+                'size:3',
+                Rule::unique('campuses')->ignore($campusCode, 'code'),
+            ],
         ];
     }
 
@@ -70,11 +81,11 @@ class CampusesController extends Controller
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
-
+        // dd($request);
         try {
             $campus = Campus::create([
                 'name' => $request->get('name'),
-                'address' => $request->get('address'),
+                'code' => $request->get('code'),
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
@@ -108,9 +119,9 @@ class CampusesController extends Controller
      */
     public function postEditCampus(Request $request, Campus $campus)
     {
-        validateData($request->all(), $this->editRules());
+        validateData($request->all(), $this->editRules($campus->name, $campus->code));
         $campus->name = $request->get('name');
-        $campus->address = $request->get('address');
+        $campus->code = $request->get('code');
         DB::transaction(function () use ($request, $campus) {
             try {
                 $campus->save();

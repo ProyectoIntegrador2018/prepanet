@@ -16,7 +16,7 @@ class Campus extends Model
      * @var array
      */
     protected $fillable = [
-        'name','address',
+        'name','code',
     ];
 
     /**

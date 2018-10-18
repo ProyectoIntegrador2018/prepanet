@@ -16,7 +16,7 @@
                                         <div class="card-content">
                                             <div class="row">
                                                 <h5 class="bold black-text">{{$campus->name}}</h5>
-                                                <h5 class="black-text">{{$campus->address}}</h5>
+                                                <h5 class="black-text">{{$campus->code}}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -46,8 +46,8 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="address">{{__('campuses.address')}}</label>
-                            <input id="address" type="text" name="address" required class="validate">
+                            <label for="code">{{__('campuses.code')}}</label>
+                            <input id="code" type="text" name="code" required class="validate">
                         </div>
                     </div>
 

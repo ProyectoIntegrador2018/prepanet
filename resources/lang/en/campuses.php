@@ -23,6 +23,7 @@ return [
     'save' => 'Guardar',
     'no_campuses' => 'No hay campus',
     'try_adding' => '¡Prueba agregando uno!',
+    'code' => 'Código de campus',
 
     'error_add_campus' => 'Error creando el campus. Prueba nuevamente más tarde.',
     'new_campus_created' => '¡Campus :campus creado exitosamente!',
