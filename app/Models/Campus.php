@@ -24,9 +24,9 @@ class Campus extends Model
      *
      * @return HasMany
      */
-    public function tetras()
+    public function years()
     {
-        return $this->hasMany(Tetra::class);
+        return $this->hasMany(Year::class);
     }
 
     /**
