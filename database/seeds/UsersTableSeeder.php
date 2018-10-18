@@ -31,8 +31,7 @@ class UsersTableSeeder extends Seeder
         $mainUser = $superAdmin->user()->save($mainUser);
 
         $gerente = Gerente::create([
-            'campus_id' => 1,
-            'username' => 'UserExample'
+            'campus_id' => 1
         ]);
 
         $mainUser = new User(

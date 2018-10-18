@@ -32,12 +32,12 @@ return [
     'campus' => 'Campus',
     'select_campus' => 'Seleccione un campus',
 
-    'error_add_super_administrator' => 'Error creando el super Administrador. Prueba nuevamente más tarde.',
-    'new_super_administrator_created' => '¡Super Administrador :superAdmin creado exitosamente!',
-    'error_edit_super_administrator' => 'Error al editar el Super Administrador. Prueba nuevamente más tarde.',
-    'success_edit_super_administrator' => '¡Super Administrador editado satisfactoriamente!',
-    'error_delete_super_administrator' => 'Error al eliminar el Super Administrador. Prueba nuevamente más tarde',
-    'success_delete_super_administrator' => '¡Super Administrador eliminado satisfactoriamente!',
+    'error_add_gerente' => 'Error creando al gerente. Prueba nuevamente más tarde.',
+    'new_gerente_created' => '¡Gerente :gerente creado exitosamente!',
+    'error_edit_gerente' => 'Error al editar el Gerente. Prueba nuevamente más tarde.',
+    'success_edit_gerente' => '¡Gerente editado satisfactoriamente!',
+    'error_delete_gerente' => 'Error al eliminar el Gerente. Prueba nuevamente más tarde',
+    'success_delete_gerente' => '¡Gerente eliminado satisfactoriamente!',
     'error_not_same_password' => 'La contraseña y su confirmación tienen que ser iguales. Porfavor trate otra vez.',
 
 ];

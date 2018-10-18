@@ -35,6 +35,7 @@ class GerentesController extends Controller
             'confirm-password' => 'required|string',
             'first_name' => 'required|string|between:3,50',
             'last_name' => 'required|string|between:3,50',
+            'campus' => 'required|exists:campuses,id',
         ];
     }
 
@@ -50,6 +51,7 @@ class GerentesController extends Controller
             'confirm-password' => 'required|string',
             'first_name' => 'required|string|between:3,50',
             'last_name' => 'required|string|between:3,50',
+            'campus' => 'required|exists:campuses,id',
         ];
     }
 
@@ -74,18 +76,21 @@ class GerentesController extends Controller
         return view('gerentes.gerentes', $data);
     }
 
-    public function postSuperAdministrator(Request $request)
+    public function postGerente(Request $request)
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
 
         if($request->get('password') != $request->get('confirm-password'))
         {
-            return back()->withErrors(__('super-administrators.error_not_same_password'));
+            return back()->withErrors(__('gerentes.error_not_same_password'));
         }
 
         try {
-            $superAdmin = SuperAdministrator::create();
+            $gerente = Gerente::create([
+                "campus_id" => $request->get('campus'),
+            ]);
+
             $mainUser = new User(
                 [
                     "first_name" => $request->get('first_name'),
@@ -94,13 +99,13 @@ class GerentesController extends Controller
                     "email" => $request->get('email'),
                 ]
             );
-            $mainUser = $superAdmin->user()->save($mainUser);
+            $mainUser = $gerente->user()->save($mainUser);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('super-administrators.error_add_super_administrator'));
+            return back()->withErrors(__('gerentes.error_add_gerente'));
         }
-        Session::flash('flash_message', __("super-administrators.new_super_administrator_created", ["superAdmin" => $superAdmin->user->first_name]));
-        return redirect()->route('super-administrators');
+        Session::flash('flash_message', __("gerentes.new_gerente_created", ["gerente" => $gerente->user->first_name]));
+        return redirect()->route('gerentes');
     }
 
     /**

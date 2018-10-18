@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Gerente extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'campus_id',
+    ];
+
+    /**
      * Get the customers user instance.
      *
      * @return MorphOne

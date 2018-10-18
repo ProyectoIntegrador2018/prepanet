@@ -36,10 +36,10 @@ class CreateAlumnosTable extends Migration
                 ->references('id')
                 ->on('gerentes');
 
-            $table->integer('year_id')->unsigned();
-            $table->foreign('year_id')
+            $table->integer('tetra_id')->unsigned();
+            $table->foreign('tetra_id')
                 ->references('id')
-                ->on('years');
+                ->on('tetras');
 
             $table->timestamps();
         });
