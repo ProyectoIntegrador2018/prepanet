@@ -13,9 +13,10 @@ class CreateTetrasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tetras', function (Blueprint $table) {
+        Schema::create('years', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('goal');
+            $table->integer('year')->default(2018);
+            $table->tinyInteger('tetra')->default(1);
 
             $table->integer('campus_id')->unsigned();
             $table->foreign('campus_id')

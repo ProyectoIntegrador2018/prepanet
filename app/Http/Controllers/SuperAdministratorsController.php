@@ -111,7 +111,7 @@ class SuperAdministratorsController extends Controller
     public function getSuperAdministrator(SuperAdministrator $superAdministrator)
     {
         // $this->authorize('view', $campus);
-
+        dd('aqui');
         $data = [];
         $data["superAdmin"] = $superAdministrator;
         return view('super-administrators.super-administrator', $data);
