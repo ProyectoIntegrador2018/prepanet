@@ -46,9 +46,8 @@ class GerentesController extends Controller
      */
     public function editRules(){
         return [
-            'email' => 'email|max:255|unique:users|filled|required|',
-            'password' => 'required|string',
-            'confirm-password' => 'required|string',
+            // 'password' => 'required|string',
+            // 'confirm-password' => 'required|string',
             'first_name' => 'required|string|between:3,50',
             'last_name' => 'required|string|between:3,50',
             'campus' => 'required|exists:campuses,id',
@@ -114,12 +113,12 @@ class GerentesController extends Controller
      * @param  SuperAdministrator  $superAdministrator
      * @return \Illuminate\Http\Response
      */
-    public function getSuperAdministrator(SuperAdministrator $superAdministrator)
+    public function getGerente(Gerente $gerente)
     {
         $data = [];
-        $data["superAdmin"] = $superAdministrator;
-        dd('aqui');
-        return view('admins.admin', $data);
+        $data["gerente"] = $gerente;
+        $data["campuses"] = Campus::all();
+        return view('gerentes.gerente', $data);
     }
 
     /**
@@ -129,20 +128,26 @@ class GerentesController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditCampus(Request $request, Campus $campus)
+    public function updateGerente(Request $request, Gerente $gerente)
     {
         validateData($request->all(), $this->editRules());
-        $campus->name = $request->get('name');
-        $campus->address = $request->get('address');
-        DB::transaction(function () use ($request, $campus) {
+
+        $user = $gerente->user;
+
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        $gerente->campus_id = $request->get('campus');
+
+        DB::transaction(function () use ($request, $user, $gerente) {
             try {
-                $campus->save();
+                $gerente->save();
+                $user->save();
             } catch (\Exception $e) {
                 app()->make("lern")->record($e);
-                return back()->withErrors(__('campuses.error_edit_campus'));
+                return back()->withErrors(__('gerentes.error_edit_gerente'));
             }
         });
-        Session::flash('flash_message', __('campuses.success_edit_campus'));
+        Session::flash('flash_message', __('gerentes.success_edit_gerente'));
         return back();
     }
 
@@ -150,24 +155,24 @@ class GerentesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Request  $request
-     * @param  Carrier  $carrier
+     * @param  Gerente  $gerente
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteCampus(Request $request, Campus $campus)
+    public function deleteGerente(Request $request, Gerente $gerente)
     {
-        if ($campus->isDeletable()) {
-            DB::transaction(function () use ($request, $campus) {
+        if ($gerente->isDeletable()) {
+            DB::transaction(function () use ($request, $gerente) {
                 try {
-                    $campus->delete();
+                    $gerente->delete();
                 } catch (\Exception $e) {
                     app()->make("lern")->record($e);
-                    return back()->withErrors(__('campuses.error_delete_campus'));
+                    return back()->withErrors(__('gerentes.error_delete_gerente'));
                 }
             });
-            Session::flash('flash_message', __('campuses.success_delete_campus'));
-            return redirect()->route('campuses');
+            Session::flash('flash_message', __('gerentes.success_delete_gerente'));
+            return redirect()->route('gerentes');
         } else {
-            return back()->withErrors(__('campuses.error_delete_campus'));
+            return back()->withErrors(__('gerentes.error_delete_gerente'));
         }
     }
 }

@@ -123,7 +123,7 @@ class SuperAdministratorsController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditCampus(Request $request, Campus $campus)
+    public function updateSuperAdministrator(Request $request, SuperAdministrator $superAdministrator)
     {
         validateData($request->all(), $this->editRules());
         $campus->name = $request->get('name');
@@ -147,7 +147,7 @@ class SuperAdministratorsController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteCampus(Request $request, Campus $campus)
+    public function deleteSuperAdministrator(Request $request, SuperAdministrator $superAdministrator)
     {
         if ($campus->isDeletable()) {
             DB::transaction(function () use ($request, $campus) {

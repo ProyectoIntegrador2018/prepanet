@@ -47,6 +47,6 @@ Route::group(['prefix' => 'gerentes',  'middleware' => 'auth'], function () {
     Route::get('/', 'GerentesController@index')->name('gerentes');
     Route::post('/', 'GerentesController@postGerente');
     Route::get('/{gerente}', 'GerentesController@getGerente')->name('gerente');
-    Route::post('/{gerente}', 'GerentesController@postEditGerente')->name('update-gerente');
-    Route::post('/delete/{gerente}', 'GerentesController@postDeleteGerente');
+    Route::post('/{gerente}', 'GerentesController@updateGerente')->name('update-gerente');
+    Route::post('/delete/{gerente}', 'GerentesController@deleteGerente');
 });

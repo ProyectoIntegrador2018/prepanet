@@ -14,12 +14,13 @@ return [
     */
 
     'gerentes' => 'Gerentes',
+    'gerente' => 'Gerente',
     'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
     'no_campuses' => 'No existen campus ahorita ',
     'name' => 'Nombre',
     'address' => 'Dirección',
-    'delete_campus' => 'Borrar campus',
+    'delete_gerente' => '¿Borrar gerente?',
     'save' => 'Guardar',
     'no_gerentes' => 'No hay gerentes',
     'try_adding' => '¡Prueba agregando uno!',

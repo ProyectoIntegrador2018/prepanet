@@ -45,4 +45,14 @@ class Gerente extends Model
     {
         return $this->belongsTo(Campus::class);
     }
+
+    /**
+     * Get the tutor to which the application belongs.
+     *
+     * @return BelongsTo
+     */
+    public function isDeletable()
+    {
+        return true;
+    }
 }
