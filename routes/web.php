@@ -38,9 +38,9 @@ Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'super-administrators',  'middleware' => 'auth'], function () {
     Route::get('/', 'SuperAdministratorsController@index')->name('super-administrators');
     Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
-    Route::get('/{super-administrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('superAdmin');
-    Route::post('/{super-administrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
-    Route::post('/delete/{super-administrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
+    Route::get('/{superAdministrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
+    Route::post('/{superAdministrator}', 'SuperAdministratorsController@updateSuperAdministrator')->name('update-super-administrator');
+    Route::post('/delete/{superAdministrator}', 'SuperAdministratorsController@deleteSuperAdministrator');
 });
 
 Route::group(['prefix' => 'gerentes',  'middleware' => 'auth'], function () {

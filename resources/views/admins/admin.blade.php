@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<h2 class="header white-text">{{__('super-administrators.super-administrator')}} {{$superAdmin->name}} </h2>
+<h2 class="header white-text">{{__('super-administrators.super_admin')}} {{$superAdmin->name}} </h2>
 @stop
 
 @section('content')
@@ -32,7 +32,7 @@
                                 <button id="save-super-administrator" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('super-administrators.save') }}</button>
                             </div>
                             <div class="col s4 l4 center">
-                                <a href="#delete-super-administrator-modal" class="delete-superAdmin waves-effect waves-light btn-large modal-trigger red" data-super-administrator-id="{{$superAdmin->id}}">{{ __('common.delete') }}</a>
+                                <a href="#delete-super-administrator-modal" class="delete-super-administrator waves-effect waves-light btn-large modal-trigger red" data-super-administrator-id="{{$superAdmin->id}}">{{ __('common.delete') }}</a>
                             </div>
                             <div class="col s4 l4 center">
                                 <a href="{{route('super-administrators')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
@@ -61,5 +61,5 @@
 @section('scripts')
     <script src="{{asset('/js/masonry.min.js')}}"></script>
     <script src="{{asset('/js/masonry.js')}}"></script>
-    <script src="{{asset('/js/superAdmin.js')}}"></script>
+    <script src="{{asset('/js/super-administrator.js')}}"></script>
 @endsection

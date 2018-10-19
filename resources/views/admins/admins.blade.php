@@ -11,7 +11,7 @@
                     @if($superAdmins->count())
                         @foreach ($superAdmins as $superAdmin)
                             <div class="col s12 m6 l4 grid-item">
-                                <a href="{{route('superAdmin', ["superAdministrator" => $superAdmin->user])}}">
+                                <a href="{{route('super-administrator', ["superAdministrator" => $superAdmin])}}">
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">

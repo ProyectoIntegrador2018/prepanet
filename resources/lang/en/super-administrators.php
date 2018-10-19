@@ -14,12 +14,13 @@ return [
     */
 
     'super_admins' => 'Super Administradores',
+    'super_admin' => 'Super Administrador',
     'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
     'no_campuses' => 'No existen campus ahorita ',
     'name' => 'Nombre',
     'address' => 'Dirección',
-    'delete_campus' => 'Borrar campus',
+    'delete_super_administrator' => '¿Borrar super administrador?',
     'save' => 'Guardar',
     'no_super_administrators' => 'No hay super administradores',
     'try_adding' => '¡Prueba agregando uno!',

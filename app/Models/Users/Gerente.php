@@ -3,10 +3,13 @@
 namespace App\Models\Users;
 
 use App\Models\Campus;
+use App\Traits\completeDeleteUser;
 use Illuminate\Database\Eloquent\Model;
 
 class Gerente extends Model
 {
+    use completeDeleteUser;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -44,15 +47,5 @@ class Gerente extends Model
     public function campus()
     {
         return $this->belongsTo(Campus::class);
-    }
-
-    /**
-     * Get the tutor to which the application belongs.
-     *
-     * @return BelongsTo
-     */
-    public function isDeletable()
-    {
-        return true;
     }
 }

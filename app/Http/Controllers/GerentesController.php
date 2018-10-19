@@ -160,19 +160,15 @@ class GerentesController extends Controller
      */
     public function deleteGerente(Request $request, Gerente $gerente)
     {
-        if ($gerente->isDeletable()) {
-            DB::transaction(function () use ($request, $gerente) {
-                try {
-                    $gerente->delete();
-                } catch (\Exception $e) {
-                    app()->make("lern")->record($e);
-                    return back()->withErrors(__('gerentes.error_delete_gerente'));
-                }
-            });
-            Session::flash('flash_message', __('gerentes.success_delete_gerente'));
-            return redirect()->route('gerentes');
-        } else {
-            return back()->withErrors(__('gerentes.error_delete_gerente'));
-        }
+        DB::transaction(function () use ($request, $gerente) {
+            try {
+                $gerente->completeDeleteUser();
+            } catch (\Exception $e) {
+                app()->make("lern")->record($e);
+                return back()->withErrors(__('gerentes.error_delete_gerente'));
+            }
+        });
+        Session::flash('flash_message', __('gerentes.success_delete_gerente'));
+        return redirect()->route('gerentes');
     }
 }

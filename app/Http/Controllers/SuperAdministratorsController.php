@@ -45,9 +45,6 @@ class SuperAdministratorsController extends Controller
      */
     public function editRules(){
         return [
-            'email' => 'email|max:255|unique:users|filled|required|',
-            'password' => 'required|string',
-            'confirm-password' => 'required|string',
             'first_name' => 'required|string|between:3,50',
             'last_name' => 'required|string|between:3,50',
         ];
@@ -112,7 +109,6 @@ class SuperAdministratorsController extends Controller
     {
         $data = [];
         $data["superAdmin"] = $superAdministrator;
-        dd('aqui');
         return view('admins.admin', $data);
     }
 
@@ -126,17 +122,20 @@ class SuperAdministratorsController extends Controller
     public function updateSuperAdministrator(Request $request, SuperAdministrator $superAdministrator)
     {
         validateData($request->all(), $this->editRules());
-        $campus->name = $request->get('name');
-        $campus->address = $request->get('address');
-        DB::transaction(function () use ($request, $campus) {
+
+        $user = $superAdministrator->user;
+
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        DB::transaction(function () use ($request, $user) {
             try {
-                $campus->save();
+                $user->save();
             } catch (\Exception $e) {
                 app()->make("lern")->record($e);
-                return back()->withErrors(__('campuses.error_edit_campus'));
+                return back()->withErrors(__('super-administrators.error_edit_super_administrator'));
             }
         });
-        Session::flash('flash_message', __('campuses.success_edit_campus'));
+        Session::flash('flash_message', __('super-administrators.success_edit_super_administrator'));
         return back();
     }
 
@@ -149,19 +148,15 @@ class SuperAdministratorsController extends Controller
      */
     public function deleteSuperAdministrator(Request $request, SuperAdministrator $superAdministrator)
     {
-        if ($campus->isDeletable()) {
-            DB::transaction(function () use ($request, $campus) {
-                try {
-                    $campus->delete();
-                } catch (\Exception $e) {
-                    app()->make("lern")->record($e);
-                    return back()->withErrors(__('campuses.error_delete_campus'));
-                }
-            });
-            Session::flash('flash_message', __('campuses.success_delete_campus'));
-            return redirect()->route('campuses');
-        } else {
-            return back()->withErrors(__('campuses.error_delete_campus'));
-        }
+        DB::transaction(function () use ($request, $superAdministrator) {
+            try {
+                $superAdministrator->completeDeleteUser();
+            } catch (\Exception $e) {
+                app()->make("lern")->record($e);
+                return back()->withErrors(__('super-administrators.error_delete_super_administrator'));
+            }
+        });
+        Session::flash('flash_message', __('super-administrators.success_delete_super_administrator'));
+        return redirect()->route('super-administrators');
     }
 }

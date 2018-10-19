@@ -2,10 +2,12 @@
 
 namespace App\Models\Users;
 
+use App\Traits\completeDeleteUser;
 use Illuminate\Database\Eloquent\Model;
 
 class SuperAdministrator extends Model
 {
+    use completeDeleteUser;
     /**
      * Get the customers user instance.
      *
