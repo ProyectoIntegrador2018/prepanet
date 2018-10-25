@@ -16,7 +16,7 @@ class Year extends Model
      * @var array
      */
     protected $fillable = [
-        'year','tetra','campus_id'
+        'year','type','goal','campus_id'
     ];
 
     /**
