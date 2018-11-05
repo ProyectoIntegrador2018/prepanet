@@ -8,7 +8,7 @@ use App\Models\Users\Alumno;
 use App\Models\Users\Gerente;
 use Illuminate\Database\Eloquent\Model;
 
-class Year extends Model
+class Tetra extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,7 @@ class Year extends Model
      * @var array
      */
     protected $fillable = [
-        'year','type','goal','campus_id'
+        'year','type','goal','campus_id', 'identifier'
     ];
 
     /**
