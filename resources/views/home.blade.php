@@ -64,14 +64,14 @@
                     @endif
                     <div class="col s12 m6 l4 grid-item">
                         <a href="{{route('tetras')}}">
-                            <div class="bordered-card card hoverable border-blue">
+                            <div class="bordered-card card hoverable border-black">
                                 <div class="card-content">
                                     <div class="row valign-wrapper">
                                         <div class="col s6">
                                             <h5 class="bold black-text">Ver/Crear tetras</h5>
                                         </div>
                                         <div class="col s6 valign center">
-                                            <i class="material-icons big-icon blue-text">accessibility</i>
+                                            <i class="material-icons big-icon black-text">accessibility</i>
                                         </div>
                                     </div>
                                 </div>

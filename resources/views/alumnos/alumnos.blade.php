@@ -8,7 +8,7 @@
         <div class="section">
             <div id="main" class="container">
                 <div class="row grid">
-                    @if($alumnos->count())
+                    @if($alumnos->count() > 0)
                         @foreach ($alumnos as $alumno)
                             <div class="col s12 m6 l4 grid-item">
                                 <a href="{{route('alumno', ["alumno" => $alumno->id])}}">

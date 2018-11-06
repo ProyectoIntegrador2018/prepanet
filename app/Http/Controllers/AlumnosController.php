@@ -96,10 +96,10 @@ class AlumnosController extends Controller
                 $data['tetras'] = Tetra::all();
                 break;
             case $userable instanceof Gerente:
-                $data['alumnos'] = Alumno::all();
-                $data['gerentes'] = $userable;
+                $data['alumnos'] = Alumno::where('gerente_id', $userable->id)->get();
+                $data['gerentes'] = Gerente::where('id', $userable->id)->get();
                 $campus = $userable->campus;
-                $data['tetras'] = Tetra::where('campus_id', $campus->id);
+                $data['tetras'] = Tetra::where('campus_id', $campus->id)->get();
                 break;
             default:
                 break;
@@ -162,9 +162,9 @@ class AlumnosController extends Controller
                 $data['tetras'] = Tetra::all();
                 break;
             case $userable instanceof Gerente:
-                $data['gerentes'] = $userable;
+                $data['gerentes'] = Gerente::where('id', $userable->id)->get();
                 $campus = $userable->campus;
-                $data['tetras'] = Tetra::where('campus_id', $campus->id);
+                $data['tetras'] = Tetra::where('campus_id', $campus->id)->get();
                 break;
             default:
                 break;

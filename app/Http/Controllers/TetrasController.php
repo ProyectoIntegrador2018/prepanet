@@ -72,8 +72,8 @@ class TetrasController extends Controller
                 break;
             case $userable instanceof Gerente:
                 $campus = $userable->campus;
-                $data['campuses'] = $campus;
-                $data['tetras'] = Tetra::where('campus_id', $campus->id);
+                $data['campuses'] = Campus::where('id', $userable->campus->id)->get();
+                $data['tetras'] = Tetra::where('campus_id', $campus->id)->get();
                 break;
             default:
                 break;
@@ -122,7 +122,7 @@ class TetrasController extends Controller
                 break;
             case $userable instanceof Gerente:
                 $campus = $userable->campus;
-                $data['campuses'] = $campus;
+                $data['campuses'] = Campus::where('id', $userable->campus->id)->get();
                 break;
             default:
                 break;

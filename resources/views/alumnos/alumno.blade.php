@@ -39,7 +39,7 @@
                           <div class="input-field col s12 m4 l4">
                                 <input id="work_email" name="work_email" type="email" class="validate" value="{{$alumno->work_email}}" required>
                                 <label for="work_email">{{ __('alumnos.work_email') }}</label>
-                        </div>
+                          </div>
 
                           <div class="input-field col s12 m4 l4">
                               <input id="email" name="email" type="email" class="validate" value="{{$alumno->email}}" required>
