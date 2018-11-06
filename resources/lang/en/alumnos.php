@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'alumnos' => 'alumnos',
+    'alumnos' => 'Alumnos',
     'alumno' => 'Alumno',
     'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
@@ -33,6 +33,20 @@ return [
     'campus' => 'Campus',
     'select_campus' => 'Seleccione un campus',
     'select_tetra' => 'Seleccione un tetra',
+    'gender' => 'Género',
+    'birth_date' => 'Fecha de nacimiento',
+    'work_email' => 'Correo de trabajo',
+    'phone' => 'Teléfono',
+    'city' => 'Ciudad',
+    'state' => 'Estado',
+    'country' => 'País',
+    'tutor_type' => 'Tipo de tutor',
+    'carreer' => 'Carrera',
+    'business' => 'Empresa',
+    'tetra' => 'Tetra',
+    'gerente' => 'Gerente',
+    'select_tetra' => 'Escoga un tetra',
+    'select_gerente' => 'Escoga un gerente',
 
     'error_add_alumno' => 'Error creando al Alumno. Prueba nuevamente más tarde.',
     'new_alumno_created' => '¡Alumno :Alumno creado exitosamente!',

@@ -15,8 +15,8 @@
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
-                                                <h5 class="bold black-text">{{$alumno->user->first_name}} {{$alumno->user->last_name}}</h5>
-                                                <h5 class="black-text">{{$alumno->tetra->name}}</h5>
+                                                <h5 class="bold black-text">{{$alumno->first_name}} {{$alumno->last_name}}</h5>
+                                                <h5 class="black-text">{{$alumno->tetra->identifier}}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -36,27 +36,6 @@
                 <form class="col s12" role="form" method="POST">
                     @csrf
                     <h4 id="modal-title">{{__('alumnos.new_alumno')}}</h4>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="email">{{__('alumnos.email')}}</label>
-                            <input id="email" type="text" name="email" required class="validate">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="password">{{__('alumnos.password')}}</label>
-                            <input id="password" type="password" name="password" required class="validate">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="confirm-password">{{__('alumnos.confirm_password')}}</label>
-                            <input id="confirm-password" type="password" name="confirm-password" required class="validate">
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="first_name">{{__('alumnos.first_name')}}</label>
@@ -81,7 +60,14 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="birth_date">{{__('alumnos.birth_date')}}</label>
-                            <input id="birth_date" type="text" name="birth_date" required class="validate">
+                            <input id="birth_date" type="date" name="birth_date" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="work_email">{{__('alumnos.work_email')}}</label>
+                            <input id="work_email" type="text" name="work_email" required class="validate">
                         </div>
                     </div>
 
@@ -149,7 +135,7 @@
                                 <option value="" disabled selected>{{__('alumnos.select_tetra')}}</option>
 
                                 @foreach($tetras as $tetra)
-                                <option value="{{$tetra->id}}">{{$tetra->name}}</option>
+                                    <option value="{{$tetra->id}}">{{$tetra->identifier}}</option>
                                 @endforeach
 
                             </select>
@@ -162,8 +148,8 @@
                             <select id="gerente" name="gerente">
                                 <option value="" disabled selected>{{__('alumnos.select_gerente')}}</option>
 
-                                @foreach($tetras as $tetra)
-                                <option value="{{$gerente->id}}">{{$gerente->first_name}}</option>
+                                @foreach($gerentes as $gerente)
+                                    <option value="{{$gerente->id}}">{{$gerente->user->first_name}} {{$gerente->user->last_name}}</option>
                                 @endforeach
 
                             </select>

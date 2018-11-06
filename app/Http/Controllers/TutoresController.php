@@ -14,7 +14,7 @@ use App\Models\Aplicaciones\Tutor;
 use App\Models\Aplicaciones\Alumno;
 use App\Models\Users\SuperAdministrator;
 
-class TutorsController extends Controller
+class TutoresController extends Controller
 {
     /**
      * Create a new controller instance.

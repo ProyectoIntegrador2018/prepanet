@@ -86,12 +86,18 @@ class AlumnosController extends Controller
         $data = [];
         $userable = Auth::user()->userable;
         $data['alumnos'] = null;
+        $data['gerentes'] = null;
+        $data['tetras'] = null;
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['alumnos'] = Alumno::all();
+                $data['gerentes'] = Gerente::all();
+                $data['tetras'] = Tetra::all();
                 break;
             case $userable instanceof Gerente:
                 $data['alumnos'] = Alumno::all();
+                $data['gerentes'] = Gerente::all();
+                $data['tetras'] = Tetra::all();
                 break;
             default:
                 break;

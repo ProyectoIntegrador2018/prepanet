@@ -8,15 +8,15 @@
         <div class="section">
             <div id="main" class="container">
                 <div class="row grid">
-                    @if($tutores->count())
-                        @foreach ($tutores as $tutor)
+                    @if($tutors->count())
+                        @foreach ($tutors as $tutor)
                             <div class="col s12 m6 l4 grid-item">
                                 <a href="{{route('tutor', ["tutor" => $tutor->id])}}">
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
                                                 <h5 class="bold black-text">{{$tutor->first_name}} {{$tutor->last_name}}</h5>
-                                                <h5 class="black-text">{{$tutor->tetra->name}}</h5>
+                                                <h5 class="black-text">{{$tutor->tetra->identifier}}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -36,27 +36,7 @@
                 <form class="col s12" role="form" method="POST">
                     @csrf
                     <h4 id="modal-title">{{__('tutores.new_tutor')}}</h4>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="email">{{__('tutores.email')}}</label>
-                            <input id="email" type="text" name="email" required class="validate">
-                        </div>
                     </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="password">{{__('tutores.password')}}</label>
-                            <input id="password" type="password" name="password" required class="validate">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="confirm-password">{{__('tutores.confirm_password')}}</label>
-                            <input id="confirm-password" type="password" name="confirm-password" required class="validate">
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="first_name">{{__('tutores.first_name')}}</label>
@@ -68,6 +48,13 @@
                         <div class="input-field col s12">
                             <label for="last_name">{{__('tutores.last_name')}}</label>
                             <input id="last_name" type="text" name="last_name" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="email">{{__('tutores.email')}}</label>
+                            <input id="email" type="email" name="email" required class="validate">
                         </div>
                     </div>
 
@@ -157,11 +144,25 @@
 
                     <div class="row">
                         <div class="input-field col s12">
+                            <label for="user_name">{{__('tutores.user_name')}}</label>
+                            <input id="user_name" type="text" name="user_name" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="password">{{__('tutores.password')}}</label>
+                            <input id="password" type="text" name="password" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
                             <select id="tetra" name="tetra">
                                 <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
 
                                 @foreach($tetras as $tetra)
-                                <option value="{{$tetra->id}}">{{$tetra->name}}</option>
+                                <option value="{{$tetra->id}}">{{$tetra->identifier}}</option>
                                 @endforeach
 
                             </select>
@@ -174,8 +175,8 @@
                             <select id="gerente" name="gerente">
                                 <option value="" disabled selected>{{__('tutores.select_gerente')}}</option>
 
-                                @foreach($tetras as $tetra)
-                                <option value="{{$gerente->id}}">{{$gerente->first_name}}</option>
+                                @foreach($gerentes as $gerente)
+                                <option value="{{$gerente->id}}">{{$gerente->user->first_name}} {{$gerente->user->last_name}}</option>
                                 @endforeach
 
                             </select>
@@ -192,7 +193,7 @@
         </div>
 
         <div class="fixed-action-btn">
-            <a href="#new-tutor-modal" class="btn-floating btn-large primary-color modal-trigger @if(!$tutores->count()) pulse @endif tooltipped" data-position="top" data-tooltip="{{__('common.add')}}">
+            <a href="#new-tutor-modal" class="btn-floating btn-large primary-color modal-trigger @if(!$tutors->count()) pulse @endif tooltipped" data-position="top" data-tooltip="{{__('common.add')}}">
                 <i class="large material-icons">add</i>
             </a>
         </div>
