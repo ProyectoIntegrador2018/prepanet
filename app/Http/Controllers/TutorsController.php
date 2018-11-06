@@ -118,35 +118,41 @@ class TutorsController extends Controller
         return view('tutors.tutors', $data);
     }
 
-    public function postAlumno(Request $request)
+    public function postTutor(Request $request)
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
 
         try {
-            $alumno = Alumno::create([
+            $tutor = Tutor::create([
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
-                'gender' => $request->get('gender'),
-                'birth_date' => $request->get('birth_date'),
-                'work_email' => $request->get('work_email'),
                 'email' => $request->get('email'),
                 'phone' => $request->get('phone'),
+                'work_phone' => $request->get('work_phone'),
+                'gender' => $request->get('gender'),
+                'birth_date' => $request->get('birth_date'),
+                'street' => $request->get('street'),
+                'street_number' => $request->get('street_number'),
+                'neighborhood' => $request->get('neighborhood'),
+                'community' => $request->get('community'),
                 'city' => $request->get('city'),
+                'zipcode' => $request->get('zipcode'),
                 'state' => $request->get('state'),
                 'country' => $request->get('country'),
-                'tutor_type' => $request->get('tutor_type'),
-                'carreer' => $request->get('carreer'),
-                'business' => $request->get('business'),
-                'gerente_id' => $request->get('gerente_id'),
+
+                'user_name' => $request->get('user_name'),
+                'user_password' => $request->get('user_password'),
+
+                'gerente_id' => $request->get('gerente'),
                 'tetra_id' => $request->get('tetra_id'),
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('alumnos.error_add_alumno'));
+            return back()->withErrors(__('tutores.error_add_alumno'));
         }
-        Session::flash('flash_message', __("alumnos.new_alumno_created", ["alumno" => $alumno->first_name]));
-        return redirect()->route('alumnos');
+        Session::flash('flash_message', __("tutores.new_alumno_created", ["tutor" => $tutor->first_name]));
+        return redirect()->route('tutores');
     }
 
     /**
@@ -155,13 +161,13 @@ class TutorsController extends Controller
      * @param  Carrier  $company
      * @return \Illuminate\Http\Response
      */
-    public function getAlumno(Alumno $alumno)
+    public function getTutor(Tutor $tutor)
     {
         // $this->authorize('view', $campus);
 
         $data = [];
-        $data["alumno"] = $alumno;
-        return view('alumnos.alumno', $data);
+        $data["tutor"] = $tutor;
+        return view('tutores.tutor', $data);
     }
 
     /**
@@ -171,35 +177,41 @@ class TutorsController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditAlumno(Request $request, Alumno $alumno)
+    public function postEditTutor(Request $request, Tutor $tutor)
     {
         validateData($request->all(), $this->editRules());
 
-        $alumno->first_name = $request->get('first_name');
-        $alumno->last_name = $request->get('last_name');
-        $alumno->gender = $request->get('gender');
-        $alumno->birth_date = $request->get('birth_date');
-        $alumno->work_email = $request->get('work_email');
-        $alumno->email = $request->get('email');
-        $alumno->phone = $request->get('phone');
-        $alumno->city = $request->get('city');
-        $alumno->state = $request->get('state');
-        $alumno->country = $request->get('country');
-        $alumno->tutor_type = $request->get('tutor_type');
-        $alumno->carreer = $request->get('carreer');
-        $alumno->business = $request->get('business');
-        $alumno->gerente_id = $request->get('gerente_id');
-        $alumno->tetra_id = $request->get('tetra_id');
+        $tutor->first_name = $request->get('first_name');
+        $tutor->last_name = $request->get('last_name');
+        $tutor->email = $request->get('email');
+        $tutor->phone = $request->get('phone');
+        $tutor->work_phone = $request->get('work_phone');
+        $tutor->gender = $request->get('gender');
+        $tutor->birth_date = $request->get('birth_date');
+        $tutor->street = $request->get('street');
+        $tutor->street_number = $request->get('street_number');
+        $tutor->neighborhood = $request->get('neighborhood');
+        $tutor->community = $request->get('community');
+        $tutor->city = $request->get('city');
+        $tutor->zipcode = $request->get('zipcode');
+        $tutor->state = $request->get('state');
+        $tutor->country = $request->get('country');
 
-        DB::transaction(function () use ($request, $alumno) {
+        $tutor->user_name = $request->get('user_name');
+        $tutor->user_password = $request->get('user_password');
+
+        $tutor->gerente_id = $request->get('gerente');
+        $tutor->tetra_id = $request->get('tetra_id');
+
+        DB::transaction(function () use ($request, $tutor) {
             try {
-                $alumno->save();
+                $tutor->save();
             } catch (\Exception $e) {
                 app()->make("lern")->record($e);
-                return back()->withErrors(__('alumnos.error_edit_alumno'));
+                return back()->withErrors(__('tutores.error_edit_tutor'));
             }
         });
-        Session::flash('flash_message', __('alumnos.success_edit_alumno'));
+        Session::flash('flash_message', __('tutores.success_edit_tutor'));
         return back();
     }
 
@@ -210,21 +222,21 @@ class TutorsController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteAlumno(Request $request, Alumno $alumno)
+    public function postDeleteTutor(Request $request, Tutor $tutor)
     {
-        if ($alumno->isDeletable()) {
-            DB::transaction(function () use ($request, $alumno) {
+        if ($tutor->isDeletable()) {
+            DB::transaction(function () use ($request, $tutor) {
                 try {
-                    $alumno->delete();
+                    $tutor->delete();
                 } catch (\Exception $e) {
                     app()->make("lern")->record($e);
-                    return back()->withErrors(__('alumnos.error_delete_alumno'));
+                    return back()->withErrors(__('tutores.error_delete_tutor'));
                 }
             });
-            Session::flash('flash_message', __('alumnos.success_delete_alumno'));
-            return redirect()->route('alumnos');
+            Session::flash('flash_message', __('tutores.success_delete_tutor'));
+            return redirect()->route('tutores');
         } else {
-            return back()->withErrors(__('alumnos.error_delete_alumno'));
+            return back()->withErrors(__('tutores.error_delete_tutor'));
         }
     }
 }
