@@ -73,6 +73,78 @@
 
                     <div class="row">
                         <div class="input-field col s12">
+                            <label for="gender">{{__('alumnos.gender')}}</label>
+                            <input id="gender" type="text" name="gender" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="birth_date">{{__('alumnos.birth_date')}}</label>
+                            <input id="birth_date" type="text" name="birth_date" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="email">{{__('alumnos.email')}}</label>
+                            <input id="email" type="text" name="email" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="phone">{{__('alumnos.phone')}}</label>
+                            <input id="phone" type="text" name="phone" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="city">{{__('alumnos.city')}}</label>
+                            <input id="city" type="text" name="city" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="state">{{__('alumnos.state')}}</label>
+                            <input id="state" type="text" name="state" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="country">{{__('alumnos.country')}}</label>
+                            <input id="country" type="text" name="country" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="tutor_type">{{__('alumnos.tutor_type')}}</label>
+                            <input id="tutor_type" type="text" name="tutor_type" required class="validate">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="carreer">{{__('alumnos.carreer')}}</label>
+                            <input id="carreer" type="text" name="carreer" required class="validate">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="business">{{__('alumnos.business')}}</label>
+                            <input id="business" type="text" name="business" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
                             <select id="tetra" name="tetra">
                                 <option value="" disabled selected>{{__('alumnos.select_tetra')}}</option>
 
@@ -82,6 +154,20 @@
 
                             </select>
                             <label for="tetra">{{__('alumnos.tetra')}}</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="gerente" name="gerente">
+                                <option value="" disabled selected>{{__('alumnos.select_gerente')}}</option>
+
+                                @foreach($tetras as $tetra)
+                                <option value="{{$gerente->id}}">{{$gerente->first_name}}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="gerente">{{__('alumnos.gerente')}}</label>
                         </div>
                     </div>
 

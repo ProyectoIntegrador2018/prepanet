@@ -32,6 +32,7 @@ return [
     'last_name' => 'Apellidos',
     'campus' => 'Campus',
     'select_campus' => 'Seleccione un campus',
+    'select_tetra' => 'Seleccione un tetra',
 
     'error_add_alumno' => 'Error creando al Alumno. Prueba nuevamente más tarde.',
     'new_alumno_created' => '¡Alumno :Alumno creado exitosamente!',
