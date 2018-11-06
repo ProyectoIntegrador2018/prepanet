@@ -18,17 +18,8 @@ class Tutor extends Model
         'phone', 'work_phone', 'gender',
         'street', 'street_number', 'neighborhood',
         'community', 'city', 'zipcode',
-        'state', 'country', 'user_name',
+        'state', 'country', 'user_name', 'user_password',
         'tetra_id', 'gerente_id', 'birth_date',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'user_password',
     ];
 
     /**

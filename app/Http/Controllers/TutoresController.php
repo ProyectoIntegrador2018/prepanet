@@ -122,9 +122,7 @@ class TutoresController extends Controller
     public function postTutor(Request $request)
     {
         // $this->authorize('create', Company::class);
-        dd($request);
         validateData($request->all(), $this->createRules());
-
         try {
             $tutor = Tutor::create([
                 'first_name' => $request->get('first_name'),
@@ -151,9 +149,9 @@ class TutoresController extends Controller
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('tutores.error_add_alumno'));
+            return back()->withErrors(__('tutores.error_add_tutor'));
         }
-        Session::flash('flash_message', __("tutores.new_alumno_created", ["tutor" => $tutor->first_name]));
+        Session::flash('flash_message', __("tutores.new_tutor_created", ["tutor" => $tutor->first_name]));
         return redirect()->route('tutores');
     }
 

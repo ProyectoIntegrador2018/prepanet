@@ -21,7 +21,7 @@ class CreateTutorsTable extends Migration
             $table->string('phone');
             $table->string('work_phone');
             $table->char('gender', 1);
-            $table->date('birth_date');
+            $table->dateTime('birth_date');
             $table->string('street');
             $table->string('street_number');
             $table->string('neighborhood');

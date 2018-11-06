@@ -41,10 +41,12 @@ return [
     'city' => 'Ciudad',
     'zipcode' => 'Código Postal',
     'user_name' => 'Usuario',
-    'password' => 'Contraseña',
+    'user_password' => 'Contraseña',
     'tetra' => 'Tetra',
     'gerente' => 'Gerente',
     'select_gender' => 'Escoge un género',
+    'state' => 'Estado',
+
 
     'error_add_tutor' => 'Error creando el tutor. Prueba nuevamente más tarde.',
     'new_tutor_created' => '¡Tutor creado exitosamente!',
