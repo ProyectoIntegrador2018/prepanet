@@ -14,7 +14,7 @@ use App\Models\Aplicaciones\Tutor;
 use App\Models\Aplicaciones\Alumno;
 use App\Models\Users\SuperAdministrator;
 
-class TetrasController extends Controller
+class AlumnosController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class TetrasController extends Controller
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gender' => 'required|integer|in:0,1,2',
+            'gender' => 'required|char',
             'birth_date' => 'required|date|before:today',
             'work_email' => 'required|email',
             'email' => 'required|email',
@@ -60,7 +60,7 @@ class TetrasController extends Controller
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gender' => 'required|integer|in:0,1,2',
+            'gender' => 'required|char',
             'birth_date' => 'required|date|before:today',
             'work_email' => 'required|email',
             'email' => 'required|email',
