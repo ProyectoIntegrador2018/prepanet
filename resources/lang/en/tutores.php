@@ -23,6 +23,7 @@ return [
     'save' => 'Guardar',
     'no_tutor' => 'No hay tutor',
     'try_adding' => '¡Prueba agregando uno!',
+    'select_campus' => 'Seleccione un campus',
 
     'error_add_tutor' => 'Error creando el tutor. Prueba nuevamente más tarde.',
     'new_tutor_created' => '¡Tutor creado exitosamente!',

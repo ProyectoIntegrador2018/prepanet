@@ -73,6 +73,90 @@
 
                     <div class="row">
                         <div class="input-field col s12">
+                            <label for="phone">{{__('tutores.phone')}}</label>
+                            <input id="phone" type="text" name="phone" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="work_phone">{{__('tutores.work_phone')}}</label>
+                            <input id="work_phone" type="text" name="work_phone" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="gender">{{__('tutores.gender')}}</label>
+                            <input id="gender" type="text" name="gender" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="birth_date">{{__('tutores.birth_date')}}</label>
+                            <input id="birth_date" type="date" name="birth_date" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="street">{{__('tutores.street')}}</label>
+                            <input id="street" type="text" name="street" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="street_number">{{__('tutores.street_number')}}</label>
+                            <input id="street_number" type="text" name="street_number" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="neighborhood">{{__('tutores.neighborhood')}}</label>
+                            <input id="neighborhood" type="text" name="neighborhood" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="community">{{__('tutores.community')}}</label>
+                            <input id="community" type="text" name="community" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="city">{{__('tutores.city')}}</label>
+                            <input id="city" type="text" name="city" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="zipcode">{{__('tutores.zipcode')}}</label>
+                            <input id="zipcode" type="text" name="zipcode" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="state">{{__('tutores.state')}}</label>
+                            <input id="state" type="text" name="state" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="country">{{__('tutores.country')}}</label>
+                            <input id="country" type="text" name="country" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
                             <select id="tetra" name="tetra">
                                 <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
 
@@ -82,6 +166,20 @@
 
                             </select>
                             <label for="tetra">{{__('tutores.tetra')}}</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="gerente" name="gerente">
+                                <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
+
+                                @foreach($tetras as $tetra)
+                                <option value="{{$gerente->id}}">{{$gerente->first_name}}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="gerente">{{__('tutores.gerente')}}</label>
                         </div>
                     </div>
 
