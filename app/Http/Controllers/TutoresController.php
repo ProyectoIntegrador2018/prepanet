@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Session;
+use Carbon\Carbon;
 use App\Models\Tetra;
 use App\Models\Campus;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class TutoresController extends Controller
             'email' => 'required|email',
             'phone' => 'required|string',
             'work_phone' => 'required|string',
-            'gender' => 'required|char',
+            'gender' => 'required|string',
             'birth_date' => 'required|date|before:today',
             'street' => 'required|string',
             'street_number' => 'required|string',
@@ -52,8 +53,8 @@ class TutoresController extends Controller
             'user_name' => 'required|string',
             'user_password' => 'required|string',
 
-            'gerente_id' => 'required|exists:gerentes,id',
-            'tetra_id' => 'required|exists:tetras,id',
+            'gerente' => 'required|exists:gerentes,id',
+            'tetra' => 'required|exists:tetras,id',
         ];
     }
 
@@ -62,14 +63,14 @@ class TutoresController extends Controller
      *
      * @var array
      */
-    public function editRules($campusName, $campusCode){
+    public function editRules(){
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|string',
             'work_phone' => 'required|string',
-            'gender' => 'required|char',
+            'gender' => 'required|string',
             'birth_date' => 'required|date|before:today',
             'street' => 'required|string',
             'street_number' => 'required|string',
@@ -83,8 +84,8 @@ class TutoresController extends Controller
             'user_name' => 'required|string',
             'user_password' => 'required|string',
 
-            'gerente_id' => 'required|exists:gerentes,id',
-            'tetra_id' => 'required|exists:tetras,id',
+            'gerente' => 'required|exists:gerentes,id',
+            'tetra' => 'required|exists:tetras,id',
         ];
     }
 
@@ -121,6 +122,7 @@ class TutoresController extends Controller
     public function postTutor(Request $request)
     {
         // $this->authorize('create', Company::class);
+        dd($request);
         validateData($request->all(), $this->createRules());
 
         try {
@@ -131,7 +133,7 @@ class TutoresController extends Controller
                 'phone' => $request->get('phone'),
                 'work_phone' => $request->get('work_phone'),
                 'gender' => $request->get('gender'),
-                'birth_date' => $request->get('birth_date'),
+                'birth_date' => Carbon::createFromFormat('Y-m-d', $request->get('birth_date')),
                 'street' => $request->get('street'),
                 'street_number' => $request->get('street_number'),
                 'neighborhood' => $request->get('neighborhood'),
@@ -145,7 +147,7 @@ class TutoresController extends Controller
                 'user_password' => $request->get('user_password'),
 
                 'gerente_id' => $request->get('gerente'),
-                'tetra_id' => $request->get('tetra_id'),
+                'tetra_id' => $request->get('tetra'),
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
@@ -201,7 +203,7 @@ class TutoresController extends Controller
         $tutor->user_password = $request->get('user_password');
 
         $tutor->gerente_id = $request->get('gerente');
-        $tutor->tetra_id = $request->get('tetra_id');
+        $tutor->tetra_id = $request->get('tetra');
 
         DB::transaction(function () use ($request, $tutor) {
             try {

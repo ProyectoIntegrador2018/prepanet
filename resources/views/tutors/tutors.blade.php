@@ -155,38 +155,38 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="password">{{__('tutores.password')}}</label>
-                            <input id="password" type="text" name="password" required class="validate">
+                            <label for="user_password">{{__('tutores.user_password')}}</label>
+                            <input id="user_password" type="text" name="user_password" required class="validate">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s12">
-                            <select id="tetra" name="tetra">
-                                <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
+                            <div class="input-field col s12">
+                                <select id="tetra" name="tetra">
+                                    <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
 
-                                @foreach($tetras as $tetra)
-                                <option value="{{$tetra->id}}">{{$tetra->identifier}}</option>
-                                @endforeach
+                                    @foreach($tetras as $tetra)
+                                        <option value="{{$tetra->id}}">{{$tetra->identifier}}</option>
+                                    @endforeach
 
-                            </select>
-                            <label for="tetra">{{__('tutores.tetra')}}</label>
+                                </select>
+                                <label for="tetra">{{__('tutores.tetra')}}</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="gerente" name="gerente">
-                                <option value="" disabled selected>{{__('tutores.select_gerente')}}</option>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select id="gerente" name="gerente">
+                                    <option value="" disabled selected>{{__('tutores.select_gerente')}}</option>
 
-                                @foreach($gerentes as $gerente)
-                                <option value="{{$gerente->id}}">{{$gerente->user->first_name}} {{$gerente->user->last_name}}</option>
-                                @endforeach
+                                    @foreach($gerentes as $gerente)
+                                        <option value="{{$gerente->id}}">{{$gerente->user->first_name}} {{$gerente->user->last_name}}</option>
+                                    @endforeach
 
-                            </select>
-                            <label for="gerente">{{__('tutores.gerente')}}</label>
+                                </select>
+                                <label for="gerente">{{__('tutores.gerente')}}</label>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="modal-footer">
                         <a href="#!" class="red white-text modal-action modal-close waves-effect waves-red btn-flat">{{__('common.close')}}</a>

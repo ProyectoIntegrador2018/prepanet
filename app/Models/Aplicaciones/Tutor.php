@@ -19,7 +19,7 @@ class Tutor extends Model
         'street', 'street_number', 'neighborhood',
         'community', 'city', 'zipcode',
         'state', 'country', 'user_name',
-        'tetra_id', 'gerente_id'
+        'tetra_id', 'gerente_id', 'birth_date',
     ];
 
     /**

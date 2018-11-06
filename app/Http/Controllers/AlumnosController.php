@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Session;
+use Carbon\Carbon;
 use App\Models\Tetra;
 use App\Models\Campus;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class AlumnosController extends Controller
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gender' => 'required|char',
+            'gender' => 'required|string',
             'birth_date' => 'required|date|before:today',
             'work_email' => 'required|email',
             'email' => 'required|email',
@@ -46,8 +47,8 @@ class AlumnosController extends Controller
             'tutor_type' => 'required|string',
             'carreer' => 'required|string',
             'business' => 'required|string',
-            'gerente_id' => 'required|exists:gerentes,id',
-            'tetra_id' => 'required|exists:tetras,id',
+            'gerente' => 'required|exists:gerentes,id',
+            'tetra' => 'required|exists:tetras,id',
         ];
     }
 
@@ -60,7 +61,7 @@ class AlumnosController extends Controller
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gender' => 'required|char',
+            'gender' => 'required|string',
             'birth_date' => 'required|date|before:today',
             'work_email' => 'required|email',
             'email' => 'required|email',
@@ -71,8 +72,8 @@ class AlumnosController extends Controller
             'tutor_type' => 'required|string',
             'carreer' => 'required|string',
             'business' => 'required|string',
-            'gerente_id' => 'required|exists:gerentes,id',
-            'tetra_id' => 'required|exists:tetras,id',
+            'gerente' => 'required|exists:gerentes,id',
+            'tetra' => 'required|exists:tetras,id',
         ];
     }
 
@@ -115,7 +116,7 @@ class AlumnosController extends Controller
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
                 'gender' => $request->get('gender'),
-                'birth_date' => $request->get('birth_date'),
+                'birth_date' => Carbon::createFromFormat('Y-m-d', $request->get('birth_date')),
                 'work_email' => $request->get('work_email'),
                 'email' => $request->get('email'),
                 'phone' => $request->get('phone'),
@@ -125,8 +126,8 @@ class AlumnosController extends Controller
                 'tutor_type' => $request->get('tutor_type'),
                 'carreer' => $request->get('carreer'),
                 'business' => $request->get('business'),
-                'gerente_id' => $request->get('gerente_id'),
-                'tetra_id' => $request->get('tetra_id'),
+                'gerente_id' => $request->get('gerente'),
+                'tetra_id' => $request->get('tetra'),
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
@@ -175,8 +176,8 @@ class AlumnosController extends Controller
         $alumno->tutor_type = $request->get('tutor_type');
         $alumno->carreer = $request->get('carreer');
         $alumno->business = $request->get('business');
-        $alumno->gerente_id = $request->get('gerente_id');
-        $alumno->tetra_id = $request->get('tetra_id');
+        $alumno->gerente_id = $request->get('gerente');
+        $alumno->tetra_id = $request->get('tetra');
 
         DB::transaction(function () use ($request, $alumno) {
             try {

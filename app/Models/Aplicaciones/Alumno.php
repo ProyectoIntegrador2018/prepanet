@@ -18,7 +18,7 @@ class Alumno extends Model
         'work_email', 'email', 'phone',
         'city', 'state', 'country',
         'tutor_type', 'carreer', 'business',
-        'gerente_id', 'tetra_id'
+        'gerente_id', 'tetra_id', 'birth_date'
     ];
 
     /**

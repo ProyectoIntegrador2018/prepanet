@@ -53,7 +53,7 @@ Route::group(['prefix' => 'tetras',  'middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'tutores',  'middleware' => 'auth'], function () {
     Route::get('/', 'TutoresController@index')->name('tutores');
-    Route::post('/', 'TutoresController@postGerente');
+    Route::post('/', 'TutoresController@postTutor');
     Route::get('/{tutor}', 'TutoresController@getTutor')->name('tutor');
     Route::post('/{tutor}', 'TutoresController@updateTutor')->name('update-tutor');
     Route::post('/delete/{tutor}', 'TutoresController@deleteTutor');

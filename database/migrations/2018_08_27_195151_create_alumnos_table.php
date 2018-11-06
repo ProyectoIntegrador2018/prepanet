@@ -19,7 +19,7 @@ class CreateAlumnosTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->char('gender', 1);
-            $table->date('birth_date');
+            $table->dateTime('birth_date');
             $table->string('work_email');
             $table->string('email');
             $table->string('phone');
