@@ -45,7 +45,7 @@ Route::group(['prefix' => 'gerentes',  'middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'tetras',  'middleware' => 'auth'], function () {
     Route::get('/', 'TetrasController@index')->name('tetras');
-    Route::post('/', 'TetrasController@postGerente');
+    Route::post('/', 'TetrasController@postTetra');
     Route::get('/{tetra}', 'TetrasController@getTetra')->name('tetra');
     Route::post('/{tetra}', 'TetrasController@updateTetra')->name('update-tetra');
     Route::post('/delete/{tetra}', 'TetrasController@deleteTetra');

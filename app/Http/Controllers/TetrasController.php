@@ -35,7 +35,7 @@ class TetrasController extends Controller
             'year' => 'required|string',
             'type' => 'required|integer|in:0,1,2',
             'goal' => 'required|integer',
-            'campus_id' => 'required|exists:campuses,id'
+            'campus' => 'required|exists:campuses,id'
         ];
     }
 
@@ -50,7 +50,7 @@ class TetrasController extends Controller
             'year' => 'required|string',
             'type' => 'required|integer|in:0,1,2',
             'goal' => 'required|integer',
-            'campus_id' => 'required|exists:campuses,id'
+            'campus' => 'required|exists:campuses,id'
         ];
     }
 
@@ -64,12 +64,15 @@ class TetrasController extends Controller
         $data = [];
         $userable = Auth::user()->userable;
         $data['tetras'] = null;
+        $data['campuses'] = null;
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['tetras'] = Tetra::all();
+                $data['campuses'] = Campus::all();
                 break;
             case $userable instanceof Gerente:
                 $campus = $userable->campus;
+                $data['campuses'] = $campus;
                 $data['tetras'] = Tetra::where('campus_id', $campus->id);
                 break;
             default:
@@ -110,7 +113,20 @@ class TetrasController extends Controller
         // $this->authorize('view', $campus);
 
         $data = [];
+        $userable = Auth::user()->userable;
         $data["tetra"] = $tetra;
+        $data['campuses'] = null;
+        switch (true) {
+            case $userable instanceof SuperAdministrator:
+                $data['campuses'] = Campus::all();
+                break;
+            case $userable instanceof Gerente:
+                $campus = $userable->campus;
+                $data['campuses'] = $campus;
+                break;
+            default:
+                break;
+        }
         return view('tetras.tetra', $data);
     }
 
@@ -121,7 +137,7 @@ class TetrasController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditTetra(Request $request, Tetra $tetra)
+    public function updateTetra(Request $request, Tetra $tetra)
     {
         validateData($request->all(), $this->editRules());
 
@@ -149,7 +165,7 @@ class TetrasController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteTetra(Request $request, Tetra $tetra)
+    public function deleteTetra(Request $request, Tetra $tetra)
     {
         if ($tetra->isDeletable()) {
             DB::transaction(function () use ($request, $tetra) {

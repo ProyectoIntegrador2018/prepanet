@@ -48,4 +48,14 @@ class Tetra extends Model
     {
         return $this->hasMany(Tutor::class);
     }
+
+    /**
+     * Get the tutoes that belong to the tetra.
+     *
+     * @return BelongsTo
+     */
+    public function isDeletable()
+    {
+        return true;
+    }
 }
