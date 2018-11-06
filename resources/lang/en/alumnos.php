@@ -47,6 +47,7 @@ return [
     'gerente' => 'Gerente',
     'select_tetra' => 'Escoga un tetra',
     'select_gerente' => 'Escoga un gerente',
+    'select_gender' => 'Escoge un género',
 
     'error_add_alumno' => 'Error creando al Alumno. Prueba nuevamente más tarde.',
     'new_alumno_created' => '¡Alumno :Alumno creado exitosamente!',

@@ -74,8 +74,12 @@
 
                     <div class="row">
                         <div class="input-field col s12">
+                            <select id="gender" name="gender">
+                                <option value="" disabled selected>{{__('tutores.select_gender')}}</option>
+                                <option value="H">Hombre</option>
+                                <option value="M">Mujer</option>
+                            </select>
                             <label for="gender">{{__('tutores.gender')}}</label>
-                            <input id="gender" type="text" name="gender" required class="validate">
                         </div>
                     </div>
 
