@@ -26,7 +26,7 @@ class CreateAlumnosTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->integer('tutor_type');
+            $table->string('tutor_type');
             $table->string('carreer');
 
             $table->string('business')->nullable();

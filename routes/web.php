@@ -27,14 +27,6 @@ Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::post('/delete/{campus}', 'CampusesController@postDeleteCampus');
 });
 
-// Route::group(['prefix' => 'tutores',  'middleware' => 'auth'], function () {
-//     Route::get('/', 'SuperAdministratorsController@index')->name('tutores');
-//     Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
-//     Route::get('/{superAdministrator}', 'SuperAdministratorsController@getSuperAdministrator')->name('super-administrator');
-//     Route::post('/{superAdministrator}', 'SuperAdministratorsController@postEditSuperAdministrator')->name('update-super-administrator');
-//     Route::post('/delete/{superAdministrator}', 'SuperAdministratorsController@postDeleteSuperAdministrator');
-// });
-
 Route::group(['prefix' => 'super-administrators',  'middleware' => 'auth'], function () {
     Route::get('/', 'SuperAdministratorsController@index')->name('super-administrators');
     Route::post('/', 'SuperAdministratorsController@postSuperAdministrator');
@@ -49,4 +41,28 @@ Route::group(['prefix' => 'gerentes',  'middleware' => 'auth'], function () {
     Route::get('/{gerente}', 'GerentesController@getGerente')->name('gerente');
     Route::post('/{gerente}', 'GerentesController@updateGerente')->name('update-gerente');
     Route::post('/delete/{gerente}', 'GerentesController@deleteGerente');
+});
+
+Route::group(['prefix' => 'tetras',  'middleware' => 'auth'], function () {
+    Route::get('/', 'TetrasController@index')->name('tetras');
+    Route::post('/', 'TetrasController@postGerente');
+    Route::get('/{tetra}', 'TetrasController@getTetra')->name('tetra');
+    Route::post('/{tetra}', 'TetrasController@updateTetra')->name('update-tetra');
+    Route::post('/delete/{tetra}', 'TetrasController@deleteTetra');
+});
+
+Route::group(['prefix' => 'tutores',  'middleware' => 'auth'], function () {
+    Route::get('/', 'TutoresController@index')->name('tutores');
+    Route::post('/', 'TutoresController@postGerente');
+    Route::get('/{tutor}', 'TutoresController@getTutor')->name('tutor');
+    Route::post('/{tutor}', 'TutoresController@updateTutor')->name('update-tutor');
+    Route::post('/delete/{tutor}', 'TutoresController@deleteTutor');
+});
+
+Route::group(['prefix' => 'alumnos',  'middleware' => 'auth'], function () {
+    Route::get('/', 'AlumnosController@index')->name('alumnos');
+    Route::post('/', 'AlumnosController@postAlumno');
+    Route::get('/{alumno}', 'AlumnosController@getAlumno')->name('alumno');
+    Route::post('/{alumno}', 'AlumnosController@updateAlumno')->name('update-alumno');
+    Route::post('/delete/{alumno}', 'AlumnosController@deleteAlumno');
 });

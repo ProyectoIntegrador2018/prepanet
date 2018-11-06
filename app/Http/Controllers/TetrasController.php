@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Session;
+use App\Models\Tetra;
 use App\Models\Campus;
 use Illuminate\Http\Request;
 use App\Models\Users\Gerente;
@@ -30,8 +31,11 @@ class TetrasController extends Controller
      */
     public function createRules(){
         return [
-            'name' => 'required|string|unique:campuses,name|between:3,100',
-            'code' => 'required|string|unique:campuses,code|size:3',
+            'identifier' => 'required|string',
+            'year' => 'required|string',
+            'type' => 'required|integer|in:0,1,2',
+            'goal' => 'required|integer',
+            'campus_id' => 'required|exists:campuses,id'
         ];
     }
 
@@ -42,18 +46,11 @@ class TetrasController extends Controller
      */
     public function editRules($campusName, $campusCode){
         return [
-            'name' => [
-                'required',
-                'string',
-                'between:3,100',
-                Rule::unique('campuses')->ignore($campusName, 'name'),
-            ],
-            'code' => [
-                'required',
-                'string',
-                'size:3',
-                Rule::unique('campuses')->ignore($campusCode, 'code'),
-            ],
+            'identifier' => 'required|string',
+            'year' => 'required|string',
+            'type' => 'required|integer|in:0,1,2',
+            'goal' => 'required|integer',
+            'campus_id' => 'required|exists:campuses,id'
         ];
     }
 
@@ -66,33 +63,40 @@ class TetrasController extends Controller
     {
         $data = [];
         $userable = Auth::user()->userable;
-        $data['campuses'] = null;
+        $data['tetras'] = null;
         switch (true) {
             case $userable instanceof SuperAdministrator:
-                $data['campuses'] = Campus::all();
+                $data['tetras'] = Tetra::all();
+                break;
+            case $userable instanceof Gerente:
+                $campus = $userable->campus;
+                $data['tetras'] = Tetra::where('campus_id', $campus->id);
                 break;
             default:
                 break;
         }
-        return view('campuses.campuses', $data);
+        return view('tetras.tetras', $data);
     }
 
-    public function postCampus(Request $request)
+    public function postTetra(Request $request)
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
-        // dd($request);
+
         try {
-            $campus = Campus::create([
-                'name' => $request->get('name'),
-                'code' => $request->get('code'),
+            $tetra = Tetra::create([
+                'identifier' => $request->get('identifier'),
+                'type' => $request->get('type'),
+                'goal' => $request->get('goal'),
+                'year' => $request->get('year'),
+                'campus_id' => $request->get('campus'),
             ]);
         } catch (\Exception $e) {
             app()->make("lern")->record($e);
-            return back()->withErrors(__('campuses.error_add_campus'));
+            return back()->withErrors(__('tetras.error_add_tetra'));
         }
-        Session::flash('flash_message', __("campuses.new_campus_created", ["campus" => $campus->name]));
-        return redirect()->route('campuses');
+        Session::flash('flash_message', __("tetras.new_tetra_created", ["tetra" => $tetra->identifier]));
+        return redirect()->route('tetras');
     }
 
     /**
@@ -101,13 +105,13 @@ class TetrasController extends Controller
      * @param  Carrier  $company
      * @return \Illuminate\Http\Response
      */
-    public function getCampus(Campus $campus)
+    public function getTetra(Tetra $tetra)
     {
         // $this->authorize('view', $campus);
 
         $data = [];
-        $data["campus"] = $campus;
-        return view('campuses.campus', $data);
+        $data["tetra"] = $tetra;
+        return view('tetras.tetra', $data);
     }
 
     /**
@@ -117,20 +121,24 @@ class TetrasController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditCampus(Request $request, Campus $campus)
+    public function postEditTetra(Request $request, Tetra $tetra)
     {
-        validateData($request->all(), $this->editRules($campus->name, $campus->code));
-        $campus->name = $request->get('name');
-        $campus->code = $request->get('code');
-        DB::transaction(function () use ($request, $campus) {
+        validateData($request->all(), $this->editRules());
+
+        $tetra->identifier = $request->get('identifier');
+        $tetra->type = $request->get('type');
+        $tetra->goal = $request->get('goal');
+        $tetra->year = $request->get('year');
+        $tetra->campus_id = $request->get('campus');
+        DB::transaction(function () use ($request, $tetra) {
             try {
-                $campus->save();
+                $tetra->save();
             } catch (\Exception $e) {
                 app()->make("lern")->record($e);
-                return back()->withErrors(__('campuses.error_edit_campus'));
+                return back()->withErrors(__('tetras.error_edit_tetra'));
             }
         });
-        Session::flash('flash_message', __('campuses.success_edit_campus'));
+        Session::flash('flash_message', __('tetras.success_edit_tetra'));
         return back();
     }
 
@@ -141,21 +149,21 @@ class TetrasController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteCampus(Request $request, Campus $campus)
+    public function postDeleteTetra(Request $request, Tetra $tetra)
     {
-        if ($campus->isDeletable()) {
-            DB::transaction(function () use ($request, $campus) {
+        if ($tetra->isDeletable()) {
+            DB::transaction(function () use ($request, $tetra) {
                 try {
-                    $campus->delete();
+                    $tetra->delete();
                 } catch (\Exception $e) {
                     app()->make("lern")->record($e);
-                    return back()->withErrors(__('campuses.error_delete_campus'));
+                    return back()->withErrors(__('tetras.error_delete_tetra'));
                 }
             });
-            Session::flash('flash_message', __('campuses.success_delete_campus'));
-            return redirect()->route('campuses');
+            Session::flash('flash_message', __('tetras.success_delete_tetra'));
+            return redirect()->route('tetras');
         } else {
-            return back()->withErrors(__('campuses.error_delete_campus'));
+            return back()->withErrors(__('tetras.error_delete_tetra'));
         }
     }
 }
