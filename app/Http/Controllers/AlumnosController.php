@@ -37,7 +37,7 @@ class AlumnosController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'gender' => 'required|string',
-            'birth_date' => 'required|date|before:today',
+            'birth_date' => 'required|date',
             'work_email' => 'required|email',
             'email' => 'required|email',
             'phone' => 'required|string',
@@ -57,12 +57,12 @@ class AlumnosController extends Controller
      *
      * @var array
      */
-    public function editRules($campusName, $campusCode){
+    public function editRules(){
         return [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'gender' => 'required|string',
-            'birth_date' => 'required|date|before:today',
+            'birth_date' => 'required|date',
             'work_email' => 'required|email',
             'email' => 'required|email',
             'phone' => 'required|string',
