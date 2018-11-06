@@ -31,10 +31,7 @@
 
         <ul id="slide-out" class="sidenav">
             <li><div class="user-view">
-                <div class="background">
-                    <img id="sidenav-img" src="">
-                </div>
-                <a class="black-text" href=""><span class="name">{{\Auth::user()->getName()}}</span></a>
+                <a class="black-text" href=""><span class="name">PREPANET - {{\Auth::user()->getName()}}</span></a>
             </div></li>
             <li><div class="divider"></div></li>
             @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('super-administrators')}}"><i class="material-icons">accessibility</i>Super Administradores</a></li>@endif
