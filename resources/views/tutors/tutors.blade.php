@@ -15,7 +15,7 @@
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
-                                                <h5 class="bold black-text">{{$tutor->user->first_name}} {{$tutor->user->last_name}}</h5>
+                                                <h5 class="bold black-text">{{$tutor->first_name}} {{$tutor->last_name}}</h5>
                                                 <h5 class="black-text">{{$tutor->tetra->name}}</h5>
                                             </div>
                                         </div>
@@ -172,7 +172,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select id="gerente" name="gerente">
-                                <option value="" disabled selected>{{__('tutores.select_tetra')}}</option>
+                                <option value="" disabled selected>{{__('tutores.select_gerente')}}</option>
 
                                 @foreach($tetras as $tetra)
                                 <option value="{{$gerente->id}}">{{$gerente->first_name}}</option>

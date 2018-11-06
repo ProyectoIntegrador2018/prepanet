@@ -15,9 +15,38 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12 m4 l4">
-                                <input id="name" name="name" type="text" class="validate" value="{{tetras->name}}" required>
-                                <label for="name">{{ __('tetras.name') }}</label>
+                                <input id="identifier" name="identifier" type="text" class="validate" value="{{tetras->identifier}}" required>
+                                <label for="identifier">{{ __('tetras.identifier') }}</label>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m4 l4">
+                                <input id="year" name="year" type="text" class="validate" value="{{tetras->year}}" required>
+                                <label for="year">{{ __('tetras.year') }}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m4 l4">
+                                <input id="type" name="type" type="text" class="validate" value="{{tetras->type}}" required>
+                                <label for="type">{{ __('tetras.type') }}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m4 l4">
+                                <input id="goal" name="goal" type="text" class="validate" value="{{tetras->goal}}" required>
+                                <label for="goal">{{ __('tetras.goal') }}</label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <select id="campus" name="campus">
+                                <option value="{{$tetras->campus->id}}" disabled selected>{{$tetras->campus->name}}</option>
+
+                                @foreach($campuses as $campus)
+                            <option value="{{$campus->id}}" @if($campus->id == $tetras->campus->id) selected @endif>{{$tetras->name}}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="campus">{{__('tetras.campus')}}</label>
                         </div>
                         <div class="row center">
                             <div class="col s4 l4 center">
