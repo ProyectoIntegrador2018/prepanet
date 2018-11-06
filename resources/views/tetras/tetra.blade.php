@@ -27,15 +27,17 @@
                                 <label for="type">{{ __('tetras.type') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="goal" name="goal" goal="number" class="validate" value="{{$tetra->goal}}" required>
+                                <input id="goal" name="goal" type="number" class="validate" value="{{$tetra->goal}}"required>
                                 <label for="goal">{{ __('tetras.goal') }}</label>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="input-field col s12">
                                 <select id="campus" name="campus">
-                                    <option value="{{$tetra->campus->id}}" disabled selected>{{$tetra->campus->identifier}}</option>
+                                    <option value="{{$tetra->campus->id}}" disabled selected>{{$tetra->campus->name}}</option>
 
                                     @foreach($campuses as $campus)
-                                        <option value="{{$campus->id}}" @if($campus->id == $tetra->campus->id) selected @endif>{{$campus->identifier}}</option>
+                                        <option value="{{$campus->id}}" @if($campus->id == $tetra->campus->id) selected @endif>{{$campus->name}}</option>
                                     @endforeach
 
                                 </select>

@@ -44,7 +44,7 @@ class TetrasController extends Controller
      *
      * @var array
      */
-    public function editRules($campusName, $campusCode){
+    public function editRules(){
         return [
             'identifier' => 'required|string',
             'year' => 'required|string',
@@ -140,7 +140,6 @@ class TetrasController extends Controller
     public function updateTetra(Request $request, Tetra $tetra)
     {
         validateData($request->all(), $this->editRules());
-
         $tetra->identifier = $request->get('identifier');
         $tetra->type = $request->get('type');
         $tetra->goal = $request->get('goal');
