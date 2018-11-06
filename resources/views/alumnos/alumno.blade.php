@@ -8,7 +8,7 @@
     <div class="section">
         <div id="main" class="container">
             <div class="row grid">
-                {{--  Staff  --}}
+                {{--  Alumno  --}}
                 <div class="col l12 m12 s12">
                     <form action="{{route('update-alumno', ['alumno' => $alumno])}}" method="POST">
                         @csrf
