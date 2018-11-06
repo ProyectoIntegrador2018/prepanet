@@ -38,8 +38,40 @@
                     <h4 id="modal-title">{{__('tetras.new_tetra')}}</h4>
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="name">{{__('tetras.name')}}</label>
-                            <input id="name" type="text" name="name" required class="validate">
+                            <label for="identifier">{{__('tetras.identifier')}}</label>
+                            <input id="identifier" type="text" name="identifier" required class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="year">{{__('tetras.year')}}</label>
+                            <input id="year" type="text" name="year" required class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="type">{{__('tetras.type')}}</label>
+                            <input id="type" type="text" name="type" required class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="goal">{{__('tetras.goal')}}</label>
+                            <input id="goal" type="text" name="goal" required class="validate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="campuses" name="campuses">
+                                <option value="" disabled selected>{{__('tutores.select_campus')}}</option>
+
+                                @foreach($tetras as $tetra)
+                                <option value="{{campus->id}}">{{$gerente->first_name}}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="gerente">{{__('tutores.gerente')}}</label>
                         </div>
                     </div>
 

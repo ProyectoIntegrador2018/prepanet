@@ -24,6 +24,8 @@ return [
     'no_tutor' => 'No hay tutor',
     'try_adding' => '¡Prueba agregando uno!',
     'select_campus' => 'Seleccione un campus',
+    'select_tetra' => 'Seleccione un tetra',
+    'select_gerente' => 'Seleccione un gerente',
 
     'error_add_tutor' => 'Error creando el tutor. Prueba nuevamente más tarde.',
     'new_tutor_created' => '¡Tutor creado exitosamente!',
