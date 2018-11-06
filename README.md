@@ -36,7 +36,7 @@ Application to be awesome
 | Eduardo Andrade Martínez | eduardo.mtz9@gmail.com| Development |
 | Juan Pestana | juancho.pestana@gmail.com | Development |
 | Pedro Iván Martínez | Ivan_0423@hotmail.com | Development |
-| André Jiménez | andre.jimenez@outlook.com | Development |
+| André Jiménez | andre.jimenez@outlook.com | Documentation - Development |
 
 ### Management tools
 
