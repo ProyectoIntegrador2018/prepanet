@@ -84,7 +84,7 @@
                                     <option value="{{$tutor->tetra->id}}" disabled selected>{{$tutor->tetra->name}}</option>
 
                                     @foreach($tetras as $tetra)
-                                <option value="{{$tetra->id}}" @if($tetra->id == $tutor->tetra->id) selected @endif>{{$tetra->name}}</option>
+                                <option value="{{$tetra->id}}" @if($gerentes->id == $tutor->tetra->id) selected @endif>{{$tetra->name}}</option>
                                     @endforeach
 
                                 </select>
@@ -96,7 +96,7 @@
                                 <option value="{{$tutor->gerentes->id}}" disabled selected>{{$tutor->gerentes->first_name}}</option>
 
                                 @foreach($gerentes as $gerente)
-                            <option value="{{$tetra->id}}" @if($tetra->id == $tutor->gerente->id) selected @endif>{{$tetra->first_name}}</option>
+                            <option value="{{$gerentes->id}}" @if($tetra->id == $tutor->gerentes->id) selected @endif>{{$gerentes->first_name}}</option>
                                 @endforeach
 
                             </select>
