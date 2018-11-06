@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<h2 class="header white-text">{{__('tutores.tutor')}} {{$tutor->user->name}} </h2>
+<h2 class="header white-text">{{__('tutores.tutor')}} {{$tutor->first_name}} </h2>
 @stop
 
 @section('content')
@@ -23,86 +23,87 @@
                                 <label for="last_name">{{ __('tutores.last_name') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="email" name="email" type="text" class="validate" value="{{$tutor->user->email}}" required disabled>
+                                <input id="email" name="email" type="text" class="validate" value="{{$tutor->email}}" required>
                                 <label for="email">{{ __('tutores.email') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="phone" name="phone" type="text" class="validate" value="{{$tutor->phone}}" required disabled>
+                                <input id="phone" name="phone" type="text" class="validate" value="{{$tutor->phone}}" required>
                                 <label for="phone">{{ __('tutores.phone') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="work_phone" name="work_phone" type="text" class="validate" value="{{$tutor->work_phone}}" required disabled>
+                                <input id="work_phone" name="work_phone" type="text" class="validate" value="{{$tutor->work_phone}}" required>
                                 <label for="work_phone">{{ __('tutores.work_phone') }}</label>
                             </div>
-                            <div class="input-field col s12 m4 l4">
-                                <input id="gender" name="gender" type="text" class="validate" value="{{$tutor->gender}}" required disabled>
-                                <label for="gender">{{ __('tutores.gender') }}</label>
+                            <div class="input-field col s12">
+                                <select id="gender" name="gender">
+                                    <option value="M" @if($tutor->gender == "M") selected @endif>Mujer</option>
+                                    <option value="H" @if($tutor->gender == "H") selected @endif>Hombre</option>
+                                </select>
+                                <label for="gender">{{__('tutores.gender')}}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="birth_date" name="birth_date" type="date" class="validate" value="{{$tutor->birth_date}}" required disabled>
+                                <input id="birth_date" name="birth_date" type="date" class="validate" value="{{$birth_date}}" required>
                                 <label for="birth_date">{{ __('tutores.gender') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="street" name="street" type="text" class="validate" value="{{$tutor->street}}" required disabled>
+                                <input id="street" name="street" type="text" class="validate" value="{{$tutor->street}}" required>
                                 <label for="street">{{ __('tutores.street') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="street_number" name="street_number" type="text" class="validate" value="{{$tutor->street_number}}" required disabled>
+                                <input id="street_number" name="street_number" type="text" class="validate" value="{{$tutor->street_number}}" required>
                                 <label for="street_number">{{ __('tutores.street_number') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="neighborhood" name="neighborhood" type="text" class="validate" value="{{$tutor->neighborhood}}" required disabled>
+                                <input id="neighborhood" name="neighborhood" type="text" class="validate" value="{{$tutor->neighborhood}}" required>
                                 <label for="neighborhood">{{ __('tutores.neighborhood') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="community" name="community" type="text" class="validate" value="{{$tutor->community}}" required disabled>
+                                <input id="community" name="community" type="text" class="validate" value="{{$tutor->community}}" required>
                                 <label for="community">{{ __('tutores.community') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="city" name="city" type="text" class="validate" value="{{$tutor->city}}" required disabled>
+                                <input id="city" name="city" type="text" class="validate" value="{{$tutor->city}}" required>
                                 <label for="city">{{ __('tutores.city') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="zipcode" name="zipcode" type="text" class="validate" value="{{$tutor->zipcode}}" required disabled>
+                                <input id="zipcode" name="zipcode" type="text" class="validate" value="{{$tutor->zipcode}}" required>
                                 <label for="zipcode">{{ __('tutores.zipcode') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="state" name="state" type="text" class="validate" value="{{$tutor->state}}" required disabled>
+                                <input id="state" name="state" type="text" class="validate" value="{{$tutor->state}}" required>
                                 <label for="state">{{ __('tutores.state') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="country" name="country" type="text" class="validate" value="{{$tutor->country}}" required disabled>
+                                <input id="country" name="country" type="text" class="validate" value="{{$tutor->country}}" required>
                                 <label for="country">{{ __('tutores.country') }}</label>
                             </div>
                             <div class="input-field col s12 m4 l4">
-                                <input id="user_name" name="user_name" type="text" class="validate" value="{{$tutor->user_name}}" required disabled>
+                                <input id="user_name" name="user_name" type="text" class="validate" value="{{$tutor->user_name}}" required>
                                 <label for="user_name">{{ __('tutores.user_name') }}</label>
+                            </div>
+                            <div class="input-field col s12 m4 l4">
+                                <input id="user_password" name="user_password" type="text" class="validate" value="{{$tutor->user_password}}" required>
+                                <label for="user_password">{{ __('tutores.user_password') }}</label>
                             </div>
 
                             <div class="input-field col s12">
                                 <select id="tetra" name="tetra">
-                                    <option value="{{$tutor->tetra->id}}" disabled selected>{{$tutor->tetra->name}}</option>
-
+                                    <option value="{{$tutor->tetra->id}}" selected>{{$tutor->tetra->identifier}}</option>
                                     @foreach($tetras as $tetra)
-                                <option value="{{$tetra->id}}" @if($gerentes->id == $tutor->tetra->id) selected @endif>{{$tetra->name}}</option>
+                                        <option value="{{$tetra->id}}" @if($tetra->id == $tutor->tetra->id) selected @endif>{{$tetra->identifier}}</option>
                                     @endforeach
-
                                 </select>
-                                <label for="tetra">{{__('tetra.campus')}}</label>
+                                <label for="tetra">{{__('tutores.tetra')}}</label>
                             </div>
-                        </div>
                         <div class="input-field col s12">
                             <select id="gerente" name="gerente">
-                                <option value="{{$tutor->gerentes->id}}" disabled selected>{{$tutor->gerentes->first_name}}</option>
-
+                                <option value="{{$tutor->gerente->id}}" selected>{{$tutor->gerente->user->first_name}} {{$tutor->gerente->user->last_name}}</option>
                                 @foreach($gerentes as $gerente)
-                            <option value="{{$gerentes->id}}" @if($tetra->id == $tutor->gerentes->id) selected @endif>{{$gerentes->first_name}}</option>
+                                    <option value="{{$gerente->id}}" @if($gerente->id == $tutor->gerente->id) selected @endif>{{$gerente->user->first_name}} {{$gerente->user->last_name}}</option>
                                 @endforeach
-
                             </select>
-                            <label for="gerente">{{__('gerente.campus')}}</label>
+                            <label for="gerente">{{__('tutores.gerente')}}</label>
                         </div>
-                    </div>
                         <div class="row center">
                             <div class="col s4 l4 center">
                                 <button id="save-tutor" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('tutores.save') }}</button>
@@ -114,6 +115,7 @@
                                 <a href="{{route('tutores')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
                             </div>
                         </div>
+                    </div>
                     </form>
                 </div>
             </div>

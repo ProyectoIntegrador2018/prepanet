@@ -97,8 +97,9 @@ class AlumnosController extends Controller
                 break;
             case $userable instanceof Gerente:
                 $data['alumnos'] = Alumno::all();
-                $data['gerentes'] = Gerente::all();
-                $data['tetras'] = Tetra::all();
+                $data['gerentes'] = $userable;
+                $campus = $userable->campus;
+                $data['tetras'] = Tetra::where('campus_id', $campus->id);
                 break;
             default:
                 break;
@@ -149,6 +150,25 @@ class AlumnosController extends Controller
 
         $data = [];
         $data["alumno"] = $alumno;
+        $data['gerentes'] = null;
+        $data['tetras'] = null;
+        $userable = Auth::user()->userable;
+        if($alumno->birth_date != null){
+            $data['birth_date'] = ($alumno->birth_date)->format('Y-m-d');
+        }
+        switch (true) {
+            case $userable instanceof SuperAdministrator:
+                $data['gerentes'] = Gerente::all();
+                $data['tetras'] = Tetra::all();
+                break;
+            case $userable instanceof Gerente:
+                $data['gerentes'] = $userable;
+                $campus = $userable->campus;
+                $data['tetras'] = Tetra::where('campus_id', $campus->id);
+                break;
+            default:
+                break;
+        }
         return view('alumnos.alumno', $data);
     }
 
@@ -159,7 +179,7 @@ class AlumnosController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditAlumno(Request $request, Alumno $alumno)
+    public function updateAlumno(Request $request, Alumno $alumno)
     {
         validateData($request->all(), $this->editRules());
 
@@ -198,7 +218,7 @@ class AlumnosController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteAlumno(Request $request, Alumno $alumno)
+    public function deleteAlumno(Request $request, Alumno $alumno)
     {
         if ($alumno->isDeletable()) {
             DB::transaction(function () use ($request, $alumno) {

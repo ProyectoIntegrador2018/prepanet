@@ -167,7 +167,26 @@ class TutoresController extends Controller
 
         $data = [];
         $data["tutor"] = $tutor;
-        return view('tutores.tutor', $data);
+        $data['gerentes'] = null;
+        $data['tetras'] = null;
+        if($tutor->birth_date != null){
+            $data['birth_date'] = ($tutor->birth_date)->format('Y-m-d');
+        }
+        $userable = Auth::user()->userable;
+        switch (true) {
+            case $userable instanceof SuperAdministrator:
+                $data['gerentes'] = Gerente::all();
+                $data['tetras'] = Tetra::all();
+                break;
+            case $userable instanceof Gerente:
+                $data['gerentes'] = $userable;
+                $campus = $userable->campus;
+                $data['tetras'] = Tetra::where('campus_id', $campus->id);
+                break;
+            default:
+                break;
+        }
+        return view('tutors.tutor', $data);
     }
 
     /**
@@ -177,7 +196,7 @@ class TutoresController extends Controller
      * @param  Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function postEditTutor(Request $request, Tutor $tutor)
+    public function updateTutor(Request $request, Tutor $tutor)
     {
         validateData($request->all(), $this->editRules());
 
@@ -187,7 +206,7 @@ class TutoresController extends Controller
         $tutor->phone = $request->get('phone');
         $tutor->work_phone = $request->get('work_phone');
         $tutor->gender = $request->get('gender');
-        $tutor->birth_date = $request->get('birth_date');
+        $tutor->birth_date = Carbon::createFromFormat('Y-m-d', $request->get('birth_date'));
         $tutor->street = $request->get('street');
         $tutor->street_number = $request->get('street_number');
         $tutor->neighborhood = $request->get('neighborhood');
@@ -222,7 +241,7 @@ class TutoresController extends Controller
      * @param  Carrier  $carrier
      * @return \Illuminate\Http\Response
      */
-    public function postDeleteTutor(Request $request, Tutor $tutor)
+    public function deleteTutor(Request $request, Tutor $tutor)
     {
         if ($tutor->isDeletable()) {
             DB::transaction(function () use ($request, $tutor) {

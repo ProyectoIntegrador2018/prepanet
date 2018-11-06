@@ -4,6 +4,7 @@ namespace App\Models\Aplicaciones;
 
 use App\Models\Campus;
 use App\Models\Tetra;
+use App\Models\Users\Gerente;
 use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
@@ -45,5 +46,25 @@ class Alumno extends Model
     public function tetra()
     {
         return $this->belongsTo(Tetra::class);
+    }
+
+    /**
+     * Get the tetra to which the tutor belongs.
+     *
+     * @return BelongsTo
+     */
+    public function gerente()
+    {
+        return $this->belongsTo(Gerente::class);
+    }
+
+    /**
+     * Get the tetra to which the tutor belongs.
+     *
+     * @return BelongsTo
+     */
+    public function isDeletable()
+    {
+        return true;
     }
 }
