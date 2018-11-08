@@ -81,28 +81,20 @@ class ExcelController extends Controller
      */
     public function postAlumnos(Request $request)
     {
-        dd($request);
         $data = [];
-        $userable = Auth::user()->userable;
-        $data['alumnos'] = null;
-        $data['gerentes'] = null;
-        $data['tetras'] = null;
-        switch (true) {
-            case $userable instanceof SuperAdministrator:
-                $data['alumnos'] = Alumno::all();
-                $data['gerentes'] = Gerente::all();
-                $data['tetras'] = Tetra::all();
-                break;
-            case $userable instanceof Gerente:
-                $data['alumnos'] = Alumno::where('gerente_id', $userable->id)->get();
-                $data['gerentes'] = Gerente::where('id', $userable->id)->get();
-                $campus = $userable->campus;
-                $data['tetras'] = Tetra::where('campus_id', $campus->id)->get();
-                break;
-            default:
-                break;
+        if ($request->get('campuses') != null){
+            $campuses = $request->get('campuses');
+            $campus_array = [];
+            foreach ($campuses as $id => $value){
+                if($value == "on"){
+                    array_push($campus_array, $id);
+                }
+            }
+            $campus_instances = Campus::find($campus_array);
+            $data['campuses'] = $campus_array;
+            return view('reportes-alumnos.reportes', $data);
         }
-        return view('alumnos.alumnos', $data);
+        return back()->withErrors(__('alumnos.error_add_alumno'));
     }
 
     /**
@@ -113,25 +105,18 @@ class ExcelController extends Controller
     public function postTutores(Request $request)
     {
         $data = [];
-        $userable = Auth::user()->userable;
-        $data['alumnos'] = null;
-        $data['gerentes'] = null;
-        $data['tetras'] = null;
-        switch (true) {
-            case $userable instanceof SuperAdministrator:
-                $data['alumnos'] = Alumno::all();
-                $data['gerentes'] = Gerente::all();
-                $data['tetras'] = Tetra::all();
-                break;
-            case $userable instanceof Gerente:
-                $data['alumnos'] = Alumno::where('gerente_id', $userable->id)->get();
-                $data['gerentes'] = Gerente::where('id', $userable->id)->get();
-                $campus = $userable->campus;
-                $data['tetras'] = Tetra::where('campus_id', $campus->id)->get();
-                break;
-            default:
-                break;
+        if ($request->get('campuses') != null){
+            $campuses = $request->get('campuses');
+            $campus_array = [];
+            foreach ($campuses as $id => $value){
+                if($value == "on"){
+                    array_push($campus_array, $id);
+                }
+            }
+            $campus_instances = Campus::find($campus_array);
+            $data['campuses'] = $campus_array;
+            return view('reportes-tutores.reportes', $data);
         }
-        return view('alumnos.alumnos', $data);
+        return back()->withErrors(__('alumnos.error_add_alumno'));
     }
 }

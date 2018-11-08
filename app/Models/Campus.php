@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Models\Tetra;
 use App\Models\Users\Tutor;
-use App\Models\Users\Alumno;
-use App\Models\Users\Gerente;
+use App\Models\Aplicaciones\Alumno;
+use App\Models\Aplicaciones\Gerente;
 use Illuminate\Database\Eloquent\Model;
 
 class Campus extends Model

@@ -22,7 +22,7 @@
                                     <label id="status-switch" style="color: black; font-size:20px;"> {{$campus->name}}
                                         <br>
                                         {{ __('reportes.no') }}
-                                        <input name="{{$campus->id}}" type="checkbox" checked>
+                                        <input name="campuses[{{$campus->id}}]" type="checkbox" checked>
                                         <span class="lever"></span>
                                         {{ __('reportes.si') }}
                                         <br><br>
