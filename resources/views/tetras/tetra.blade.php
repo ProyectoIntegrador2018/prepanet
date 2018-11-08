@@ -22,10 +22,6 @@
                                 <input id="year" name="year" type="number" class="validate" value="{{$tetra->year}}" required>
                                 <label for="year">{{ __('tetras.year') }}</label>
                             </div>
-                            <div class="input-field col s12 m4 l4">
-                                <input id="type" name="type" type="number" class="validate" value="{{$tetra->type}}" min="0" max="2" required>
-                                <label for="type">{{ __('tetras.type') }}</label>
-                            </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <select id="type" name="type">
