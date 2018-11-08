@@ -23,11 +23,12 @@ return [
     'no_tetra' => 'No hay tetra',
     'try_adding' => '¡Prueba agregando uno!',
     'year' => 'Año',
-    'type' => 'Tipo de Tetra',
+    'type' => 'Tetra',
     'goal' => 'Meta de inscripciones',
     'campus' => 'Campus del tetra',
     'identifier' => 'Identificador',
     'select_campus' => 'Eliga un campus',
+    'select_type' => 'Escoge tetra',
 
     'error_add_tetra' => 'Error creando el tetra. Prueba nuevamente más tarde.',
     'new_tetra_created' => 'Tetra creado exitosamente!',

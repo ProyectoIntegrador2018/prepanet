@@ -52,8 +52,15 @@
 
                     <div class="row">
                         <div class="input-field col s12">
+                            <select id="type" name="type">
+                                <option value="" disabled selected>{{__('tetras.select_type')}}</option>
+
+                                @foreach($types as $id => $name)
+                                    <option value="{{$id}}">{{$name}}</option>
+                                @endforeach
+
+                            </select>
                             <label for="type">{{__('tetras.type')}}</label>
-                            <input id="type" type="number" name="type" min="0" max="2" required class="validate">
                         </div>
                     </div>
 

@@ -26,6 +26,19 @@
                                 <input id="type" name="type" type="number" class="validate" value="{{$tetra->type}}" min="0" max="2" required>
                                 <label for="type">{{ __('tetras.type') }}</label>
                             </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select id="type" name="type">
+                                        <option value="" disabled selected>{{__('tetras.select_type')}}</option>
+
+                                        @foreach($types as $id => $name)
+                                            <option value="{{$id}}"@if($tetra->type == $id) selected @endif>{{$name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <label for="type">{{__('tetras.type')}}</label>
+                                </div>
+                            </div>
                             <div class="input-field col s12 m4 l4">
                                 <input id="goal" name="goal" type="number" class="validate" value="{{$tetra->goal}}"required>
                                 <label for="goal">{{ __('tetras.goal') }}</label>

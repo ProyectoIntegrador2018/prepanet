@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
+use Config;
 use Session;
 use App\Models\Tetra;
 use App\Models\Campus;
@@ -65,6 +66,7 @@ class TetrasController extends Controller
         $userable = Auth::user()->userable;
         $data['tetras'] = null;
         $data['campuses'] = null;
+        $data['types'] = Config::get('tetras');
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['tetras'] = Tetra::all();
@@ -116,6 +118,7 @@ class TetrasController extends Controller
         $userable = Auth::user()->userable;
         $data["tetra"] = $tetra;
         $data['campuses'] = null;
+        $data['types'] = Config::get('tetras');
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['campuses'] = Campus::all();
