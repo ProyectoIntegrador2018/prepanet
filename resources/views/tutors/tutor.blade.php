@@ -81,10 +81,6 @@
                                 <input id="user_name" name="user_name" type="text" class="validate" value="{{$tutor->user_name}}" required>
                                 <label for="user_name">{{ __('tutores.user_name') }}</label>
                             </div>
-                            <div class="input-field col s12 m4 l4">
-                                <input id="user_password" name="user_password" type="text" class="validate" value="{{$tutor->user_password}}" required>
-                                <label for="user_password">{{ __('tutores.user_password') }}</label>
-                            </div>
 
                             <div class="input-field col s12">
                                 <select id="tetra" name="tetra">

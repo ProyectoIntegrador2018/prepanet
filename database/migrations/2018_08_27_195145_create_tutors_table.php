@@ -32,7 +32,6 @@ class CreateTutorsTable extends Migration
             $table->string('country');
 
             $table->string('user_name');
-            $table->string('user_password');
 
             $table->integer('tetra_id')->unsigned();
             $table->foreign('tetra_id')

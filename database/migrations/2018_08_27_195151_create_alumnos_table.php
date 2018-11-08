@@ -27,7 +27,9 @@ class CreateAlumnosTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->string('tutor_type');
-            $table->string('carreer');
+
+            $table->string('user_name');
+            $table->string('user_password');
 
             $table->string('business')->nullable();
 

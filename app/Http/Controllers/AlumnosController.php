@@ -45,7 +45,8 @@ class AlumnosController extends Controller
             'state' => 'required|string',
             'country' => 'required|string',
             'tutor_type' => 'required|string',
-            'carreer' => 'required|string',
+            'user_name' => 'required|string',
+            'user_password' => 'required|string',
             'business' => 'required|string',
             'gerente' => 'required|exists:gerentes,id',
             'tetra' => 'required|exists:tetras,id',
@@ -70,7 +71,8 @@ class AlumnosController extends Controller
             'state' => 'required|string',
             'country' => 'required|string',
             'tutor_type' => 'required|string',
-            'carreer' => 'required|string',
+            'user_name' => 'required|string',
+            'user_password' => 'required|string',
             'business' => 'required|string',
             'gerente' => 'required|exists:gerentes,id',
             'tetra' => 'required|exists:tetras,id',
@@ -125,7 +127,8 @@ class AlumnosController extends Controller
                 'state' => $request->get('state'),
                 'country' => $request->get('country'),
                 'tutor_type' => $request->get('tutor_type'),
-                'carreer' => $request->get('carreer'),
+                'user_name' => $request->get('user_name'),
+                'user_password' => $request->get('user_password'),
                 'business' => $request->get('business'),
                 'gerente_id' => $request->get('gerente'),
                 'tetra_id' => $request->get('tetra'),
@@ -194,7 +197,8 @@ class AlumnosController extends Controller
         $alumno->state = $request->get('state');
         $alumno->country = $request->get('country');
         $alumno->tutor_type = $request->get('tutor_type');
-        $alumno->carreer = $request->get('carreer');
+        $alumno->user_name = $request->get('user_name');
+        $alumno->user_password = $request->get('user_password');
         $alumno->business = $request->get('business');
         $alumno->gerente_id = $request->get('gerente');
         $alumno->tetra_id = $request->get('tetra');

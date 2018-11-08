@@ -67,9 +67,13 @@
                               <label for="tutor_type">{{ __('alumnos.tutor_type') }}</label>
                           </div>
                           <div class="input-field col s12 m4 l4">
-                              <input id="carreer" name="carreer" type="text" class="validate" value="{{$alumno->carreer}}" required>
-                              <label for="carreer">{{ __('alumnos.carreer') }}</label>
+                              <input id="user_name" name="user_name" type="text" class="validate" value="{{$alumno->user_name}}" required>
+                              <label for="user_name">{{ __('alumnos.user_name') }}</label>
                           </div>
+                          <div class="input-field col s12 m4 l4">
+                            <input id="user_password" name="user_password" type="text" class="validate" value="{{$alumno->user_password}}" required>
+                            <label for="user_password">{{ __('alumnos.user_password') }}</label>
+                        </div>
                           <div class="input-field col s12 m4 l4">
                               <input id="business" name="business" type="text" class="validate" value="{{$alumno->business}}" required>
                               <label for="business">{{ __('alumnos.business') }}</label>

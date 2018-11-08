@@ -35,7 +35,6 @@ class TutoresTableSeeder extends Seeder
             'country' => 'Mexico',
 
             'user_name' => 'sdfsfsdf',
-            'user_password' => 'asdsadasd',
 
             'gerente_id' => Gerente::first()->id,
             'tetra_id' => Tetra::first()->id,

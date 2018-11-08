@@ -152,13 +152,6 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <label for="user_password">{{__('tutores.user_password')}}</label>
-                                    <input id="user_password" type="text" name="user_password" required class="validate">
-                                </div>
-                            </div>
-
                         <div class="row">
                             <div class="input-field col s12">
                                 <select id="tetra" name="tetra">

@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'alumnos' => 'Alumnos',
-    'alumno' => 'Alumno',
+    'alumnos' => 'Alumnos Aspirantes',
+    'alumno' => 'Alumno Aspirante',
     'campus' => 'Campus',
     'new_campus' => 'Nuevo campus',
     'no_campuses' => 'No existen campus ahorita ',
@@ -42,11 +42,13 @@ return [
     'country' => 'País',
     'tutor_type' => 'Tipo de tutor',
     'carreer' => 'Carrera',
-    'business' => 'Empresa',
+    'business' => 'Convenio con empresa',
     'tetra' => 'Tetra',
-    'gerente' => 'Gerente',
+    'gerente' => 'Coordinador',
+    'user_name' => 'Nombre de usuario',
+    'user_password' => 'Contraseña del usuario',
     'select_tetra' => 'Escoga un tetra',
-    'select_gerente' => 'Escoga un gerente',
+    'select_gerente' => 'Escoga un coordinador',
     'select_gender' => 'Escoge un género',
 
     'error_add_alumno' => 'Error creando al Alumno. Prueba nuevamente más tarde.',

@@ -51,7 +51,6 @@ class TutoresController extends Controller
             'country' => 'required|string',
 
             'user_name' => 'required|string',
-            'user_password' => 'required|string',
 
             'gerente' => 'required|exists:gerentes,id',
             'tetra' => 'required|exists:tetras,id',
@@ -82,7 +81,6 @@ class TutoresController extends Controller
             'country' => 'required|string',
 
             'user_name' => 'required|string',
-            'user_password' => 'required|string',
 
             'gerente' => 'required|exists:gerentes,id',
             'tetra' => 'required|exists:tetras,id',
@@ -142,7 +140,6 @@ class TutoresController extends Controller
                 'country' => $request->get('country'),
 
                 'user_name' => $request->get('user_name'),
-                'user_password' => $request->get('user_password'),
 
                 'gerente_id' => $request->get('gerente'),
                 'tetra_id' => $request->get('tetra'),
@@ -217,7 +214,6 @@ class TutoresController extends Controller
         $tutor->country = $request->get('country');
 
         $tutor->user_name = $request->get('user_name');
-        $tutor->user_password = $request->get('user_password');
 
         $tutor->gerente_id = $request->get('gerente');
         $tutor->tetra_id = $request->get('tetra');
