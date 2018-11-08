@@ -13,7 +13,7 @@
             <div class="row grid">
                 {{--  Alumno  --}}
                 <div class="col l12 m12 s12">
-                    <form action="{{route('campus-tutores')}}" method="GET">
+                    <form action="{{route('reportes-tutores')}}" method="GET">
                         @csrf
                         <br>
                         <div class="row">
@@ -21,10 +21,10 @@
                                 <div class="switch col s4 m4 l4">
                                     <label id="status-switch" style="color: black; font-size:20px;"> {{$campus->name}}
                                         <br>
-                                        {{ __('reportes.si') }}
-                                        <input name="{{$campus->id}}" type="checkbox">
-                                        <span class="lever"></span>
                                         {{ __('reportes.no') }}
+                                        <input name="{{$campus->id}}" type="checkbox" checked>
+                                        <span class="lever"></span>
+                                        {{ __('reportes.si') }}
                                         <br><br>
                                     </label>
                                 </div>

@@ -70,8 +70,8 @@ Route::group(['prefix' => 'alumnos',  'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'reportes',  'middleware' => 'auth'], function () {
     Route::get('/alumnos/campus', 'ExcelController@indexAlumno')->name('campus-alumnos');
     Route::get('/tutores/campus', 'ExcelController@indexTutor')->name('campus-tutores');
-    Route::get('/alumnos', 'ExcelController@indexAlumnos')->name('reportes-alumnos');
-    Route::get('/tutores', 'ExcelController@indexTutores')->name('reportes-tutores');
+    Route::post('/alumnos', 'ExcelController@postAlumnos')->name('reportes-alumnos');
+    Route::post('/tutores', 'ExcelController@postTutores')->name('reportes-tutores');
     // Route::get('/{alumno}', 'AlumnosController@getAlumno')->name('alumno');
     // Route::post('/{alumno}', 'AlumnosController@updateAlumno')->name('update-alumno');
     // Route::post('/delete/{alumno}', 'AlumnosController@deleteAlumno');

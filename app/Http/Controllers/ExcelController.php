@@ -79,8 +79,9 @@ class ExcelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexTutores()
+    public function postAlumnos(Request $request)
     {
+        dd($request);
         $data = [];
         $userable = Auth::user()->userable;
         $data['alumnos'] = null;
@@ -109,7 +110,7 @@ class ExcelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexAlumnos()
+    public function postTutores(Request $request)
     {
         $data = [];
         $userable = Auth::user()->userable;
