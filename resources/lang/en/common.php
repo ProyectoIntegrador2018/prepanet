@@ -57,5 +57,6 @@ return [
     'payed_in_store' => 'Customer paid in store',
     'try_outs' => 'Try outs',
     'no' => 'No',
-    'back' => 'Atrás'
+    'back' => 'Atrás',
+    'next' => 'Siguiente',
 ];

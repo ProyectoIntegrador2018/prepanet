@@ -37,11 +37,14 @@
             @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('super-administrators')}}"><i class="material-icons">accessibility</i>Super Administradores</a></li>@endif
             @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('gerentes')}}"><i class="material-icons">accessibility</i>Gerentes</a></li>@endif
             @if(isSuperAdmin(\Auth::user()->userable))<li><a href="{{route('campuses')}}"><i class="material-icons">business</i>Campus</a></li>@endif
-            @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">today</i>Reportes</a></li>@endif
+            {{-- @if(isSuperAdmin(\Auth::user()->userable))<li><a href=""><i class="material-icons">today</i>Reportes</a></li>@endif --}}
             <li><div class="divider"></div></li>
             <li><a href="{{route('tetras')}}"><i class="material-icons">accessibility</i>Tetras</a></li>
             <li><a href="{{route('tutores')}}"><i class="material-icons">accessibility</i>Tutores</a></li>
             <li><a href="{{route('alumnos')}}"><i class="material-icons">accessibility</i>Alumnos</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="{{route('tetras')}}"><i class="material-icons">today</i>Reportes de Alumnos</a></li>
+            <li><a href="{{route('tetras')}}"><i class="material-icons">today</i>Reportes de Tutores</a></li>
             <li><div class="divider"></div></li>
             <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>
