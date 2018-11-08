@@ -91,10 +91,15 @@ class ExcelController extends Controller
                 }
             }
             $campus_instances = Campus::find($campus_array);
-            $data['campuses'] = $campus_array;
+            $alumnos = [];
+            foreach ($campus_instances as $campus) {
+                array_push($alumnos, $campus->alumnos);
+            }
+            $last_alumnos = collect($alumnos)->collapse();
+            $data['alumnos'] = $last_alumnos;
             return view('reportes-alumnos.reportes', $data);
         }
-        return back()->withErrors(__('alumnos.error_add_alumno'));
+        return back()->withErrors(__('reportes.error_campuses'));
     }
 
     /**
@@ -114,9 +119,14 @@ class ExcelController extends Controller
                 }
             }
             $campus_instances = Campus::find($campus_array);
-            $data['campuses'] = $campus_array;
+            $tutores = [];
+            foreach ($campus_instances as $campus) {
+                array_push($tutores, $campus->tutores);
+            }
+            $last_tutores = collect($tutores)->collapse();
+            $data['tutores'] = $last_tutores;
             return view('reportes-tutores.reportes', $data);
         }
-        return back()->withErrors(__('alumnos.error_add_alumno'));
+        return back()->withErrors(__('reportes.error_campuses'));
     }
 }

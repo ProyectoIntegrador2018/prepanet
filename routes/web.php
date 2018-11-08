@@ -72,7 +72,6 @@ Route::group(['prefix' => 'reportes',  'middleware' => 'auth'], function () {
     Route::get('/tutores/campus', 'ExcelController@indexTutor')->name('campus-tutores');
     Route::post('/alumnos', 'ExcelController@postAlumnos')->name('reportes-alumnos');
     Route::post('/tutores', 'ExcelController@postTutores')->name('reportes-tutores');
-    // Route::get('/{alumno}', 'AlumnosController@getAlumno')->name('alumno');
-    // Route::post('/{alumno}', 'AlumnosController@updateAlumno')->name('update-alumno');
-    // Route::post('/delete/{alumno}', 'AlumnosController@deleteAlumno');
+    Route::post('/alumnos/excel', 'ExcelController@generateAlumnosExcel')->name('excel-alumnos');
+    Route::post('/tutores/excel', 'ExcelController@generateTutoresExcel')->name('excel-tutores');
 });

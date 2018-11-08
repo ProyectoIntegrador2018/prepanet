@@ -16,5 +16,7 @@ return [
     'reporte_alumnos' => 'Reportes Alumnos',
     'reporte_tutores' => 'Reportes Tutores',
     'si' => 'Activo',
-    'no' => 'No Activo'
+    'no' => 'No Activo',
+    'error_campuses' => 'Tienes que seleccionar un campus!',
+
 ];
