@@ -15,8 +15,11 @@
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
-                                                <h5 class="bold black-text">{{$tutor->first_name}} {{$tutor->last_name}}</h5>
-                                                <h5 class="black-text">{{$tutor->tetra->identifier}}</h5>
+                                                <h5 class="bold black-text">Nombre: {{$tutor->first_name}} {{$tutor->last_name}}</h5>
+                                                <h5 class="black-text">Campus: {{$tutor->tetra->campus->name}}</h5>
+                                                <h5 class="black-text">Tetra: {{$tutor->tetra->identifier}}</h5>
+                                                <h5 class="black-text">Periodo: {{$tutor->tetra->tipoTetra()}}</h5>
+                                                <h5 class="black-text">Coordinador: {{$tutor->gerente->user->first_name}} {{$tutor->gerente->user->last_name}}</h5>
                                             </div>
                                         </div>
                                     </div>

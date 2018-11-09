@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Config;
 use App\Models\Campus;
-use App\Models\Users\Tutor;
-use App\Models\Users\Alumno;
+use App\Models\Aplicaciones\Tutor;
+use App\Models\Aplicaciones\Alumno;
 use App\Models\Users\Gerente;
 use Illuminate\Database\Eloquent\Model;
 
@@ -57,5 +58,18 @@ class Tetra extends Model
     public function isDeletable()
     {
         return true;
+    }
+
+    public function countTotal(){
+        return $this->alumnos->count() + $this->tutores->count();
+    }
+
+    public function tipoTetra(){
+        $types = Config::get('tetras');
+        foreach ($types as $id => $name){
+            if ($this->type == $id){
+                return $name;
+            }
+        }
     }
 }

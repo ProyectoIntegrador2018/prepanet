@@ -15,8 +15,10 @@
                                     <div class="bordered-card card hoverable border-primary-color">
                                         <div class="card-content">
                                             <div class="row">
-                                                <h5 class="bold black-text">{{$tetra->identifier}}</h5>
-                                                <h5 class="black-text">{{$tetra->campus->name}}</h5>
+                                                <h5 class="bold black-text">Identificador: {{$tetra->identifier}}</h5>
+                                                <h5 class="black-text">Periodo: {{$tetra->tipoTetra()}}</h5>
+                                                <h5 class="black-text">Campus: {{$tetra->campus->name}}</h5>
+                                                <h5 class="black-text">Capacidad: {{$tetra->countTotal()}} / {{$tetra->goal}}</h5>
                                             </div>
                                         </div>
                                     </div>
