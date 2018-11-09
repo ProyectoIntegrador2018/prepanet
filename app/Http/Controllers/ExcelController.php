@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Session;
+use Excel;
 use Carbon\Carbon;
 use App\Models\Tetra;
 use App\Models\Campus;
-use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 use App\Models\Users\Gerente;
 use Illuminate\Validation\Rule;
 use App\Models\Aplicaciones\Tutor;
 use App\Models\Aplicaciones\Alumno;
 use App\Models\Users\SuperAdministrator;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExcelController extends Controller
 {
@@ -159,7 +160,7 @@ class ExcelController extends Controller
                 }
             }
             $alumnos_instances = Alumno::find($alumnos_array);
-            return Excel::download(new AlumnosExport($alumnos_array), 'alumnos.xlsx');
+            return Excel::download(new \App\Exports\AlumnosExport($alumnos_instances), 'alumnos.xlsx');
             // return new \App\Exports\AlumnosExport($alumnos_array);
             // $alumnos = [];
             // foreach ($alumnos_instances as $campus) {
@@ -208,5 +209,13 @@ class ExcelController extends Controller
             // return view('reportes-tutores.reportes', $data);
         }
         return back()->withErrors(__('reportes.error_campuses'));
+    }
+
+    /**
+     * @return BinaryFileResponse
+     */
+    public function export()
+    {
+        return Excel::download(new \App\Exports\AlumnosExport(), 'alumnos.xlsx');
     }
 }

@@ -3,14 +3,15 @@
 namespace App\Exports;
 
 use App\Models\Aplicaciones\Alumno;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\Support\Responsable;
-use Maatwebsite\Excel\Concerns\FromQuery;
 
-class AlumnosExport implements FromQuery, WithHeadings, WithMapping
+class AlumnosExport implements FromCollection, WithMapping, WithHeadings
 {
     use Exportable;
 
@@ -26,9 +27,14 @@ class AlumnosExport implements FromQuery, WithHeadings, WithMapping
         $this->alumnos = $alumnos;
     }
 
-    public function query()
+    // public function query()
+    // {
+    //     return Alumno::find($this->alumnos);
+    // }
+
+    public function collection()
     {
-        return Alumno::find($this->alumnos);
+        return $this->alumnos;
     }
 
     /**
