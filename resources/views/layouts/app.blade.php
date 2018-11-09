@@ -43,8 +43,11 @@
             <li><a href="{{route('tutores')}}"><i class="material-icons">accessibility</i>Tutores</a></li>
             <li><a href="{{route('alumnos')}}"><i class="material-icons">accessibility</i>Alumnos</a></li>
             <li><div class="divider"></div></li>
-            <li><a href="{{route('campus-alumnos')}}"><i class="material-icons">today</i>Reportes de Alumnos</a></li>
-            <li><a href="{{route('campus-tutores')}}"><i class="material-icons">today</i>Reportes de Tutores</a></li>
+            <li><a href="{{route('campus-alumnos')}}"><i class="material-icons">today</i>Alta de Alumnos</a></li>
+            <li><a href="{{route('campus-tutores')}}"><i class="material-icons">today</i>Alta de Tutores</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="{{route('campus-alumnos-en')}}"><i class="material-icons">today</i>Enrolamiento de Alumnos</a></li>
+            <li><a href="{{route('campus-tutores-en')}}"><i class="material-icons">today</i>Enrolamiento de Tutores</a></li>
             <li><div class="divider"></div></li>
             <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>
