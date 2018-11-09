@@ -160,15 +160,7 @@ class ExcelController extends Controller
                 }
             }
             $alumnos_instances = Alumno::find($alumnos_array);
-            return Excel::download(new \App\Exports\AlumnosExport($alumnos_instances), 'alumnos.xlsx');
-            // return new \App\Exports\AlumnosExport($alumnos_array);
-            // $alumnos = [];
-            // foreach ($alumnos_instances as $campus) {
-            //     array_push($alumnos, $campus->alumnos);
-            // }
-            // $last_alumnos = collect($alumnos)->collapse();
-            // $data['alumnos'] = $last_alumnos;
-            // return view('reportes-alumnos.reportes', $data);
+            return Excel::download(new \App\Exports\AlumnosExport($alumnos_instances), 'alumnos' . '-' . time() .'.xlsx');
         }
         return back()->withErrors(__('reportes.error_alumnos'));
     }
@@ -190,23 +182,7 @@ class ExcelController extends Controller
                 }
             }
             $tutores_instance = Tutor::find($tutores_array);
-            Excel::create('Laravel Excel', function($excel) {
-
-                $excel->sheet('Productos', function($sheet) {
-
-                    $products = Product::all();
-
-                    $sheet->fromArray($products);
-
-                });
-            })->export('xls');
-            // $tutores = [];
-            // foreach ($campus_instances as $campus) {
-            //     array_push($tutores, $campus->tutores);
-            // }
-            // $last_tutores = collect($tutores)->collapse();
-            // $data['tutores'] = $last_tutores;
-            // return view('reportes-tutores.reportes', $data);
+            return Excel::download(new \App\Exports\TutoresExport($tutores_instance), 'tutores' . '-' . time() .'.xlsx');
         }
         return back()->withErrors(__('reportes.error_campuses'));
     }

@@ -59,4 +59,5 @@ return [
     'no' => 'No',
     'back' => 'Atrás',
     'next' => 'Siguiente',
+    'generar' => 'Generar'
 ];

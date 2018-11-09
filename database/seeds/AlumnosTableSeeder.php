@@ -20,7 +20,7 @@ class AlumnosTableSeeder extends Seeder
         Alumno::create([
             'first_name' => 'Jose',
             'last_name' => 'Pablo',
-            'gender' => '0',
+            'gender' => 'H',
             'birth_date' => new Carbon(),
             'work_email' => 'ddsf@mail.com',
             'email' => 'sdfsdf@mail.com',
