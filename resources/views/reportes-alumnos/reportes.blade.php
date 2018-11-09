@@ -19,7 +19,7 @@
                         <div class="row">
                             @foreach ($alumnos as $alumno)
                                 <div class="switch col s12 m12 l12">
-                                <label id="status-switch" style="color: black; font-size:20px;"> Nombre del alumno: {{$alumno->first_name}} {{$alumno->last_name}} || Gerente: {{$alumno->gerente->user->first_name}} {{$alumno->gerente->user->last_name}} || Campus: {{$alumno->tetra->campus->name}} || Tetra: {{$alumno->tetra->identifier}}
+                                <label id="status-switch" style="color: black; font-size:20px;"> Alumno: {{$alumno->first_name}} {{$alumno->last_name}} || Gerente: {{$alumno->gerente->user->first_name}} {{$alumno->gerente->user->last_name}} || Campus: {{$alumno->tetra->campus->name}} || Tetra: {{$alumno->tetra->identifier}} - {{$alumno->tetra->tipoTetra()}}
                                         <br>
                                         {{ __('reportes.no') }}
                                         <input name="alumnos[{{$alumno->id}}]" type="checkbox" checked>
