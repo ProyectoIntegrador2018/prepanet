@@ -13,7 +13,7 @@
             <div class="row grid">
                 {{--  Alumno  --}}
                 <div class="col l12 m12 s12">
-                    <form action="{{route('reportes-alumnos')}}" method="POST">
+                    <form action="{{route('excel-alumnos')}}" method="POST">
                         @csrf
                         <br>
                         <div class="row">
@@ -22,7 +22,7 @@
                                 <label id="status-switch" style="color: black; font-size:20px;"> Nombre del alumno: {{$alumno->first_name}} {{$alumno->last_name}} || Gerente: {{$alumno->gerente->user->first_name}} {{$alumno->gerente->user->last_name}} || Campus: {{$alumno->tetra->campus->name}} || Tetra: {{$alumno->tetra->identifier}}
                                         <br>
                                         {{ __('reportes.no') }}
-                                        <input name="campuses[{{$alumno->id}}]" type="checkbox" checked>
+                                        <input name="alumnos[{{$alumno->id}}]" type="checkbox" checked>
                                         <span class="lever"></span>
                                         {{ __('reportes.si') }}
                                         <br><br>
