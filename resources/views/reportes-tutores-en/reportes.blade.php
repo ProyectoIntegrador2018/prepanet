@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<h2 class="header white-text">{{__('reportes.reporte_tutores')}}</h2>
+<h2 class="header white-text">{{__('reportes.reporte_tutores_en')}}</h2>
 @stop
 
 @section('content')

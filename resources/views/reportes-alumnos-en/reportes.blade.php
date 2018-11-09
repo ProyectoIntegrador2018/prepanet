@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<h2 class="header white-text">{{__('reportes.reporte_alumnos')}}</h2>
+<h2 class="header white-text">{{__('reportes.reporte_alumnos_en')}}</h2>
 @stop
 
 @section('content')
@@ -35,7 +35,7 @@
                                 <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('common.generar') }}</button>
                             </div>
                             <div class="col s6 l6 center">
-                                <a href="{{route('campus-alumnos')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
+                                <a href="{{route('campus-alumnos-en')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
                             </div>
                         </div>
                     </form>
