@@ -97,6 +97,12 @@ class ExcelController extends Controller
                 array_push($alumnos, $campus->alumnos);
             }
             $last_alumnos = collect($alumnos)->collapse();
+            if($request->get('now') && $request->get('now') == "on") {
+                return Excel::download(
+                    new \App\Exports\AlumnosExport($last_alumnos),
+                    'alumnos-alta' . '-' . time() .'.xlsx'
+                );
+            }
             $data['alumnos'] = $last_alumnos;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {
@@ -131,6 +137,12 @@ class ExcelController extends Controller
                 array_push($tutores, $campus->tutores);
             }
             $last_tutores = collect($tutores)->collapse();
+            if($request->get('now') && $request->get('now') == "on") {
+                return Excel::download(
+                    new \App\Exports\TutoresExport($last_tutores),
+                    'tutores-alta' . '-' . time() .'.xlsx'
+                );
+            }
             $data['tutores'] = $last_tutores;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {
@@ -255,6 +267,12 @@ class ExcelController extends Controller
                 array_push($alumnos, $campus->alumnos);
             }
             $last_alumnos = collect($alumnos)->collapse();
+            if($request->get('now') && $request->get('now') == "on") {
+                return Excel::download(
+                    new \App\Exports\AlumnosEnExport($last_alumnos),
+                    'alumnos-enrolamiento' . '-' . time() .'.xlsx'
+                );
+            }
             $data['alumnos'] = $last_alumnos;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {
@@ -289,6 +307,12 @@ class ExcelController extends Controller
                 array_push($tutores, $campus->tutores);
             }
             $last_tutores = collect($tutores)->collapse();
+            if($request->get('now') && $request->get('now') == "on") {
+                return Excel::download(
+                    new \App\Exports\TutoresEnExport($last_tutores),
+                    'tutores-enrolamiento' . '-' . time() .'.xlsx'
+                );
+            }
             $data['tutores'] = $last_tutores;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {

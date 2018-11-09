@@ -58,6 +58,6 @@ return [
     'try_outs' => 'Try outs',
     'no' => 'No',
     'back' => 'Atrás',
-    'next' => 'Siguiente',
+    'next' => 'Siguiente/Generar',
     'generar' => 'Generar'
 ];
