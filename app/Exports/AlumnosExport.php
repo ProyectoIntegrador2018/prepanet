@@ -32,28 +32,41 @@ class AlumnosExport implements FromCollection, WithMapping, WithHeadings, Should
     */
     public function map($alumno): array
     {
+        $username = $alumno->user_name . $alumno->campus_code;
         return [
+            $alumno->campus_code,
+            'None',
+            $username,
+            $username,
             $alumno->first_name,
             $alumno->last_name,
-            $alumno->gender,
-            $alumno->birth_date,
             $alumno->email,
-            $alumno->phone,
-            $alumno->city,
-            $alumno->state,
+            'PRN',
+            'Faculty',
+            'Y',
+            $alumno->user_password,
+            'SYSTEM',
+            $alumno->campus_code . '|' . 'None' . '|' . $username . '|' . $alumno->user_name . '|' . $alumno->first_name . '|' .
+            $alumno->last_name . '|' . $alumno->email . '|' . 'PRN' . '|' . 'Faculty' . '|' . 'Y' . '|' . $alumno->user_password . '|' .
+            'SYSTEM',
         ];
     }
 
     public function headings(): array{
         return [
-            'Nombre(s)',
-            'Apellidos',
-            'Género',
-            'Fecha de Nacimiento',
-            'Correo electrónico',
-            'Teléfono',
-            'Ciudad',
-            'Estado',
+            'FECHA ALTA',
+            'System_Role',
+            'External_Person_Key',
+            'User_ID',
+            'Firstname',
+            'Lastname',
+            'Email',
+            'Company',
+            'Institution_Role',
+            'Available_Ind',
+            'passwd',
+            'Data_Source_Key',
+            'System_Role|External_Person_Key|User_ID|Firstname|Lastname|Email|Company|Institution_Role|Available_Ind|passwd|Data_Source_Key'
         ];
     }
 

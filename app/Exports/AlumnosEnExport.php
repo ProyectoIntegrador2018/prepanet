@@ -32,28 +32,30 @@ class AlumnosEnExport implements FromCollection, WithMapping, WithHeadings, Shou
     */
     public function map($alumno): array
     {
+        $username = $alumno->user_name . $alumno->campus_code;
+        $course_key = "PRN.WA1000L.1873." . $alumno->campus_code . "1";
         return [
-            $alumno->first_name,
-            $alumno->last_name,
-            $alumno->gender,
-            $alumno->birth_date,
-            $alumno->email,
-            $alumno->phone,
-            $alumno->city,
-            $alumno->state,
+            $alumno->campus_code,
+            $username,
+            "student",
+            "Enabled",
+            "Y",
+            $course_key,
+            "1899",
+            $username . "|" . "student" . "|" . "Enabled" . "|" . "Y" . "|" . $course_key . "|" . "1899",
         ];
     }
 
     public function headings(): array{
         return [
-            'Nombre(s)',
-            'Apellidos',
-            'Género',
-            'Fecha de Nacimiento',
-            'Correo electrónico',
-            'Teléfono',
-            'Ciudad',
-            'Estado',
+            'NOTAS',
+            'External_Person_Key',
+            'Role',
+            'Row_Status',
+            'Available_ind',
+            'External_Course_Key',
+            'Data_Source_Key',
+            'External_Person_Key|Role|Row_Status|Available_ind|External_Course_Key|Data_Source_Key'
         ];
     }
 

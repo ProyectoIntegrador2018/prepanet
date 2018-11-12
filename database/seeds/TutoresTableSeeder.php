@@ -33,6 +33,7 @@ class TutoresTableSeeder extends Seeder
             'zipcode' => '433243',
             'state' => 'Nuevo Leon',
             'country' => 'Mexico',
+            'campus_code' => 'MTY',
 
             'user_name' => 'sdfsfsdf',
 

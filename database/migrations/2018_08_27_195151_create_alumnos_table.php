@@ -31,6 +31,8 @@ class CreateAlumnosTable extends Migration
             $table->string('user_name');
             $table->string('user_password');
 
+            $table->string('campus_code');
+
             $table->string('business')->nullable();
 
             $table->integer('gerente_id')->unsigned();

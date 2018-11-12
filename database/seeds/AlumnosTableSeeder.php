@@ -31,6 +31,7 @@ class AlumnosTableSeeder extends Seeder
             'tutor_type' => 'sad',
             'user_name' => 'josepablo123',
             'user_password' => '123456',
+            'campus_code' => 'MTY',
             'business' => 'ITESM',
             'gerente_id' => Gerente::first()->id,
             'tetra_id' => Tetra::first()->id,

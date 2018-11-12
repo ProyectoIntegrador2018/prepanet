@@ -113,6 +113,8 @@ class AlumnosController extends Controller
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
+        $tetra = Tetra::find($request->get('tetra'));
+        $campus_code = $tetra->campus->code;
 
         try {
             $alumno = Alumno::create([
@@ -131,6 +133,7 @@ class AlumnosController extends Controller
                 'user_password' => $request->get('user_password'),
                 'business' => $request->get('business'),
                 'gerente_id' => $request->get('gerente'),
+                'campus_code' => $campus_code,
                 'tetra_id' => $request->get('tetra'),
             ]);
         } catch (\Exception $e) {
@@ -186,6 +189,9 @@ class AlumnosController extends Controller
     {
         validateData($request->all(), $this->editRules());
 
+        $tetra = Tetra::find($request->get('tetra'));
+        $campus_code = $tetra->campus->code;
+
         $alumno->first_name = $request->get('first_name');
         $alumno->last_name = $request->get('last_name');
         $alumno->gender = $request->get('gender');
@@ -201,7 +207,8 @@ class AlumnosController extends Controller
         $alumno->user_password = $request->get('user_password');
         $alumno->business = $request->get('business');
         $alumno->gerente_id = $request->get('gerente');
-        $alumno->tetra_id = $request->get('tetra');
+        $alumno->tetra_id = $tetra;
+        $alumno->campus_code = $campus_code;
 
         DB::transaction(function () use ($request, $alumno) {
             try {

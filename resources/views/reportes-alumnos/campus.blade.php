@@ -17,6 +17,19 @@
                         @csrf
                         <br>
                         <div class="row">
+                            <div class="input-field col s12">
+                                <select id="tetra" name="tetra">
+                                    <option value="" disabled selected>{{__('tetras.select_type')}}</option>
+
+                                    @foreach($types as $id => $name)
+                                        <option value="{{$id}}">{{$name}}</option>
+                                    @endforeach
+
+                                </select>
+                                <label for="tetra">{{__('tetras.type')}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
                             @foreach ($campuses as $campus)
                                 <div class="switch col s4 m4 l4">
                                     <label id="status-switch" style="color: black; font-size:20px;"> {{$campus->name}}
@@ -31,16 +44,16 @@
                             @endforeach
                         </div>
                         <div class="row">
-                                <div class="switch col s12 m12 l12 center">
-                                    <label id="status-switch" style="color: black; font-size:20px;"> Generar reporte sin seleccionar alumnos específicos de campus
-                                        <br>
-                                        {{ __('reportes.no') }}
-                                        <input name="now" type="checkbox">
-                                        <span class="lever"></span>
-                                        {{ __('reportes.si') }}
-                                        <br><br>
-                                    </label>
-                                </div>
+                            <div class="switch col s12 m12 l12 center">
+                                <label id="status-switch" style="color: black; font-size:20px;"> Generar reporte sin seleccionar alumnos específicos de campus
+                                    <br>
+                                    {{ __('reportes.no') }}
+                                    <input name="now" type="checkbox">
+                                    <span class="lever"></span>
+                                    {{ __('reportes.si') }}
+                                    <br><br>
+                                </label>
+                            </div>
                         </div>
                         <div class="row center">
                             <div class="col s6 l6 center">

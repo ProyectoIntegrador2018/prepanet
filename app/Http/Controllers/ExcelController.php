@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
-use Session;
 use Excel;
+use Config;
+use Session;
 use Carbon\Carbon;
 use App\Models\Tetra;
 use App\Models\Campus;
@@ -39,6 +40,7 @@ class ExcelController extends Controller
         $data = [];
         $userable = Auth::user()->userable;
         $data['campuses'] = null;
+        $data['types'] = Config::get('tetras');
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['campuses'] = Campus::all();
@@ -62,6 +64,7 @@ class ExcelController extends Controller
         $data = [];
         $userable = Auth::user()->userable;
         $data['campuses'] = null;
+        $data['types'] = Config::get('tetras');
         switch (true) {
             case $userable instanceof SuperAdministrator:
                 $data['campuses'] = Campus::all();
@@ -83,6 +86,7 @@ class ExcelController extends Controller
     public function postAlumnos(Request $request)
     {
         $data = [];
+        validateData($request->all(), ['tetra' => 'required']);
         if ($request->get('campuses') != null){
             $campuses = $request->get('campuses');
             $campus_array = [];
@@ -95,6 +99,7 @@ class ExcelController extends Controller
             $alumnos = [];
             foreach ($campus_instances as $campus) {
                 array_push($alumnos, $campus->alumnos);
+                // $alumnos["$campus->name"] = $campus->alumnos;
             }
             $last_alumnos = collect($alumnos)->collapse();
             if($request->get('now') && $request->get('now') == "on") {
@@ -114,6 +119,47 @@ class ExcelController extends Controller
         }
         return back()->withErrors(__('reportes.error_campuses'));
     }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function postAlumnos(Request $request)
+    // {
+    //     $data = [];
+    //     validateData($request->all(), ['tetra' => 'required']);
+    //     if ($request->get('campuses') != null){
+    //         $campuses = $request->get('campuses');
+    //         $campus_array = [];
+    //         foreach ($campuses as $id => $value){
+    //             if($value == "on"){
+    //                 array_push($campus_array, $id);
+    //             }
+    //         }
+    //         $campus_instances = Campus::find($campus_array);
+    //         $alumnos = [];
+    //         foreach ($campus_instances as $campus) {
+    //             array_push($alumnos, $campus->alumnos);
+    //         }
+    //         $last_alumnos = collect($alumnos)->collapse();
+    //         if($request->get('now') && $request->get('now') == "on") {
+    //             return Excel::download(
+    //                 new \App\Exports\AlumnosExport($last_alumnos),
+    //                 'alumnos-alta' . '-' . time() .'.xlsx'
+    //             );
+    //         }
+    //         $data['alumnos'] = $last_alumnos;
+    //         // $gerentes = [];
+    //         // foreach ($campus_instances as $campus) {
+    //         //     array_push($gerentes, $campus->gerentes);
+    //         // }
+    //         // $last_gerentes = collect($gerentes)->collapse();
+    //         // $data['gerentes'] = $last_gerentes;
+    //         return view('reportes-alumnos.reportes', $data);
+    //     }
+    //     return back()->withErrors(__('reportes.error_campuses'));
+    // }
 
     /**
      * Display a listing of the resource.
