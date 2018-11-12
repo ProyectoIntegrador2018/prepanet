@@ -169,6 +169,7 @@ class ExcelController extends Controller
     public function postTutores(Request $request)
     {
         $data = [];
+        validateData($request->all(), ['tetra' => 'required']);
         if ($request->get('campuses') != null){
             $campuses = $request->get('campuses');
             $campus_array = [];

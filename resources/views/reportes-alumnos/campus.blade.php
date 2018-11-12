@@ -57,7 +57,7 @@
                         </div>
                         <div class="row center">
                             <div class="col s6 l6 center">
-                                <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('common.next') }}</button>
+                                <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">GENERAR</button>
                             </div>
                             <div class="col s6 l6 center">
                                 <a href="{{route('alumnos')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>

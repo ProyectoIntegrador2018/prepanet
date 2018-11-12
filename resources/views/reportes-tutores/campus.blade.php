@@ -17,6 +17,19 @@
                         @csrf
                         <br>
                         <div class="row">
+                            <div class="input-field col s12">
+                                <select id="tetra" name="tetra">
+                                    <option value="" disabled selected>{{__('tetras.select_type')}}</option>
+
+                                    @foreach($types as $id => $name)
+                                        <option value="{{$id}}">{{$name}}</option>
+                                    @endforeach
+
+                                </select>
+                                <label for="tetra">{{__('tetras.type')}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
                             @foreach ($campuses as $campus)
                                 <div class="switch col s4 m4 l4">
                                     <label id="status-switch" style="color: black; font-size:20px;"> {{$campus->name}}
@@ -44,7 +57,7 @@
                         </div>
                         <div class="row center">
                             <div class="col s6 l6 center">
-                                <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">{{ __('common.next') }}</button>
+                                <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">GENERAR</button>
                             </div>
                             <div class="col s6 l6 center">
                                 <a href="{{route('alumnos')}}" class="waves-effect waves-light btn-large modal-trigger orange">{{ __('common.back') }}</a>
