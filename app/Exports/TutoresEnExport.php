@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Aplicaciones\Tutor;
 use App\Models\Aplicaciones\Alumno;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -32,36 +33,28 @@ class TutoresEnExport implements FromCollection, WithMapping, WithHeadings, Shou
     */
     public function map($tutor): array
     {
+        $username = $tutor->user_name . $tutor->campus_code;
+        $course_key = "PRN.FT1000L.1872." . $tutor->campus_code . "1";
         return [
-            $tutor->first_name,
-            $tutor->last_name,
-            $tutor->gender,
-            $tutor->birth_date,
-            $tutor->email,
-            $tutor->phone,
-            $tutor->street,
-            $tutor->street_number,
-            $tutor->city,
-            $tutor->state,
-            $tutor->country,
-            $tutor->user_name,
+            $username,
+            "student",
+            "Enabled",
+            "Y",
+            $course_key,
+            "1899",
+            $username . "|" . "student" . "|" . "Enabled" . "|" . "Y" . "|" . $course_key . "|" . "1899",
         ];
     }
 
     public function headings(): array{
         return [
-            'Nombre(s)',
-            'Apellidos',
-            'Género',
-            'Fecha de Nacimiento',
-            'Correo electrónico',
-            'Teléfono',
-            'Calle',
-            'Número de calle',
-            'Ciudad',
-            'Estado',
-            'País',
-            'Usuario/matricula'
+            'External_Person_Key',
+            'Role',
+            'Row_Status',
+            'Available_ind',
+            'External_Course_Key',
+            'Data_Source_Key',
+            'External_Person_Key|Role|Row_Status|Available_ind|External_Course_Key|Data_Source_Key'
         ];
     }
 
