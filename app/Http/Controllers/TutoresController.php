@@ -121,6 +121,9 @@ class TutoresController extends Controller
     {
         // $this->authorize('create', Company::class);
         validateData($request->all(), $this->createRules());
+        $tetra = Tetra::find($request->get('tetra'));
+        $campus_code = $tetra->campus->code;
+
         try {
             $tutor = Tutor::create([
                 'first_name' => $request->get('first_name'),
@@ -138,6 +141,7 @@ class TutoresController extends Controller
                 'zipcode' => $request->get('zipcode'),
                 'state' => $request->get('state'),
                 'country' => $request->get('country'),
+                'campus_code' => $campus_code,
 
                 'user_name' => $request->get('user_name'),
 
@@ -196,6 +200,8 @@ class TutoresController extends Controller
     public function updateTutor(Request $request, Tutor $tutor)
     {
         validateData($request->all(), $this->editRules());
+        $tetra = Tetra::find($request->get('tetra'));
+        $campus_code = $tetra->campus->code;
 
         $tutor->first_name = $request->get('first_name');
         $tutor->last_name = $request->get('last_name');
@@ -212,11 +218,12 @@ class TutoresController extends Controller
         $tutor->zipcode = $request->get('zipcode');
         $tutor->state = $request->get('state');
         $tutor->country = $request->get('country');
+        $tutor->campus_code = $request->get('tetra');
 
         $tutor->user_name = $request->get('user_name');
 
         $tutor->gerente_id = $request->get('gerente');
-        $tutor->tetra_id = $request->get('tetra');
+        $tutor->tetra_id = $tetra;
 
         DB::transaction(function () use ($request, $tutor) {
             try {

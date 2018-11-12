@@ -8,7 +8,7 @@
     <div class="section">
         <div id="main" class="container">
             <div class="row">
-                <h1> Eliga los campus para los cuales quiere generar un reporte</h1>
+                <h1> Elija los campus para los cuales quiere generar un reporte</h1>
             </div>
             <div class="row grid">
                 {{--  Alumno  --}}

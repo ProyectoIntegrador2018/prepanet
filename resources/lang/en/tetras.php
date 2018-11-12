@@ -27,7 +27,7 @@ return [
     'goal' => 'Meta de inscripciones',
     'campus' => 'Campus del tetra',
     'identifier' => 'Identificador',
-    'select_campus' => 'Eliga un campus',
+    'select_campus' => 'Elija un campus',
     'select_type' => 'Escoge tetra',
 
     'error_add_tetra' => 'Error creando el tetra. Prueba nuevamente más tarde.',

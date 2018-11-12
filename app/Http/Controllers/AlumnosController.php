@@ -207,7 +207,7 @@ class AlumnosController extends Controller
         $alumno->user_password = $request->get('user_password');
         $alumno->business = $request->get('business');
         $alumno->gerente_id = $request->get('gerente');
-        $alumno->tetra_id = $tetra;
+        $alumno->tetra_id = $request->get('tetra');
         $alumno->campus_code = $campus_code;
 
         DB::transaction(function () use ($request, $alumno) {

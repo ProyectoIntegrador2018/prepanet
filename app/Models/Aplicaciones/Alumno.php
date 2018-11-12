@@ -20,7 +20,8 @@ class Alumno extends Model
         'city', 'state', 'country',
         'tutor_type', 'business',
         'user_name', 'user_password',
-        'gerente_id', 'tetra_id', 'birth_date'
+        'gerente_id', 'tetra_id', 'birth_date',
+        'campus_code'
     ];
 
     /**
