@@ -43,7 +43,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="switch col s12 m12 l12 center">
                                 <label id="status-switch" style="color: black; font-size:20px;"> Generar reporte sin seleccionar alumnos específicos de campus
                                     <br>
@@ -54,7 +54,7 @@
                                     <br><br>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row center">
                             <div class="col s6 l6 center">
                                 <button id="save-alumno" type="submit" class="primary-button waves-effect waves-light btn-large">GENERAR</button>

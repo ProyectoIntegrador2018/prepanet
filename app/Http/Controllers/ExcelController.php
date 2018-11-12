@@ -97,69 +97,33 @@ class ExcelController extends Controller
             }
             $campus_instances = Campus::find($campus_array);
             $alumnos = [];
+            $actual_alumnos = [];
             foreach ($campus_instances as $campus) {
-                array_push($alumnos, $campus->alumnos);
-                // $alumnos["$campus->name"] = $campus->alumnos;
+                $actual_alumnos = $campus->alumnos;
+                $filtered = $actual_alumnos->where('tetra_id', $request->get('tetra'));
+                array_push($alumnos, $filtered);
             }
             $last_alumnos = collect($alumnos)->collapse();
-            if($request->get('now') && $request->get('now') == "on") {
-                return Excel::download(
-                    new \App\Exports\AlumnosExcel($last_alumnos),
-                    'alumnos-alta' . '-' . time() .'.xlsx'
-                );
-            }
-            $data['alumnos'] = $last_alumnos;
+            // if($request->get('now') && $request->get('now') == "on") {
+            //     return Excel::download(
+            //         new \App\Exports\AlumnosExcel($last_alumnos),
+            //         'alumnos-alta' . '-' . time() .'.xlsx'
+            //     );
+            // }
+            // $data['alumnos'] = $last_alumnos;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {
             //     array_push($gerentes, $campus->gerentes);
             // }
             // $last_gerentes = collect($gerentes)->collapse();
             // $data['gerentes'] = $last_gerentes;
-            return view('reportes-alumnos.reportes', $data);
+            return Excel::download(
+                new \App\Exports\AlumnosExcel($last_alumnos),
+                'alumnos-alta' . '-' . time() .'.xlsx'
+            );
         }
         return back()->withErrors(__('reportes.error_campuses'));
     }
-
-        /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function postAlumnos(Request $request)
-    // {
-    //     $data = [];
-    //     validateData($request->all(), ['tetra' => 'required']);
-    //     if ($request->get('campuses') != null){
-    //         $campuses = $request->get('campuses');
-    //         $campus_array = [];
-    //         foreach ($campuses as $id => $value){
-    //             if($value == "on"){
-    //                 array_push($campus_array, $id);
-    //             }
-    //         }
-    //         $campus_instances = Campus::find($campus_array);
-    //         $alumnos = [];
-    //         foreach ($campus_instances as $campus) {
-    //             array_push($alumnos, $campus->alumnos);
-    //         }
-    //         $last_alumnos = collect($alumnos)->collapse();
-    //         if($request->get('now') && $request->get('now') == "on") {
-    //             return Excel::download(
-    //                 new \App\Exports\AlumnosExport($last_alumnos),
-    //                 'alumnos-alta' . '-' . time() .'.xlsx'
-    //             );
-    //         }
-    //         $data['alumnos'] = $last_alumnos;
-    //         // $gerentes = [];
-    //         // foreach ($campus_instances as $campus) {
-    //         //     array_push($gerentes, $campus->gerentes);
-    //         // }
-    //         // $last_gerentes = collect($gerentes)->collapse();
-    //         // $data['gerentes'] = $last_gerentes;
-    //         return view('reportes-alumnos.reportes', $data);
-    //     }
-    //     return back()->withErrors(__('reportes.error_campuses'));
-    // }
 
     /**
      * Display a listing of the resource.
@@ -180,24 +144,30 @@ class ExcelController extends Controller
             }
             $campus_instances = Campus::find($campus_array);
             $tutores = [];
+            $actual_tutores = [];
             foreach ($campus_instances as $campus) {
-                array_push($tutores, $campus->tutores);
+                $actual_tutores = $campus->tutores;
+                $filtered = $actual_tutores->where('tetra_id', $request->get('tetra'));
+                array_push($tutores, $filtered);
             }
             $last_tutores = collect($tutores)->collapse();
-            if($request->get('now') && $request->get('now') == "on") {
-                return Excel::download(
-                    new \App\Exports\TutoresExcel($last_tutores),
-                    'tutores-alta' . '-' . time() .'.xlsx'
-                );
-            }
-            $data['tutores'] = $last_tutores;
+            // if($request->get('now') && $request->get('now') == "on") {
+            //     return Excel::download(
+            //         new \App\Exports\TutoresExcel($last_tutores),
+            //         'tutores-alta' . '-' . time() .'.xlsx'
+            //     );
+            // }
+            // $data['tutores'] = $last_tutores;
             // $gerentes = [];
             // foreach ($campus_instances as $campus) {
             //     array_push($gerentes, $campus->gerentes);
             // }
             // $last_gerentes = collect($gerentes)->collapse();
             // $data['gerentes'] = $last_gerentes;
-            return view('reportes-tutores.reportes', $data);
+            return Excel::download(
+                new \App\Exports\TutoresExcel($last_tutores),
+                'tutores-alta' . '-' . time() .'.xlsx'
+            );
         }
         return back()->withErrors(__('reportes.error_campuses'));
     }

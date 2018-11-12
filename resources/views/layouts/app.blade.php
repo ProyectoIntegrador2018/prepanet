@@ -23,8 +23,8 @@
         <div class="navbar-fixed">
             <nav class="primary-color">
                 <div class="nav-wrapper">
-                        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
-                    <a href="/" class="brand-logo left hide-on-small-only">{{ config('app.name') }}</a>
+                    <a href="{{route('home')}}" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+                    <a href="{{route('home')}}" class="brand-logo left hide-on-small-only">{{ config('app.name') }}</a>
                 </div>
             </nav>
         </div>

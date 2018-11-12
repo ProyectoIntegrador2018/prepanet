@@ -149,7 +149,7 @@
                                 <option value="" disabled selected>{{__('alumnos.select_tetra')}}</option>
 
                                 @foreach($tetras as $tetra)
-                                    <option value="{{$tetra->id}}">{{$tetra->identifier}}</option>
+                                    <option value="{{$tetra->id}}">{{$tetra->identifier}} || {{$tetra->tipoTetra()}} || {{$tetra->campus->name}}</option>
                                 @endforeach
 
                             </select>
