@@ -34,7 +34,7 @@ class TetrasController extends Controller
         return [
             'identifier' => 'required|string',
             'year' => 'required|string',
-            'type' => 'required|integer|in:0,1,2',
+            'type' => 'required|integer',
             'goal' => 'required|integer',
             'campus' => 'required|exists:campuses,id'
         ];
@@ -49,7 +49,7 @@ class TetrasController extends Controller
         return [
             'identifier' => 'required|string',
             'year' => 'required|string',
-            'type' => 'required|integer|in:0,1,2',
+            'type' => 'required|integer',
             'goal' => 'required|integer',
             'campus' => 'required|exists:campuses,id'
         ];
