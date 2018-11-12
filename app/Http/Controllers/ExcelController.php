@@ -104,7 +104,7 @@ class ExcelController extends Controller
             $last_alumnos = collect($alumnos)->collapse();
             if($request->get('now') && $request->get('now') == "on") {
                 return Excel::download(
-                    new \App\Exports\AlumnosExport($last_alumnos),
+                    new \App\Exports\AlumnosExcel($last_alumnos),
                     'alumnos-alta' . '-' . time() .'.xlsx'
                 );
             }
@@ -185,7 +185,7 @@ class ExcelController extends Controller
             $last_tutores = collect($tutores)->collapse();
             if($request->get('now') && $request->get('now') == "on") {
                 return Excel::download(
-                    new \App\Exports\TutoresExport($last_tutores),
+                    new \App\Exports\TutoresExcel($last_tutores),
                     'tutores-alta' . '-' . time() .'.xlsx'
                 );
             }

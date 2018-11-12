@@ -18,9 +18,9 @@ class AlumnosExcel implements WithMultipleSheets
 
     private $campuses;
 
-    public function __construct($campuses)
+    public function __construct($alumnos)
     {
-        $this->campuses = $campuses;
+        $this->alumnos = $alumnos;
     }
 
     /**
@@ -30,8 +30,8 @@ class AlumnosExcel implements WithMultipleSheets
     {
         $sheets = [];
 
-        $sheets[0] = new AlumnosExport($this->campuses);
-        $sheets[1] = new AlumnosEnExport($this->campuses);
+        $sheets[0] = new AlumnosExport($this->alumnos);
+        $sheets[1] = new AlumnosEnExport($this->alumnos);
 
         return $sheets;
     }

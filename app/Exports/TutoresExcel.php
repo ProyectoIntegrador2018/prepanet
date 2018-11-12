@@ -9,60 +9,66 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Illuminate\Contracts\Support\Responsable;
 
-class TutoresExcel implements FromCollection, WithMapping, WithHeadings, ShouldAutoSize
+class TutoresExcel implements WithMultipleSheets
 {
     use Exportable;
 
-    private $tutores;
+    private $campuses;
 
     public function __construct($tutores)
     {
         $this->tutores = $tutores;
     }
 
-    public function collection()
-    {
-        return $this->tutores;
-    }
-
     /**
-    * @var Invoice $invoice
-    */
-    public function map($tutor): array
+     * @return array
+     */
+    public function sheets(): array
     {
-        return [
-            $tutor->first_name,
-            $tutor->last_name,
-            $tutor->gender,
-            $tutor->birth_date,
-            $tutor->email,
-            $tutor->phone,
-            $tutor->street,
-            $tutor->street_number,
-            $tutor->city,
-            $tutor->state,
-            $tutor->country,
-            $tutor->user_name,
-        ];
+        $sheets = [];
+
+        $sheets[0] = new TutoresExport($this->tutores);
+        $sheets[1] = new TutoresEnExport($this->tutores);
+
+        return $sheets;
     }
 
-    public function headings(): array{
-        return [
-            'Nombre(s)',
-            'Apellidos',
-            'Género',
-            'Fecha de Nacimiento',
-            'Correo electrónico',
-            'Teléfono',
-            'Calle',
-            'Número de calle',
-            'Ciudad',
-            'Estado',
-            'País',
-            'Usuario/matricula'
-        ];
-    }
+    // public function collection()
+    // {
+    //     return $this->campuses;
+    // }
+
+    // /**
+    // * @var Invoice $invoice
+    // */
+    // public function map($alumno): array
+    // {
+    //     return [
+    //         $alumno->first_name,
+    //         $alumno->last_name,
+    //         $alumno->gender,
+    //         $alumno->birth_date,
+    //         $alumno->email,
+    //         $alumno->phone,
+    //         $alumno->city,
+    //         $alumno->state,
+    //     ];
+    // }
+
+    // public function headings(): array{
+    //     return [
+    //         'Nombre(s)',
+    //         'Apellidos',
+    //         'Género',
+    //         'Fecha de Nacimiento',
+    //         'Correo electrónico',
+    //         'Teléfono',
+    //         'Ciudad',
+    //         'Estado',
+    //     ];
+    // }
 
 }

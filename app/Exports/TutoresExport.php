@@ -11,8 +11,9 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\Support\Responsable;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class TutoresExport implements FromCollection, WithMapping, WithHeadings, ShouldAutoSize
+class TutoresExport implements FromCollection, WithMapping, WithHeadings, ShouldAutoSize, WithTitle
 {
     use Exportable;
 
@@ -67,6 +68,14 @@ class TutoresExport implements FromCollection, WithMapping, WithHeadings, Should
             'Data_Source_Key',
             'System_Role|External_Person_Key|User_ID|Firstname|Lastname|Email|Company|Institution_Role|Available_Ind|passwd|Data_Source_Key'
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function title(): string
+    {
+        return 'AC';
     }
 
 }
