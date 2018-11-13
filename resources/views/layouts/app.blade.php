@@ -46,6 +46,7 @@
             <li><a href="{{route('campus-alumnos')}}"><i class="material-icons">today</i>Excel de Alumnos</a></li>
             <li><a href="{{route('campus-tutores')}}"><i class="material-icons">today</i>Excel de Tutores</a></li>
             <li><div class="divider"></div></li>
+            <li><a href="{{route('profile')}}"><i class="material-icons">accessibility</i>Perfil del Usuario</a></li>
             <li><a href="{{ url('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">power_settings_new</i>Logout</a></li>
         </ul>
         <form id="logout-form" action="{{ url('logout') }}" method="POST">

@@ -19,6 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'profile',  'middleware' => 'auth'], function () {
+    Route::get('/', 'ProfileController@index')->name('profile');
+    Route::post('/{user}', 'ProfileController@updateProfile')->name('update-profile');
+});
+
 Route::group(['prefix' => 'campuses',  'middleware' => 'auth'], function () {
     Route::get('/', 'CampusesController@index')->name('campuses');
     Route::post('/', 'CampusesController@postCampus');

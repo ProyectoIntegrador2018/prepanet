@@ -64,7 +64,7 @@ class TutoresEnExport implements FromCollection, WithMapping, WithHeadings, Shou
      */
     public function title(): string
     {
-        return 'EN';
+        return 'EC';
     }
 
 }
