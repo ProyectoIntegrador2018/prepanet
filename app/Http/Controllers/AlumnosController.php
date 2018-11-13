@@ -45,7 +45,6 @@ class AlumnosController extends Controller
             'state' => 'required|string',
             'country' => 'required|string',
             'tutor_type' => 'required|string',
-            'user_name' => 'required|string',
             'user_password' => 'required|string',
             'business' => 'required|string',
             'gerente' => 'required|exists:gerentes,id',
@@ -71,7 +70,6 @@ class AlumnosController extends Controller
             'state' => 'required|string',
             'country' => 'required|string',
             'tutor_type' => 'required|string',
-            'user_name' => 'required|string',
             'user_password' => 'required|string',
             'business' => 'required|string',
             'gerente' => 'required|exists:gerentes,id',
@@ -115,6 +113,7 @@ class AlumnosController extends Controller
         validateData($request->all(), $this->createRules());
         $tetra = Tetra::find($request->get('tetra'));
         $campus_code = $tetra->campus->code;
+        $username = $tetra->campus->alumnoUserName();
 
         try {
             $alumno = Alumno::create([
@@ -129,7 +128,7 @@ class AlumnosController extends Controller
                 'state' => $request->get('state'),
                 'country' => $request->get('country'),
                 'tutor_type' => $request->get('tutor_type'),
-                'user_name' => $request->get('user_name'),
+                'user_name' => $username,
                 'user_password' => $request->get('user_password'),
                 'business' => $request->get('business'),
                 'gerente_id' => $request->get('gerente'),

@@ -67,7 +67,7 @@
                               <label for="tutor_type">{{ __('alumnos.tutor_type') }}</label>
                           </div>
                           <div class="input-field col s12 m4 l4">
-                              <input id="user_name" name="user_name" type="text" class="validate" value="{{$alumno->user_name}}" required>
+                              <input id="user_name" name="user_name" type="text" class="validate" value="{{$alumno->user_name}}" required disabled>
                               <label for="user_name">{{ __('alumnos.user_name') }}</label>
                           </div>
                           <div class="input-field col s12 m4 l4">

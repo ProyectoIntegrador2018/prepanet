@@ -120,14 +120,6 @@
                         </div>
                     </div>
 
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="user_name">{{__('alumnos.user_name')}}</label>
-                            <input id="user_name" type="text" name="user_name" required class="validate">
-                        </div>
-                    </div>
-
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="user_password">{{__('alumnos.user_password')}}</label>

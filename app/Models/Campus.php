@@ -59,6 +59,11 @@ class Campus extends Model
         return $this->hasManyThrough(Tutor::class, Tetra::class);
     }
 
+    public function alumnoUserName()
+    {
+        return "p000" . (string)($this->alumnos->count() + 1);
+    }
+
     /**
      * Return if the campus is deletable
      *

@@ -36,6 +36,7 @@ class AlumnosEnExport implements FromCollection, WithMapping, WithHeadings, Shou
         $username = $alumno->user_name . $alumno->campus_code;
         $course_key = "PRN.WA1000L.1873." . $alumno->campus_code . "1";
         return [
+            '',
             $alumno->campus_code,
             $username,
             "student",
@@ -49,6 +50,7 @@ class AlumnosEnExport implements FromCollection, WithMapping, WithHeadings, Shou
 
     public function headings(): array{
         return [
+            'FECHA ENROLA',
             'NOTAS',
             'External_Person_Key',
             'Role',
@@ -65,7 +67,7 @@ class AlumnosEnExport implements FromCollection, WithMapping, WithHeadings, Shou
      */
     public function title(): string
     {
-        return 'EN';
+        return 'EC';
     }
 
 }
