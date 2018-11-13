@@ -21,7 +21,7 @@ class Tutor extends Model
         'community', 'city', 'zipcode',
         'state', 'country', 'user_name',
         'tetra_id', 'gerente_id', 'birth_date',
-        'campus_code'
+        'campus_code', 'grupo'
     ];
 
     /**

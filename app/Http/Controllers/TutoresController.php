@@ -123,6 +123,7 @@ class TutoresController extends Controller
         validateData($request->all(), $this->createRules());
         $tetra = Tetra::find($request->get('tetra'));
         $campus_code = $tetra->campus->code;
+        $grupo = $tetra->grupoTutor();
 
         try {
             $tutor = Tutor::create([
@@ -142,6 +143,7 @@ class TutoresController extends Controller
                 'state' => $request->get('state'),
                 'country' => $request->get('country'),
                 'campus_code' => $campus_code,
+                'grupo' => $grupo,
 
                 'user_name' => $request->get('user_name'),
 

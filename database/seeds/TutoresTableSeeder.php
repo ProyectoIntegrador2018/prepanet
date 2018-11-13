@@ -34,6 +34,7 @@ class TutoresTableSeeder extends Seeder
             'state' => 'Nuevo Leon',
             'country' => 'Mexico',
             'campus_code' => 'MTY',
+            'grupo' => 1,
 
             'user_name' => 'sdfsfsdf',
 

@@ -35,7 +35,7 @@ class TutoresEnExport implements FromCollection, WithMapping, WithHeadings, Shou
     public function map($tutor): array
     {
         $username = $tutor->user_name . $tutor->campus_code;
-        $course_key = "PRN.FT1000L.1872." . $tutor->campus_code . "1";
+        $course_key = "PRN.FT1000L.1872." . $tutor->campus_code . '.' . $tutor->grupo;
         return [
             $username,
             "student",

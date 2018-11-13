@@ -17,7 +17,7 @@ class Tetra extends Model
      * @var array
      */
     protected $fillable = [
-        'year','type','goal','campus_id', 'identifier'
+        'year','type','goal','campus_id', 'identifier',
     ];
 
     /**
@@ -71,5 +71,9 @@ class Tetra extends Model
                 return $name;
             }
         }
+    }
+
+    public function grupoTutor(){
+        return (integer) round($this->tutores->count()/15,0,PHP_ROUND_HALF_DOWN)+1;
     }
 }
